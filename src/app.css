@@ -1,0 +1,76 @@
+@import "tailwindcss";
+@plugin "daisyui";
+@import "@fontsource-variable/bitter";
+@import "@fontsource-variable/jetbrains-mono";
+
+@theme {
+    --font-bitter: "Bitter Variable", serif;
+    --font-jetbrains: "JetBrains Mono Variable", monospace;
+}
+
+@plugin "daisyui/theme" {
+    name: "ICH";
+    default: true;
+    prefersdark: false;
+    color-scheme: "light";
+    --color-base-100: oklch(98.19% 0.008 61.46);
+    --color-base-content: oklch(32.11% 0 0);
+    --color-primary: oklch(48.5% 0.075 149.98);
+    --color-primary-content: oklch(98% 0.022 95.277);
+    --color-secondary: oklch(65.43% 0.143 34.6);
+    --color-secondary-content: oklch(96% 0.016 293.756);
+    --color-accent: oklch(40.05% 0.108 337.69);
+    --color-accent-content: oklch(98% 0.014 180.72);
+    --color-neutral: oklch(32.11% 0 0);
+    --color-neutral-content: oklch(98% 0.001 106.423);
+    --color-info: oklch(82% 0.111 230.318);
+    --color-info-content: oklch(98% 0.003 247.858);
+    --color-success: oklch(69% 0.17 162.48);
+    --color-success-content: oklch(98% 0.003 247.858);
+    --color-warning: oklch(82% 0.189 84.429);
+    --color-warning-content: oklch(98% 0.003 247.858);
+    --color-error: oklch(63% 0.237 25.331);
+    --color-error-content: oklch(98% 0.003 247.858);
+    --radius-selector: 2rem;
+    --radius-field: 2rem;
+    --radius-box: 2rem;
+    --size-selector: 0.25rem;
+    --size-field: 0.25rem;
+    --border: 1px;
+    --depth: 1;
+    --noise: 0;
+}
+
+body {
+    font-family: "JetBrains Mono Variable", monospace;
+    padding: 5vh 5vw;
+    @apply text-xl font-light;
+}
+
+h1 {
+    font-family: "Bitter Variable", serif;
+    color: var(--color-primary);
+    @apply text-7xl;
+}
+
+h2 {
+    @apply text-4xl;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    line-height: 1.4em;
+    @apply font-normal;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    margin-bottom: 1.4em;
+}
