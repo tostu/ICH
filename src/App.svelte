@@ -1,5 +1,6 @@
 <script lang="ts">
     import me from "$lib/assets/me.webp";
+    import Projects from "./lib/components/Projects.svelte";
 </script>
 
 <svelte:head>
@@ -9,18 +10,15 @@
         content="My name is Torge Stubbe. I'm a Full Stack software developer from northern Germany."
     />
 </svelte:head>
-
 <main>
-    <section>
-        <div class="container mx-auto md:px-44">
+    <div class="container mx-auto lg:px-52">
+        <section>
             <div class="row justify-between">
                 <h1>Moin.</h1>
             </div>
-            <h2>My name is Torge Stubbe.</h2>
-            <div
-                class="flex flex-col xl:flex-row gap-5 items-center xl:items-start"
-            >
-                <div class="xl:w-[50%]">
+            <h2>I'm Torge Stubbe.</h2>
+            <div class="flex flex-col xl:flex-row gap-5 items-center">
+                <div class="xl:w-[50%] xl:max-w-[380px]">
                     <p class="text-justify">
                         I'm a professionally trained Full Stack software
                         developer based in northern Germany. Currently, I work
@@ -36,7 +34,6 @@
                             >GitHub</a
                         >.
                     </p>
-                    <p>z</p>
                     <p class="text-justify">
                         Outside of programming, I enjoy capturing urban moments
                         through street photography—follow along on <a
@@ -46,19 +43,23 @@
                         where I love experimenting with new flavors
                     </p>
                 </div>
-
                 <!-- <Polaroid src={me} caption="me"></Polaroid> -->
-                <div class="col items-center xl:w-[50%] flex justify-end">
+                <div class="xl:w-[50%] flex justify-end">
                     <img
                         id="me"
                         src={me}
                         alt=""
                         srcset=""
-                        class="rounded-full shadow-lg max-h-[500px]"
+                        class="rounded-full shadow-lg max-h-[450px]"
                         style="box-shadow: 5px 5px 0px 4px #6B2D5C;"
                     />
                 </div>
             </div>
-        </div>
-    </section>
+        </section>
+
+        <section class="mt-16">
+            <h2>my projects</h2>
+            <Projects />
+        </section>
+    </div>
 </main>
