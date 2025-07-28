@@ -36,7 +36,7 @@
                     </p>
                     <p class="text-justify">
                         Outside of programming, I enjoy capturing urban moments
-                        through street photography—follow along on <a
+                        through street photography follow along on <a
                             href="https://instagram.com/torge.jpg"
                             target="_blank">Instagram</a
                         > if you're curious. I also unwind with video games and cooking,
