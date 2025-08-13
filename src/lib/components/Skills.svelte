@@ -18,174 +18,188 @@
         SiGit,
     } from "@icons-pack/svelte-simple-icons";
 
-    let isCollapseOpen = false;
+    let showAllSkills = false;
 
-    const skillsMain = [
+    const allSkills = [
         {
             title: "Svelte",
             icon: SiSvelte,
-            color: "#BD4B30",
+            color: "#8A6B5D",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Spring Boot",
             icon: SiSpring,
-            color: "#587A44",
+            color: "#7A8B7A",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Tailwind",
             icon: SiTailwindcss,
-            color: "#437973",
+            color: "#6B8A87",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Node.js",
             icon: SiNodedotjs,
-            color: "#339933",
+            color: "#6B8A6B",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Docker",
             icon: SiDocker,
-            color: "#2496ED",
+            color: "#6B8AAD",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Linux",
             icon: SiLinux,
-            color: "#000000",
+            color: "#3A3A3A",
+            size: 80,
+            isMain: true,
         },
         {
             title: "TypeScript",
             icon: SiTypescript,
-            color: "#3178C6",
+            color: "#6B8AC6",
+            size: 80,
+            isMain: true,
         },
         {
             title: "Git",
             icon: SiGit,
-            color: "#F05032",
+            color: "#AD7A6B",
+            size: 80,
+            isMain: true,
         },
-    ];
-
-    const skillsAdditional = [
         {
             title: "Typescript",
             icon: SiTypescript,
-            color: "#3178C6",
+            color: "#6B8AC6",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Javascript",
             icon: SiJavascript,
-            color: "#F7DF1E",
+            color: "#ADA96B",
+            size: 50,
+            isMain: false,
         },
         {
             title: "HTML",
             icon: SiHtml5,
-            color: "#E34F26",
+            color: "#AD7A6B",
+            size: 50,
+            isMain: false,
         },
         {
             title: "CSS",
             icon: SiCss,
-            color: "#1572B6",
+            color: "#6B8AAD",
+            size: 50,
+            isMain: false,
         },
         {
             title: "React",
             icon: SiReact,
-            color: "#61DAFB",
+            color: "#8AADB8",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Vue",
             icon: SiVuedotjs,
-            color: "#41B883",
+            color: "#7AAD8A",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Angular",
             icon: SiAngular,
-            color: "#DD0031",
+            color: "#AD6B7A",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Next.js",
             icon: SiNextdotjs,
-            color: "#000000",
+            color: "#3A3A3A",
+            size: 50,
+            isMain: false,
         },
         {
             title: "JQuery",
             icon: SiJquery,
-            color: "#0769AD",
+            color: "#6B8AAD",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Spring Boot",
             icon: SiSpring,
-            color: "#587A44",
+            color: "#7A8B7A",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Docker",
             icon: SiDocker,
-            color: "#3F6B8C",
+            color: "#6B8AAD",
+            size: 50,
+            isMain: false,
         },
         {
             title: "Tailwind",
             icon: SiTailwindcss,
-            color: "#437973",
+            color: "#6B8A87",
+            size: 50,
+            isMain: false,
         },
     ];
 </script>
 
 <div class="flex flex-col gap-6">
-    <div
-        class={isCollapseOpen
-            ? ""
-            : "mask-b-from-60% mask-b-to-95% lg:mask-b-from-20% lg:mask-b-to-80%"}
-    >
-        <div class="grid grid-cols-2 lg:grid-cols-4 gap-5">
-            {#each skillsMain as skill}
+    <div class="relative">
+        <div
+            class={`
+                grid grid-cols-2 lg:grid-cols-4 gap-10
+                ${showAllSkills ? "overflow-y-scroll max-h-[500px] lg:max-h-[500px]" : "overflow-hidden max-h-[400px] lg:max-h-[400px]"}
+                ${!showAllSkills ? "mask-b-from-60% mask-b-to-95% lg:mask-b-from-20% lg:mask-b-to-80%" : ""}
+                transition-all duration-500
+                ${showAllSkills ? "scrollbar-thin scrollbar-thumb-rounded scrollbar-thumb-gray-400 scrollbar-track-gray-100" : ""}
+            `}
+        >
+            {#each allSkills as skill}
                 <div class="card bg-base-100 shadow-sm text-center">
                     <div class="card-body">
                         <div class="flex flex-col items-center gap-2">
                             <svelte:component
                                 this={skill.icon}
                                 color={skill.color}
-                                size={80}
+                                size={skill.size}
                             />
-                            <h3>{skill.title}</h3>
+                            <h3 class={skill.isMain ? "" : "text-sm"}>
+                                {skill.title}
+                            </h3>
                         </div>
                     </div>
                 </div>
             {/each}
         </div>
     </div>
-    <div class="collapse">
-        <input type="checkbox" bind:checked={isCollapseOpen} />
-        <div
-            class="collapse-title font-semibold p-0 text-center flex flex-col justify-center"
+    <div class="text-center">
+        <button
+            class="btn btn-ghost text-lg uppercase"
+            on:click={() => (showAllSkills = !showAllSkills)}
         >
-            <span class="text-lg uppercase">more</span>
-            <span class="text-4xl -mt-5">⌄</span>
-        </div>
-        <div class="collapse-content p-0 text-sm">
-            <div class="flex flex-col gap-10">
-                <div>
-                    <h2>Additional Skills</h2>
-                    <div
-                        class="grid grid-cols-4 md:grid-cols-2 lg:grid-cols-4 gap-5"
-                    >
-                        {#each skillsAdditional as skill}
-                            <div class="card bg-base-100 shadow-sm">
-                                <div class="card-body text-center">
-                                    <div
-                                        class="flex flex-col items-center gap-2"
-                                    >
-                                        <svelte:component
-                                            this={skill.icon}
-                                            color={skill.color}
-                                            size={50}
-                                        />
-                                        <h4>
-                                            {skill.title}
-                                        </h4>
-                                    </div>
-                                </div>
-                            </div>
-                        {/each}
-                    </div>
-                </div>
-            </div>
-        </div>
+            <span>{showAllSkills ? "Show Less" : "Show More"}</span>
+            <span class="text-3xl ml-2">{showAllSkills ? "⌃" : "⌄"}</span>
+        </button>
     </div>
 </div>
