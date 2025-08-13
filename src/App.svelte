@@ -1,6 +1,7 @@
 <script lang="ts">
     import me from "$lib/assets/me.webp";
     import Projects from "./lib/components/Projects.svelte";
+    import Skills from "./lib/components/Skills.svelte";
 </script>
 
 <svelte:head>
@@ -55,6 +56,11 @@
                     />
                 </div>
             </div>
+        </section>
+
+        <section class="mt-16">
+            <h2>skills</h2>
+            <Skills />
         </section>
 
         <section class="mt-16">
