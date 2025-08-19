@@ -22,29 +22,29 @@
             <div class="flex flex-col xl:flex-row gap-5 items-center">
                 <div class="xl:w-[50%] xl:max-w-[380px]">
                     <p class="text-justify">
-                        I'm a professionally trained Full Stack software
-                        developer based in northern Germany. Currently, I work
-                        at <a href="https://fricke.de" target="_blank"
-                            >FRICKE Group</a
-                        >, where I maintain and enhance the
+                        I'm a professionally trained Full Stack developer from
+                        northern Germany. I maintain and enhance the
                         <a href="https://granit-parts.com" target="_blank"
                             >granit-parts</a
                         >
-                        B2B webshop. Most of my personal projects are open source
-                        and available on
+                        B2B webshop at
+                        <a href="https://fricke.de" target="_blank"
+                            >FRICKE Group</a
+                        >. Most of my projects are open source and available on
                         <a href="https://github.com/tostu" target="_blank"
                             >GitHub</a
                         >.
                     </p>
                     <p class="text-justify">
-                        Outside of programming, I enjoy capturing urban moments
-                        through street photography follow along on <a
+                        Outside of work, I enjoy street
+                        <a
                             href="https://instagram.com/torge.jpg"
-                            target="_blank">Instagram</a
-                        > if you're curious. I also unwind with video games and cooking,
-                        where I love experimenting with new flavors
+                            target="_blank">photography</a
+                        >, video games, and experimenting with new flavors in
+                        cooking.
                     </p>
                 </div>
+
                 <div class="xl:w-[50%] flex justify-end">
                     <img
                         id="me"
