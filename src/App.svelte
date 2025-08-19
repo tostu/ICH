@@ -59,12 +59,12 @@
         </section>
 
         <section class="mt-16">
-            <h2>skills</h2>
+            <h2 class="text-center md:text-start">skills</h2>
             <Skills />
         </section>
 
         <section class="mt-16">
-            <h2>personal projects</h2>
+            <h2 class="text-center md:text-start">personal projects</h2>
             <Projects />
         </section>
     </div>

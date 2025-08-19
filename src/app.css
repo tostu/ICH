@@ -52,15 +52,15 @@ body {
 h1 {
     font-family: "Bitter Variable", serif;
     color: var(--color-primary);
-    @apply text-7xl;
+    @apply text-5xl md:text-7xl;
 }
 
 h2 {
-    @apply text-4xl uppercase;
+    @apply text-3xl md:text-4xl uppercase;
 }
 
 h3 {
-    @apply text-xl uppercase;
+    @apply text-lg md:text-xl uppercase;
 }
 
 h1,
