@@ -64,7 +64,7 @@
         </section>
 
         <section class="mt-16">
-            <h2>my projects</h2>
+            <h2>personal projects</h2>
             <Projects />
         </section>
     </div>
