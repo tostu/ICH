@@ -38,19 +38,21 @@
 <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
     {#each projects as project}
         <div class="card bg-base-100 max-w-[500px] shadow-sm">
-            <figure class="h-32 overflow-hidden">
+            <a href={project.link}>
+                <figure class="h-32 overflow-hidden">
                 <img
                     src={project.img}
                     alt="Project Screenshot"
                     class="h-full w-full object-cover object-top"
                 />
-            </figure>
-            <div class="card-body">
-                <h2 class="card-title">{project.title}</h2>
-                <p>
-                    {project.description}
-                </p>
-            </div>
+                </figure>
+                <div class="card-body">
+                    <h2 class="card-title">{project.title}</h2>
+                    <p>
+                        {project.description}
+                    </p>
+                </div>
+            </a>
         </div>
     {/each}
 </div>
