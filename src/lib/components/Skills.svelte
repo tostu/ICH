@@ -176,13 +176,16 @@
             `}
         >
             {#each allSkills as skill}
-                <div class="card bg-base-100 shadow-sm text-center">
+                <div
+                    class="card shadow-sm text-center text-white"
+                    style="background-color: {skill.color};"
+                >
                     <div class="card-body">
                         <div class="flex flex-col items-center gap-2">
                             <svelte:component
                                 this={skill.icon}
-                                color={skill.color}
                                 size={skill.size}
+                                color={"white"}
                             />
                             <h3 class={skill.isMain ? "" : "text-sm"}>
                                 {skill.title}
@@ -195,7 +198,7 @@
     </div>
     <div class="text-center">
         <button
-            class="btn btn-ghost text-lg uppercase"
+            class="btn btn-neutral text-lg uppercase"
             on:click={() => (showAllSkills = !showAllSkills)}
         >
             <span>{showAllSkills ? "Show Less" : "Show More"}</span>
