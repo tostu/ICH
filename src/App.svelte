@@ -1,5 +1,5 @@
 <script lang="ts">
-    import me from "$lib/assets/me.webp";
+    import ICH from "$lib/assets/ICH.webp";
     import Projects from "./lib/components/Projects.svelte";
     import Skills from "./lib/components/Skills.svelte";
 </script>
@@ -48,7 +48,7 @@
                 <div class="xl:w-[50%] flex justify-end">
                     <img
                         id="me"
-                        src={me}
+                        src={ICH}
                         alt=""
                         srcset=""
                         class="rounded-full shadow-lg max-h-[450px]"
