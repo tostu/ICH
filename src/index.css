@@ -4,6 +4,9 @@
 @import "@fontsource-variable/bitter";
 @import "@fontsource-variable/jetbrains-mono";
 @import "tw-animate-css";
+@import "devicon/devicon.min.css";
+@import "@glidejs/glide/dist/css/glide.core.min.css";
+@import "@glidejs/glide/dist/css/glide.theme.min.css";
 
 @custom-variant dark (&:is(.dark *));
 

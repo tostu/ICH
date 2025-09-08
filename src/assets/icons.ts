@@ -1,27 +1,9 @@
-import java from "./java.png";
-
-import {
-  SiSpring,
-  SiSvelte,
-  SiDocker,
-  SiTailwindcss,
-  SiTypescript,
-  SiJavascript,
-  SiHtml5,
-  SiCss,
-  SiReact,
-  SiVuedotjs,
-  SiAngular,
-  SiNextdotjs,
-  SiJquery,
-  SiNodedotjs,
-  SiLinux,
-  SiGit,
-} from "@icons-pack/svelte-simple-icons";
+// Devicon class names for icons
+// See: https://devicon.dev/ for all available icons
 
 type Skill = {
   title: string;
-  icon: any;
+  icon: string; // Devicon CSS class
   alt?: string;
   color?: string;
 };
@@ -29,82 +11,83 @@ type Skill = {
 export const skills: Skill[] = [
   {
     title: "Java",
-    icon: java,
+    icon: "devicon-java-plain",
+    color: "#ED8B00",
   },
   {
     title: "Spring",
     alt: "Java Spring Boot",
-    icon: SiSpring,
+    icon: "devicon-spring-plain",
     color: "#51CF66",
   },
   {
     title: "JavaScript",
-    icon: SiJavascript,
-    color: "#FFD166", // Sunny yellow
+    icon: "devicon-javascript-plain",
+    color: "#F7DF1E",
   },
   {
     title: "Svelte",
-    icon: SiSvelte,
-    color: "#FF8A50", // Peachy orange
+    icon: "devicon-svelte-plain",
+    color: "#FF3E00",
   },
   {
     title: "Tailwind",
-    icon: SiTailwindcss,
-    color: "#70E0E0", // Minty teal
+    icon: "devicon-tailwindcss-plain",
+    color: "#06B6D4",
   },
   {
     title: "Node.js",
-    icon: SiNodedotjs,
-    color: "#68D391", // Fresh green
+    icon: "devicon-nodejs-plain",
+    color: "#68D391",
   },
   {
     title: "Docker",
-    icon: SiDocker,
-    color: "#63B3ED", // Sky blue
+    icon: "devicon-docker-plain",
+    color: "#2496ED",
   },
   {
     title: "TypeScript",
-    icon: SiTypescript,
-    color: "#9F7AEA", // Lavender
+    icon: "devicon-typescript-plain",
+    color: "#3178C6",
   },
   {
     title: "Linux",
-    icon: SiLinux,
-    color: "#F6E05E", // Bright yellow
+    icon: "devicon-linux-plain",
+    color: "#FCC624",
   },
   {
     title: "Git",
-    icon: SiGit,
-    color: "#FC8181", // Soft red
+    icon: "devicon-git-plain",
+    color: "#F05032",
   },
   {
     title: "HTML",
-    icon: SiHtml5,
-    color: "#FDAD5A", // Warm orange
+    icon: "devicon-html5-plain",
+    color: "#E34F26",
   },
   {
     title: "CSS",
-    icon: SiCss,
-    color: "#A0CFE4", // Light blue
+    icon: "devicon-css3-plain",
+    color: "#1572B6",
   },
   {
     title: "React",
-    icon: SiReact,
-    color: "#4FD1C7", // Turquoise
+    icon: "devicon-react-original",
+    color: "#61DAFB",
   },
   {
     title: "Vue 2",
-    icon: SiVuedotjs,
-    color: "#81E6D9", // Seafoam green
+    icon: "devicon-vuejs-plain",
+    color: "#4FC08D",
   },
   {
     title: "Next.js",
-    icon: SiNextdotjs,
-    color: "#38B2AC", // Teal
+    icon: "devicon-nextjs-original-wordmark",
+    color: "#000000",
   },
   {
-    title: "JQuery",
-    icon: SiJquery,
-    color: "#6B46C1", // Purple
+    title: "jQuery",
+    icon: "devicon-jquery-plain",
+    color: "#0769AD",
   },
 ];

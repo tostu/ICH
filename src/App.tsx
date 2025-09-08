@@ -2,7 +2,7 @@ import React from "react";
 import { Helmet, HelmetProvider } from "react-helmet-async";
 import Hero from "./components/Hero";
 import Projects from "./components/Projects";
-// import Skills from './components/Skills';
+import Skills from "./components/Skills";
 import "./App.css";
 
 const App: React.FC = () => {
@@ -23,7 +23,7 @@ const App: React.FC = () => {
 
             <section className="mt-16">
               <h2>skills</h2>
-              {/*<Skills />*/}
+              <Skills />
             </section>
 
             <section className="mt-16">
