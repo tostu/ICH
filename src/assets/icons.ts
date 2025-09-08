@@ -35,76 +35,76 @@ export const skills: Skill[] = [
     title: "Spring",
     alt: "Java Spring Boot",
     icon: SiSpring,
-    color: "#5A9033",
+    color: "#51CF66",
   },
   {
     title: "JavaScript",
     icon: SiJavascript,
-    color: "#D0C01A",
+    color: "#FFD166", // Sunny yellow
   },
   {
     title: "Svelte",
     icon: SiSvelte,
-    color: "#D93300",
+    color: "#FF8A50", // Peachy orange
   },
   {
     title: "Tailwind",
     icon: SiTailwindcss,
-    color: "#0595B4",
+    color: "#70E0E0", // Minty teal
   },
   {
     title: "Node.js",
     icon: SiNodedotjs,
-    color: "#568050",
+    color: "#68D391", // Fresh green
   },
   {
     title: "Docker",
     icon: SiDocker,
-    color: "#1F7AC0",
+    color: "#63B3ED", // Sky blue
   },
   {
     title: "TypeScript",
     icon: SiTypescript,
-    color: "#2962A0",
+    color: "#9F7AEA", // Lavender
   },
   {
     title: "Linux",
     icon: SiLinux,
-    color: "#D0A920",
+    color: "#F6E05E", // Bright yellow
   },
   {
     title: "Git",
     icon: SiGit,
-    color: "#C04029",
+    color: "#FC8181", // Soft red
   },
   {
     title: "HTML",
     icon: SiHtml5,
-    color: "#B93F1F",
+    color: "#FDAD5A", // Warm orange
   },
   {
     title: "CSS",
     icon: SiCss,
-    color: "#125D95",
+    color: "#A0CFE4", // Light blue
   },
   {
     title: "React",
     icon: SiReact,
-    color: "#50B0C9",
+    color: "#4FD1C7", // Turquoise
   },
   {
     title: "Vue 2",
     icon: SiVuedotjs,
-    color: "#409D72",
+    color: "#81E6D9", // Seafoam green
   },
   {
     title: "Next.js",
     icon: SiNextdotjs,
-    color: "#1A1A1A",
+    color: "#38B2AC", // Teal
   },
   {
     title: "JQuery",
     icon: SiJquery,
-    color: "#06558B",
+    color: "#6B46C1", // Purple
   },
 ];

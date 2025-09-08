@@ -1,0 +1,13 @@
+ <svg width="80" height="80" viewBox="0 0 80 80">
+    <g fill="#2C3E50">
+        <circle cx="25" cy="25" r="3"/>
+        <circle cx="40" cy="25" r="3"/>
+        <circle cx="55" cy="25" r="3"/>
+        <circle cx="25" cy="40" r="3"/>
+        <circle cx="40" cy="40" r="3"/>
+        <circle cx="55" cy="40" r="3"/>
+        <circle cx="25" cy="55" r="3"/>
+        <circle cx="40" cy="55" r="3"/>
+        <circle cx="55" cy="55" r="3"/>
+    </g>
+</svg>

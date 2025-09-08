@@ -1,0 +1,33 @@
+#intro a {
+  text-decoration: none;
+  white-space: nowrap;
+  color: #121314;
+  position: relative;
+}
+
+#intro a:after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: 66%;
+  left: -0.1em;
+  right: -0.1em;
+  bottom: 0;
+  transition: top 200ms cubic-bezier(0, 0.8, 0.13, 1);
+  background-color: oklch(48.5% 0.075 149.98 / 0.5);
+}
+
+#intro a:hover:after {
+  top: 0%;
+}
+
+/* #green-dot {
+  background-image: linear-gradient(to right, #ffffff, #d2e8cb);
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  position: absolute;
+  bottom: -70px;
+  left: 150px;
+  z-index: -1;
+} */
