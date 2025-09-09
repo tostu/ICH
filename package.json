@@ -9,7 +9,15 @@
     "lint": "eslint .",
     "preview": "vite preview"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@tsparticles/engine": "^3.9.1",
+    "@tsparticles/react": "^3.0.0",
+    "@tsparticles/slim": "^3.9.1",
+    "embla-carousel-auto-scroll": "^8.6.0",
+    "embla-carousel-react": "^8.6.0",
+    "siema": "^1.5.1",
+    "swiper": "^11.2.10"
+  },
   "devDependencies": {
     "@eslint/js": "^9.33.0",
     "@fontsource-variable/bitter": "^5.2.9",
