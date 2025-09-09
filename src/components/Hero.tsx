@@ -8,14 +8,33 @@ const Hero: React.FC = () => {
   return (
     <section id="intro" className="relative mt-15">
       {/*<img src={STERN} alt="STERN logo" className="w-20 h-20 block" />*/}
+
+      {/* Mobile: headings first */}
+      <div className="block md:hidden mb-8">
+        <div className="row justify-between h-[150px]">
+          <Typewriter
+            text="Moin"
+            speed={130}
+            cursorChar={"."}
+            initialDelay={2}
+            as="h1"
+            className="text-9xl font-bold"
+            showCursor={true}
+          />
+        </div>
+        <h2 className="text-3xl">I'm Torge Stubbe.</h2>
+      </div>
+
+      {/* Image */}
       <img
         id="me"
         src={ICH}
         alt="Torge Stubbe"
         style={{ shapeOutside: "circle()" }}
         className="
-          float-right
-          ml-32
+          md:float-right
+          md:ml-12
+          lg:ml-32
           mb-4
           rounded-full
           border-[#FDC700]
@@ -24,24 +43,32 @@ const Hero: React.FC = () => {
           h-100
           object-cover
           object-[25%_20%]
+          mx-auto
+          md:mx-0
+          block
         "
       />
-      <div className="row justify-between h-[150px]">
-        <Typewriter
-          text="Moin."
-          speed={130}
-          cursorChar={"_"}
-          initialDelay={2}
-          as="h1"
-          className="text-9xl font-bold"
-          showCursor={false}
-        />
+
+      {/* Desktop: headings in original position */}
+      <div className="hidden md:block">
+        <div className="row justify-between h-[73px] 2xl:h-[150px]">
+          <Typewriter
+            text="Moin."
+            speed={190}
+            initialDelay={2}
+            as="h1"
+            className="text-6xl 2xl:text-9xl font-bold"
+            showCursor={false}
+          />
+        </div>
+        <div id="green-dot"></div>
+        <h2>I'm Torge Stubbe.</h2>
       </div>
-      <div id="green-dot"></div>
-      <h2>I'm Torge Stubbe.</h2>
-      <div className="relative leading-9 tracking-tight">
+
+      {/* Text content - always at bottom */}
+      <div className="relative leading-9 tracking-tight mt-8 md:mt-0">
         <p className="text-justify">
-          I'm a professionally trained Full Stack software developer based in
+          I am a professionally trained Full Stack software developer based in
           northern Germany. Currently, I work at{" "}
           <a href="https://fricke.de" target="_blank" rel="noopener noreferrer">
             FRICKE Group

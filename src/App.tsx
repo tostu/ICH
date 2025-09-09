@@ -4,6 +4,9 @@ import Hero from "./components/Hero";
 import Projects from "./components/Projects";
 import Skills from "./components/Skills";
 import "./App.css";
+import StaggeredGrid from "./components/StaggeredGrid";
+import ImageGrid from "./components/ImageGrid";
+import Footer from "./components/Footer";
 
 const App: React.FC = () => {
   return (
@@ -17,8 +20,9 @@ const App: React.FC = () => {
           />
         </Helmet>
 
-        <main>
-          <div className="container mx-auto lg:px-52">
+        <main className="mb-9">
+          <div className="w-full absolute inset-0 h-full"></div>
+          <div className="container mx-auto lg:px-12 xl:px-24 2xl:px-40">
             <Hero />
 
             <section className="mt-16">
@@ -30,8 +34,24 @@ const App: React.FC = () => {
               <h2>personal projects</h2>
               <Projects />
             </section>
+
+            <div className="mt-40">
+              <span className="text-7xl">PHOTOS</span>
+              <StaggeredGrid />
+            </div>
           </div>
+
+          {/*<section className="mt-28">
+            <h2 className="text-center pb-8">moments captured</h2>
+            <div className="mb-16">
+              <h3 className="text-center pb-4 text-lg opacity-75">Content Width Grid</h3>
+              <ImageGrid />
+            </div>
+
+          </section>*/}
         </main>
+
+        <Footer />
       </>
     </HelmetProvider>
   );
