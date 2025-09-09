@@ -9,9 +9,6 @@ const StaggeredGrid: React.FC = () => {
   });
 
   const images = [
-    "_DSF0521.jpg",
-    "_DSF0550.jpg",
-    "_DSF0638.jpg",
     "_DSF0072.jpg",
     "_DSF0086.jpg",
     "_DSF0093.jpg",
@@ -27,12 +24,9 @@ const StaggeredGrid: React.FC = () => {
     "_DSF0437.jpg",
     "_DSF0453.jpg",
     "_DSF0487.jpg",
-    "_DSF0668.jpg",
-    "_DSF0726.jpg",
-    "_DSF0814.jpg",
   ];
 
-  const columns = 7;
+  const columns = 5;
   const rows = 3;
 
   const createColumns = () => {
@@ -63,14 +57,7 @@ const StaggeredGrid: React.FC = () => {
 
   return (
     <motion.div ref={containerRef} className="w-full relative">
-      <div
-        className="flex gap-4 relative"
-        style={{
-          width: "calc(100% + 200px)",
-          marginLeft: "-100px",
-          overflow: "visible",
-        }}
-      >
+      <div className="flex gap-4 px-4 relative max-w-full">
         {imageColumns.map((column, columnIndex) => {
           const { startProgress, endProgress } =
             getTriangleProgress(columnIndex);
@@ -80,25 +67,11 @@ const StaggeredGrid: React.FC = () => {
             [2000, 0],
           );
 
-          // Calculate mask for fade effect - only outer columns
-          let maskImage = "none";
-          if (columnIndex === 0) {
-            maskImage =
-              "linear-gradient(to right, transparent 0%, transparent 50%, black 100%)";
-          } else if (columnIndex === columns - 1) {
-            maskImage =
-              "linear-gradient(to left, transparent 0%, transparent 50%, black 100%)";
-          }
-
           return (
             <motion.div
               key={columnIndex}
               className="flex flex-col gap-4 h-full flex-1 min-w-0"
-              style={{
-                y,
-                maskImage,
-                WebkitMaskImage: maskImage,
-              }}
+              style={{ y }}
             >
               {column.map((imageName, imageIndex) => (
                 <div
