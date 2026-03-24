@@ -1,0 +1,268 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/forms';
+@plugin '@tailwindcss/typography';
+
+/* ═══════════════════════════════════════════════════
+   TAILWIND v4 THEME — Design System Color Tokens
+   ═══════════════════════════════════════════════════ */
+@theme {
+	--color-primary: #061b0e;
+	--color-primary-container: #1b3022;
+	--color-on-primary: #ffffff;
+	--color-secondary: #845051;
+	--color-secondary-container: #6b3a3b;
+	--color-on-secondary: #ffffff;
+	--color-surface: #fcf9f0;
+	--color-surface-container-lowest: #ffffff;
+	--color-surface-container-low: #f7f4ec;
+	--color-surface-container: #f1eee5;
+	--color-surface-container-high: #ebe8e0;
+	--color-surface-container-highest: #e5e2da;
+	--color-tertiary-fixed: #ffdea5;
+	--color-tertiary-container: #3a2800;
+	--color-on-tertiary-fixed: #261900;
+	--color-outline-variant: #c3c8c1;
+	--color-on-surface: #1d1b20;
+	--color-on-surface-variant: #49454f;
+
+	--font-display: 'Newsreader', 'Georgia', serif;
+	--font-body: 'Public Sans', system-ui, sans-serif;
+}
+
+/* ═══════════════════════════════════════════════════
+   DESIGN SYSTEM: Architectural Tactility
+   ═══════════════════════════════════════════════════ */
+:root {
+	/* ── Surfaces ── */
+	--primary: #061b0e;
+	--primary-container: #1b3022;
+	--on-primary: #ffffff;
+	--secondary: #845051;
+	--secondary-container: #6b3a3b;
+	--on-secondary: #ffffff;
+	--surface: #fcf9f0;
+	--surface-container-lowest: #ffffff;
+	--surface-container-low: #f7f4ec;
+	--surface-container: #f1eee5;
+	--surface-container-high: #ebe8e0;
+	--surface-container-highest: #e5e2da;
+	--tertiary-fixed: #ffdea5;
+	--tertiary-container: #3a2800;
+	--on-tertiary-fixed: #261900;
+	--outline-variant: #c3c8c1;
+	--on-surface: #1d1b20;
+	--on-surface-variant: #49454f;
+
+	/* ── Typography ── */
+	--font-display: 'Newsreader', 'Georgia', serif;
+	--font-body: 'Public Sans', system-ui, sans-serif;
+
+	/* ── Radius ── */
+	--radius: 0.125rem;
+
+	/* ── Spacing ── */
+	--space-xs: 0.5rem;
+	--space-sm: 1rem;
+	--space-md: 1.5rem;
+	--space-lg: 2.5rem;
+	--space-xl: 4rem;
+	--space-2xl: 5.5rem;
+	--space-3xl: 7rem;
+
+	/* ── Motion ── */
+	--ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--duration-fast: 0.2s;
+	--duration-normal: 0.4s;
+	--duration-slow: 0.7s;
+	--duration-reveal: 1s;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 1.55;
+	color: var(--on-surface);
+	background: var(--surface);
+	overflow-x: hidden;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+a {
+	color: inherit;
+	text-decoration: none;
+}
+
+button {
+	font-family: inherit;
+	cursor: pointer;
+	border: none;
+	border-radius: var(--radius);
+}
+
+/* ── Typography Scale ── */
+.display-lg {
+	font-family: var(--font-display);
+	font-size: clamp(3rem, 6vw, 5.5rem);
+	font-weight: 800;
+	line-height: 1;
+	letter-spacing: -0.03em;
+}
+
+.display-md {
+	font-family: var(--font-display);
+	font-size: clamp(2.25rem, 4.5vw, 3.5rem);
+	font-weight: 700;
+	line-height: 1.05;
+	letter-spacing: -0.02em;
+}
+
+.headline-lg {
+	font-family: var(--font-display);
+	font-size: clamp(1.75rem, 3vw, 2.5rem);
+	font-weight: 700;
+	line-height: 1.15;
+	letter-spacing: -0.01em;
+}
+
+.headline-md {
+	font-family: var(--font-display);
+	font-size: clamp(1.5rem, 2.5vw, 2rem);
+	font-weight: 600;
+	line-height: 1.2;
+}
+
+.title-lg {
+	font-family: var(--font-display);
+	font-size: 1.5rem;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+.title-sm {
+	font-family: var(--font-body);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	line-height: 1.4;
+	letter-spacing: 0.01em;
+}
+
+.body-lg {
+	font-family: var(--font-body);
+	font-size: 1.125rem;
+	line-height: 1.6;
+}
+
+.body-md {
+	font-family: var(--font-body);
+	font-size: 1rem;
+	line-height: 1.55;
+}
+
+.label-lg {
+	font-family: var(--font-body);
+	font-size: 0.8125rem;
+	font-weight: 600;
+	letter-spacing: 0.08em;
+	text-transform: uppercase;
+}
+
+/* ── Scroll Reveal ── */
+.reveal {
+	opacity: 0;
+	transform: translateY(32px);
+	transition:
+		opacity var(--duration-reveal) var(--ease-out-expo),
+		transform var(--duration-reveal) var(--ease-out-expo);
+}
+
+.reveal.visible {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* ── Utility ── */
+.section-pad {
+	padding: var(--space-3xl) var(--space-lg);
+}
+
+@media (max-width: 1024px) {
+	.section-pad {
+		padding: var(--space-xl) var(--space-md);
+	}
+}
+
+@media (max-width: 640px) {
+	.section-pad {
+		padding: var(--space-lg) var(--space-sm);
+	}
+}
+
+/* ── Buttons ── */
+.btn {
+	display: inline-block;
+	font-family: var(--font-body);
+	font-size: 0.9375rem;
+	font-weight: 600;
+	letter-spacing: 0.02em;
+	padding: 0.875rem 2rem;
+	border-radius: var(--radius);
+	transition:
+		background var(--duration-fast) var(--ease-out),
+		transform var(--duration-fast) var(--ease-out);
+}
+
+.btn:hover {
+	transform: translateY(-1px);
+}
+
+.btn--primary {
+	background: linear-gradient(135deg, var(--surface) 0%, var(--surface-container) 100%);
+	color: var(--primary);
+}
+
+.btn--primary:hover {
+	background: var(--surface-container-lowest);
+}
+
+.btn--secondary {
+	background: var(--secondary);
+	color: var(--on-secondary);
+}
+
+.btn--secondary:hover {
+	background: var(--secondary-container);
+}
+
+.btn--ghost {
+	background: transparent;
+	color: var(--on-primary);
+	border: 2px solid rgba(255, 255, 255, 0.25);
+}
+
+.btn--ghost:hover {
+	border-color: rgba(255, 255, 255, 0.5);
+}
