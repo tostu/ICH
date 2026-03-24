@@ -20,47 +20,30 @@
     { alt: 'Street Art in London', city: 'London',   title: 'Urban Canvas',        category: 'street', src: STREET_LONDON_GRAFITTI  },
     { alt: 'Hamburg Speicherstadt durch Brückenrahmen', city: 'Hamburg', title: 'Raw Steel',           category: 'street', src: STREET_HAMBURG_SPEICHERSTADT  },
     { alt: 'London Underground Rolltreppe', city: 'London',   title: 'Descent',             category: 'street', src: STREET_LONDON_SUBWAY_BW  },
+  	{ alt: 'Hamburger Rathaus', city: 'Hamburg',  title: 'The Seat of Power',   category: 'street', src: STREET_HAMBURG_RATHAUS  },
     { alt: 'U-Bahn Einfahrt Hamburg', city: 'Hamburg',  title: 'Arrival',             category: 'street', src: STREET_HAMBURG_UBAHN_EINFAHRT  },
     { alt: 'London Architektur im Sonnenuntergang', city: 'London',   title: 'Golden Facade',       category: 'street', src: STREET_LONDON_SUNSET  },
-    { alt: 'Hamburger Rathaus', city: 'Hamburg',  title: 'The Seat of Power',   category: 'street', src: STREET_HAMBURG_RATHAUS  },
-    { alt: 'Fahrrad von oben, Hamburg', city: 'Hamburg',  title: 'Geometry',            category: 'street', src: STREET_HAMBURG_FAHRRAD_TOPDOWN_BW  },
-    { alt: 'Hamburger U-Bahn Schild, Schwarz-Weiß', city: 'Hamburg',  title: 'Signage',             category: 'street', src: STREET_HAMBURG_UBAHN_SCHILD_BW  },
-    { alt: 'Hamburger U-Bahn Station', city: 'Hamburg',  title: 'Underground',         category: 'street', src: STREET_HAMBURG_UBAHN  },
-    { alt: 'Fahrrad vor einem Busch', city: 'Street',   title: 'Still Life',          category: 'street', src: STREET_BIKE_INFRONT_BUSH  },
+
   ];
 
-  interface PhotoData {
-    alt: string;
-    city: string;
-    title: string;
-    category: string;
-    src: string;
+  type Photo = typeof photos[number];
+
+  interface Row {
+    large: Photo;
+    small1: Photo;
+    small2: Photo;
+    reversed: boolean;
   }
 
-  interface LogicalRow {
-    type: 'large-left' | 'large-right';
-    large: PhotoData;
-    small1: PhotoData;
-    small2: PhotoData;
-  }
-
-  const logicalRows: LogicalRow[] = [];
+  const rows: Row[] = [];
   for (let i = 0; i < photos.length; i += 3) {
-    const rowType = (logicalRows.length % 2 === 0) ? 'large-left' : 'large-right';
-
-    // Ensure we have enough photos for a full block of 3, or provide fallbacks
-    const largePhoto = photos[i];
-    const smallPhoto1 = photos[i + 1] || largePhoto; // Fallback to largePhoto if not enough
-    const smallPhoto2 = photos[i + 2] || smallPhoto1; // Fallback to smallPhoto1 if not enough
-
-    if (largePhoto) { // Only push if there's at least one photo
-      logicalRows.push({
-        type: rowType,
-        large: largePhoto,
-        small1: smallPhoto1,
-        small2: smallPhoto2,
-      });
-    }
+    if (!photos[i]) break;
+    rows.push({
+      large: photos[i],
+      small1: photos[i + 1] ?? photos[i],
+      small2: photos[i + 2] ?? photos[i + 1] ?? photos[i],
+      reversed: rows.length % 2 !== 0,
+    });
   }
 </script>
 
@@ -76,28 +59,29 @@
 		</div>
 
 		<div class="galerie__grid">
-			{#each logicalRows as row, i (i)}
-				<div class="galerie__logical-row {row.type}">
-					<!-- Large Image -->
-					<div class="galerie__item large-image reveal" style="--i: {i * 3};">
-						<enhanced:img src={row.large.src} alt={row.large.alt} loading="lazy" />
+			{#each rows as row, i (i)}
+				<div class="galerie__row" class:reversed={row.reversed}>
+					<div class="galerie__item large reveal" style="--i: {i * 3}">
+						<enhanced:img src={row.large.src} alt={row.large.alt} loading="lazy"
+							sizes="(min-width:1920px) 1280px, (min-width:1080px) 640px, (min-width:768px) 400px" />
 						<div class="galerie__overlay">
 							<span class="galerie__city" data-cat={row.large.category}>{row.large.city}</span>
 							<span class="headline-md">{row.large.title}</span>
 						</div>
 					</div>
 
-					<!-- Stacked Small Images -->
-					<div class="small-images-stack">
-						<div class="galerie__item small-image reveal" style="--i: {i * 3 + 1};">
-							<enhanced:img src={row.small1.src} alt={row.small1.alt} loading="lazy" />
+					<div class="galerie__stack">
+						<div class="galerie__item small reveal" style="--i: {i * 3 + 1}">
+							<enhanced:img src={row.small1.src} alt={row.small1.alt} loading="lazy"
+								sizes="(min-width:1920px) 640px, (min-width:1080px) 320px, (min-width:768px) 200px" />
 							<div class="galerie__overlay">
 								<span class="galerie__city" data-cat={row.small1.category}>{row.small1.city}</span>
 								<span class="headline-md">{row.small1.title}</span>
 							</div>
 						</div>
-						<div class="galerie__item small-image reveal" style="--i: {i * 3 + 2};">
-							<enhanced:img src={row.small2.src} alt={row.small2.alt} loading="lazy" />
+						<div class="galerie__item small reveal" style="--i: {i * 3 + 2}">
+							<enhanced:img src={row.small2.src} alt={row.small2.alt} loading="lazy"
+								sizes="(min-width:1920px) 640px, (min-width:1080px) 320px, (min-width:768px) 200px" />
 							<div class="galerie__overlay">
 								<span class="galerie__city" data-cat={row.small2.category}>{row.small2.city}</span>
 								<span class="headline-md">{row.small2.title}</span>
@@ -129,60 +113,58 @@
 		color: var(--secondary);
 	}
 
+	/* Grid: stacks rows vertically */
 	.galerie__grid {
-		display: flex; /* Stack logical rows vertically */
-		flex-direction: column;
-		gap: 4px; /* Gap between logical rows */
-		width: 100%;
-	}
-
-	.galerie__logical-row {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr); /* Two columns for large and small stack */
-		gap: 4px; /* Gap between large image and small images stack */
-	}
-
-	/* Order for large-left / smalls-right */
-	.galerie__logical-row.large-left .large-image {
-		grid-column: 1;
-		grid-row: 1 / span 2; /* Large image spans 2 rows */
-	}
-	.galerie__logical-row.large-left .small-images-stack {
-		grid-column: 2;
-		grid-row: span 2;
-	}
-
-	/* Order for smalls-left / large-right */
-	.galerie__logical-row.large-right .large-image {
-		grid-column: 2;
-		grid-row: 1 / span 2; /* Large image spans 2 rows */
-	}
-	.galerie__logical-row.large-right .small-images-stack {
-		grid-column: 1;
-		grid-row: span 2;
-	}
-
-
-	.small-images-stack {
 		display: flex;
 		flex-direction: column;
-		gap: 4px; /* Gap between stacked small images */
+		gap: 4px;
 	}
 
-	.galerie__item.large-image,
-	.galerie__item.small-image {
-		/* Basic item styling, ensure they fill their space */
-		height: 100%;
-		width: 100%;
+	/* Each row: 2 columns — large (2fr) + stack (1fr) */
+	.galerie__row {
+		display: grid;
+		grid-template-columns: 2fr 1fr;
+		height: clamp(200px, 26vw, 380px);
+		gap: 4px;
 	}
 
-	/* enhanced:img generates a <picture> wrapper — normalize it */
+	/* Reversed row: stack (1fr) left, large (2fr) right */
+	.galerie__row.reversed {
+		grid-template-columns: 1fr 2fr;
+	}
+
+	.galerie__row.reversed .galerie__item.large {
+		order: 2;
+	}
+
+	.galerie__row.reversed .galerie__stack {
+		order: 1;
+	}
+
+	/* Stack: two small images in equal rows */
+	.galerie__stack {
+		display: grid;
+		grid-template-rows: 1fr 1fr;
+		gap: 4px;
+		min-height: 0;
+	}
+
+	/* Items */
+	.galerie__item {
+		position: relative;
+		overflow: hidden;
+		min-height: 0;
+		min-width: 0;
+	}
+
 	.galerie__item :global(picture) {
 		display: contents;
 	}
 
 	.galerie__item :global(picture img),
 	.galerie__item :global(> img) {
+		position: absolute;
+		inset: 0;
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -211,15 +193,15 @@
 		opacity: 1;
 	}
 
-	/* Slide-up text animation */
+	/* Slide-up text */
 	.galerie__city,
 	.galerie__overlay .headline-md {
 		display: block;
 		transform: translateY(10px);
+		opacity: 0;
 		transition:
 			transform var(--duration-normal) var(--ease-out),
 			opacity var(--duration-normal) var(--ease-out);
-		opacity: 0;
 	}
 
 	.galerie__item:hover .galerie__city,
@@ -232,7 +214,7 @@
 		transition-delay: 40ms;
 	}
 
-	/* City label with category dot */
+	/* City label */
 	.galerie__city {
 		display: flex;
 		align-items: center;
@@ -267,37 +249,32 @@
 		font-size: clamp(1.125rem, 2vw, 1.5rem);
 	}
 
-	/* Mobile: Stack everything */
+	/* Mobile: single column, aspect-ratio heights */
 	@media (max-width: 640px) {
-		.galerie__logical-row {
-			grid-template-columns: 1fr; /* Single column for logical row */
+		.galerie__row {
+			grid-template-columns: 1fr;
+			height: auto;
 		}
 
-		.galerie__logical-row.large-left .large-image,
-		.galerie__logical-row.large-right .large-image,
-		.galerie__logical-row.large-left .small-images-stack,
-		.galerie__logical-row.large-right .small-images-stack {
-			grid-column: 1; /* All items take full width in single column */
-			grid-row: unset; /* Remove specific row assignments */
+		.galerie__row.reversed .galerie__item.large,
+		.galerie__row.reversed .galerie__stack {
+			order: unset;
 		}
 
-		.galerie__logical-row.large-right .large-image {
-			order: 2; /* Ensure large image comes after smalls if it was on the right */
-		}
-		.galerie__logical-row.large-right .small-images-stack {
-			order: 1; /* Ensure smalls come before large if large was on the right */
+		.galerie__item.large {
+			aspect-ratio: 4 / 3;
+			height: auto;
 		}
 
-		.small-images-stack {
-			flex-direction: column; /* Keep stacked */
+		.galerie__stack {
+			grid-template-rows: unset;
 		}
 
-		.galerie__item.large-image,
-		.galerie__item.small-image {
-			height: auto; /* Allow natural height for stacked items */
+		.galerie__item.small {
+			aspect-ratio: 16 / 9;
+			height: auto;
 		}
 
-		/* Overlay should still be visible on mobile */
 		.galerie__overlay {
 			opacity: 1;
 			padding: var(--space-sm);
