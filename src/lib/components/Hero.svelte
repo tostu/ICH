@@ -119,6 +119,36 @@
 		transition:
 			opacity 1.4s var(--ease-out-expo) 0.7s,
 			transform 1.4s var(--ease-out-expo) 0.7s;
+
+		aspect-ratio: 3 / 4;
+		max-width: 420px;
+		width: 100%;
+		margin-left: auto;
+		margin-top: 16px;
+	}
+
+	/* Rose offset backing block — editorial mounted-photo device */
+	.hero__portrait::before {
+		content: '';
+		position: absolute;
+		top: -12px;
+		left: -12px;
+		right: 12px;
+		bottom: 12px;
+		background: var(--secondary);
+		z-index: 0;
+	}
+
+	/* Cream vertical accent line — architectural registration mark */
+	.hero__portrait::after {
+		content: '';
+		position: absolute;
+		top: 8px;
+		right: -8px;
+		width: 2px;
+		height: 60%;
+		background: var(--tertiary-fixed);
+		z-index: 2;
 	}
 
 	.hero__content--loaded .hero__portrait {
@@ -126,12 +156,21 @@
 		transform: scale(1) translateY(0);
 	}
 
+	.hero__portrait :global(picture) {
+		position: absolute;
+		inset: 0;
+		display: block;
+		z-index: 1;
+	}
+
 	.hero__portrait :global(img) {
 		width: 100%;
-		max-width: 480px;
-		height: auto;
+		height: 100%;
 		object-fit: cover;
-		margin-left: auto;
+		object-position: center 20%;
+		display: block;
+		max-width: none;
+		margin: 0;
 	}
 
 	.hero__scroll-hint {
@@ -185,13 +224,8 @@
 		}
 
 		.hero__portrait {
-			max-width: 320px;
-			margin: 0 auto;
-		}
-
-		.hero__portrait :global(img) {
-			margin: 0 auto;
-			max-width: 100%;
+			max-width: 280px;
+			margin: 16px auto 0;
 		}
 	}
 
