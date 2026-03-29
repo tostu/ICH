@@ -41,6 +41,7 @@
 		"vite": "^7.3.1"
 	},
 	"dependencies": {
-		"@masonry-grid/svelte": "^1.1.1"
+		"@masonry-grid/svelte": "^1.1.1",
+		"devicon": "^2.17.0"
 	}
 }

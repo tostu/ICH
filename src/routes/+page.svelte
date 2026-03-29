@@ -3,6 +3,7 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import Hero from '$lib/components/Hero.svelte';
 	import Expertise from '$lib/components/Expertise.svelte';
+	import TechStack from '$lib/components/TechStack.svelte';
 	import Philosophie from '$lib/components/Philosophie.svelte';
 	import Werte from '$lib/components/Werte.svelte';
 	import Galerie from '$lib/components/Galerie.svelte';
@@ -53,6 +54,7 @@
 <Hero {loaded} onScrollTo={scrollTo} />
 <Expertise />
 <Philosophie />
+<TechStack />
 <Werte />
 <Galerie />
 <Logbuch />
