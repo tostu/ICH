@@ -1,22 +1,30 @@
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+</script>
+
+<!-- eslint-disable svelte/no-at-html-tags -->
+
 <section id="kontakt" class="kontakt">
 	<div class="kontakt__bg" aria-hidden="true">
-		<enhanced:img
-			src="$lib/assets/PORTRAIT_BACKPACK.jpg"
-			alt=""
-			loading="lazy"
-		/>
+		<enhanced:img src="$lib/assets/PORTRAIT_BACKPACK.jpg" alt="" loading="lazy" />
 	</div>
 	<div class="kontakt__inner section-pad reveal">
+		<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 		<h2 class="display-lg kontakt__headline">
-			Ready to<br /><em>build?</em>
+			{@html m.kontakt_title ? m.kontakt_title() : 'Ready to<br /><em>build?</em>'}
 		</h2>
-		<p class="body-lg text-white/75 max-w-[32rem] mt-[var(--space-md)]">
-			Direkter Kontakt. Keine Masken. Kein Formular, das erst durch drei Abteilungen muss. Schreib
-			mir, und wir reden über dein Projekt.
+		<p class="body-lg mt-[var(--space-md)] max-w-[32rem] text-white/75">
+			{m.kontakt_desc
+				? m.kontakt_desc()
+				: 'Direkter Kontakt. Keine Masken. Kein Formular, das erst durch drei Abteilungen muss. Schreib mir, und wir reden über dein Projekt.'}
 		</p>
 		<div class="kontakt__buttons">
-			<a href="mailto:hello@torgestubbe.de" class="btn btn--primary">E-Mail schreiben</a>
-			<a href="mailto:hello@torgestubbe.de" class="btn btn--secondary">Projekt besprechen</a>
+			<a href="mailto:hello@torgestubbe.de?subject=Kontaktanfrage" class="btn btn--primary">
+				{m.kontakt_cta_primary ? m.kontakt_cta_primary() : 'E-Mail schreiben'}
+			</a>
+			<a href="mailto:hello@torgestubbe.de?subject=Projektbesprechung" class="btn btn--secondary">
+				{m.kontakt_cta_secondary ? m.kontakt_cta_secondary() : 'Projekt besprechen'}
+			</a>
 		</div>
 	</div>
 </section>
@@ -65,7 +73,7 @@
 		color: var(--on-primary);
 	}
 
-	.kontakt__headline em {
+	.kontakt__headline :global(em) {
 		font-style: italic;
 		color: var(--tertiary-fixed);
 	}

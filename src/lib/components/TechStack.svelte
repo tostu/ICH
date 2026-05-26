@@ -1,11 +1,14 @@
 <script lang="ts">
 	import Marquee from './Marquee.svelte';
+	import * as m from '$lib/paraglide/messages';
 	import 'devicon/devicon.min.css';
 </script>
 
 <section class="techstack">
 	<div class="techstack__header reveal">
-		<span class="label-lg text-tertiary-fixed opacity-70">Im Werkzeugkasten</span>
+		<span class="label-lg text-secondary"
+			>{m.techstack_label ? m.techstack_label() : 'Im Werkzeugkasten'}</span
+		>
 	</div>
 	<div class="techstack__marquee">
 		<Marquee />
@@ -14,8 +17,8 @@
 
 <style>
 	.techstack {
-		background: var(--primary);
-		padding: var(--space-xl) 0;
+		background: var(--surface);
+		padding: var(--space-sm) 0;
 	}
 
 	.techstack__marquee {

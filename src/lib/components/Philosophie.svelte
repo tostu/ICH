@@ -1,19 +1,31 @@
-<section id="philosophie" class="philosophie">
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+</script>
+
+<!-- eslint-disable svelte/no-at-html-tags -->
+
+<section id="philosophie" class="philosophie pattern-subtle-grain">
 	<div class="philosophie__inner section-pad">
 		<div class="philosophie__text reveal">
-			<span class="label-lg text-tertiary-fixed opacity-70">Meine Philosophie</span>
+			<span class="label-lg text-tertiary-fixed opacity-70"
+				>{m.philosophie_label ? m.philosophie_label() : 'Meine Philosophie'}</span
+			>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<h2 class="display-md philosophie__headline">
-				Code ist Architektur.<br /><em>Keine Fließbandarbeit.</em>
+				{@html m.philosophie_title
+					? m.philosophie_title()
+					: 'Code ist Architektur.<br /><em>Keine Fließbandarbeit.</em>'}
 			</h2>
 			<div class="philosophie__accent"></div>
 			<p class="body-lg text-white/80">
-				Für mich ist Software kein Produkt einer Fabrik, sondern das Ergebnis von Handwerk. Jede
-				Entscheidung in der Architektur hat Konsequenzen — wie die Statik eines Gebäudes. Ich baue
-				Systeme, die halten. Nicht solche, die man nächstes Jahr wegwirft.
+				{m.philosophie_p1
+					? m.philosophie_p1()
+					: 'Für mich ist Software kein Produkt einer Fabrik, sondern das Ergebnis von Handwerk. Jede Entscheidung in der Architektur hat Konsequenzen — wie die Statik eines Gebäudes. Ich baue Systeme, die halten. Nicht solche, die man nächstes Jahr wegwirft.'}
 			</p>
-			<p class="body-lg text-white/80 mt-[var(--space-md)]">
-				Diese Haltung ist kein Luxus, sondern Notwendigkeit. Wer komplexe Domänen in saubere
-				Strukturen überführt, spart keine Zeit beim Bauen — aber Jahre beim Warten.
+			<p class="body-lg mt-[var(--space-md)] text-white/80">
+				{m.philosophie_p2
+					? m.philosophie_p2()
+					: 'Diese Haltung ist kein Luxus, sondern Notwendigkeit. Wer komplexe Domänen in saubere Strukturen überführt, spart keine Zeit beim Bauen — aber Jahre beim Warten.'}
 			</p>
 		</div>
 		<div class="philosophie__image reveal">
@@ -40,6 +52,9 @@
 		grid-template-columns: 1.2fr 0.8fr;
 		gap: var(--space-2xl);
 		align-items: center;
+		position: relative;
+		z-index: 1;
+		padding-top: var(--space-lg) !important;
 	}
 
 	.philosophie__headline {
@@ -47,7 +62,7 @@
 		margin-top: var(--space-xs);
 	}
 
-	.philosophie__headline em {
+	.philosophie__headline :global(em) {
 		font-style: italic;
 		color: var(--tertiary-fixed);
 	}

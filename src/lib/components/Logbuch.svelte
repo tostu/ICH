@@ -6,29 +6,7 @@
 		</div>
 
 		<div class="logbuch__grid">
-			{#each [
-				{
-					tag: 'Architektur',
-					date: 'März 2026',
-					title: 'Warum ich Spring Boot nicht mehr liebe',
-					excerpt:
-						'Nach acht Jahren mit dem Framework wird es Zeit für eine ehrliche Bilanz. Was hält — und was nur noch aus Gewohnheit bleibt.'
-				},
-				{
-					tag: 'Beobachtung',
-					date: 'Februar 2026',
-					title: 'Architektur-Patterns im Hamburger Stadtbild',
-					excerpt:
-						'Was Speicherstadt-Fassaden und Microservice-Architekturen gemeinsam haben. Eine Betrachtung über Struktur und Redundanz.'
-				},
-				{
-					tag: 'Reflexion',
-					date: 'Januar 2026',
-					title: 'Systeme hinterfragen: Ein Plädoyer',
-					excerpt:
-						'Der gefährlichste Satz in der Softwareentwicklung ist „Das haben wir schon immer so gemacht." Ein Aufruf zum strukturierten Zweifeln.'
-				}
-			] as entry (entry.title)}
+			{#each [{ tag: 'Architektur', date: 'März 2026', title: 'Warum ich Spring Boot nicht mehr liebe', excerpt: 'Nach acht Jahren mit dem Framework wird es Zeit für eine ehrliche Bilanz. Was hält — und was nur noch aus Gewohnheit bleibt.' }, { tag: 'Beobachtung', date: 'Februar 2026', title: 'Architektur-Patterns im Hamburger Stadtbild', excerpt: 'Was Speicherstadt-Fassaden und Microservice-Architekturen gemeinsam haben. Eine Betrachtung über Struktur und Redundanz.' }, { tag: 'Reflexion', date: 'Januar 2026', title: 'Systeme hinterfragen: Ein Plädoyer', excerpt: 'Der gefährlichste Satz in der Softwareentwicklung ist „Das haben wir schon immer so gemacht." Ein Aufruf zum strukturierten Zweifeln.' }] as entry (entry.title)}
 				<article class="logbuch__card reveal">
 					<div class="logbuch__ribbon">
 						<span>{entry.tag}</span>
