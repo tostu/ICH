@@ -3,17 +3,18 @@
 		<div class="philosophie__text reveal">
 			<span class="label-lg text-tertiary-fixed opacity-70">Meine Philosophie</span>
 			<h2 class="display-md philosophie__headline">
-				Code ist Architektur.<br /><em>Keine Fließbandarbeit.</em>
+				Handwerk<br /><em>statt Hype.</em>
 			</h2>
 			<div class="philosophie__accent"></div>
 			<p class="body-lg text-white/80">
-				Für mich ist Software kein Produkt einer Fabrik, sondern das Ergebnis von Handwerk. Jede
-				Entscheidung in der Architektur hat Konsequenzen — wie die Statik eines Gebäudes. Ich baue
-				Systeme, die halten. Nicht solche, die man nächstes Jahr wegwirft.
+				Für mich ist Softwareentwicklung kein Fließbandjob, sondern echtes Handwerk. Ich glaube
+				daran, Dinge tiefgreifend zu verstehen, statt nur Lösungen zusammenzukopieren. Jede
+				Architektur-Entscheidung hat langfristige Folgen – deshalb baue ich Systeme, die auch morgen
+				noch stabil und wartbar sind.
 			</p>
-			<p class="body-lg text-white/80 mt-[var(--space-md)]">
-				Diese Haltung ist kein Luxus, sondern Notwendigkeit. Wer komplexe Domänen in saubere
-				Strukturen überführt, spart keine Zeit beim Bauen — aber Jahre beim Warten.
+			<p class="body-lg mt-[var(--space-md)] text-white/80">
+				Klarheit und Struktur sind für mich kein theoretischer Luxus, sondern die Basis für
+				erfolgreiche Projekte. Wenn die Grundlagen stimmen, fällt alles andere leichter.
 			</p>
 		</div>
 		<div class="philosophie__image reveal">

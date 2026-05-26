@@ -1,16 +1,12 @@
 <section id="kontakt" class="kontakt">
 	<div class="kontakt__bg" aria-hidden="true">
-		<enhanced:img
-			src="$lib/assets/PORTRAIT_BACKPACK.jpg"
-			alt=""
-			loading="lazy"
-		/>
+		<enhanced:img src="$lib/assets/PORTRAIT_BACKPACK.jpg" alt="" loading="lazy" />
 	</div>
 	<div class="kontakt__inner section-pad reveal">
 		<h2 class="display-lg kontakt__headline">
 			Ready to<br /><em>build?</em>
 		</h2>
-		<p class="body-lg text-white/75 max-w-[32rem] mt-[var(--space-md)]">
+		<p class="body-lg mt-[var(--space-md)] max-w-[32rem] text-white/75">
 			Direkter Kontakt. Keine Masken. Kein Formular, das erst durch drei Abteilungen muss. Schreib
 			mir, und wir reden über dein Projekt.
 		</p>

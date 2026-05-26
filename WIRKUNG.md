@@ -19,11 +19,12 @@ Damit steht dein **Bauplan der Positionierung** nach Benjamin Schulz. Hier sind 
 
 ### Die visuelle Ableitung (Das Briefing für dein Design):
 
-* **Typografie:** Eine kräftige **Slab-Serif** (wie *Zilla Slab* oder *Arvo*), weil sie massiv, direkt und fundiert wirkt.
-* **Farben:** **Deep Forest Green** (Mantel/Basis), **Muted Rose** (Schuhe/Akzent) und **Cremeweiß/Nordic Gold** (Socken/Haare/Highlights).
-* **Bildsprache:** Echte Street Photography mit hartem Kontrast und Fokus auf urbane Nuancen.
+- **Typografie:** Eine kräftige **Slab-Serif** (wie _Zilla Slab_ oder _Arvo_), weil sie massiv, direkt und fundiert wirkt.
+- **Farben:** **Deep Forest Green** (Mantel/Basis), **Muted Rose** (Schuhe/Akzent) und **Cremeweiß/Nordic Gold** (Socken/Haare/Highlights).
+- **Bildsprache:** Echte Street Photography mit hartem Kontrast und Fokus auf urbane Nuancen.
 
 ### Dein Manifest-Satz:
-> *"Ich bin ein authentischer Architekt für fundierte digitale Backbones – charakterstark im Design und substanziell in der Ausführung."*
+
+> _"Ich bin ein authentischer Architekt für fundierte digitale Backbones – charakterstark im Design und substanziell in der Ausführung."_
 
 **Wie fühlt sich das an?** Wenn du damit d'accord bist, haben wir das Fundament für deine Website, dein Portfolio und dein gesamtes Auftreten in der Hamburger Tech-Szene (und darüber hinaus) fertig zementiert.

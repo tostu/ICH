@@ -1,8 +1,7 @@
 <script lang="ts">
-	let {
-		loaded,
-		onScrollTo
-	}: { loaded: boolean; onScrollTo: (id: string) => void } = $props();
+	import HeroTicker from './HeroTicker.svelte';
+
+	let { loaded, onScrollTo }: { loaded: boolean; onScrollTo: (id: string) => void } = $props();
 
 	const tickerItems = [
 		'Backend-Architektur',
@@ -10,41 +9,7 @@
 		'Systemdesign',
 		'Urban Craftsman'
 	];
-
-	const marqueeText =
-		(tickerItems.map((i) => i.toUpperCase()).join('   ·   ') + '   ·   ').repeat(10);
-
-	let innerWidth = $state(0);
-
-	let pathDefinition = $derived(
-		innerWidth < 600
-			? 'M 0,60 C 150,48 300,48 450,60 C 600,70 750,70 900,60 C 1050,48 1200,48 1200,60'
-			: 'M 0,60 C 150,40 300,40 450,60 C 600,75 750,75 900,60 C 1050,40 1200,40 1200,60'
-	);
-
-	let fontSize = $derived(innerWidth < 600 ? '20' : '14');
-
-	function waveMarquee(node: SVGTextPathElement) {
-		let raf: number;
-		let last: number | null = null;
-		let current = 0;
-
-		function tick(ts: number) {
-			if (last !== null) {
-				current -= (ts - last) * 0.002;
-				node.setAttribute('startOffset', `${current}%`);
-			}
-			last = ts;
-			raf = requestAnimationFrame(tick);
-		}
-
-		raf = requestAnimationFrame(tick);
-
-		return () => cancelAnimationFrame(raf);
-	}
 </script>
-
-<svelte:window bind:innerWidth />
 
 <section id="hero" class="hero">
 	<div class="hero__content" class:hero__content--loaded={loaded}>
@@ -53,12 +18,12 @@
 				Software-Architekt & Street Photographer
 			</span>
 			<h1 class="display-lg hero__headline">
-				Digitale<br />Backbone.<br />
-				<em>Charakterstark</em><br />gebaut.
+				Hi,<br />ich bin<br />
+				<em>Torge.</em>
 			</h1>
 			<p class="body-lg hero__subtitle text-white/65">
-				Authentischer Architekt für fundierte digitale Systeme —
-				charakterstark im Design und substanziell in der Ausführung.
+				Software-Architekt mit Fokus auf Backend und Systemdesign. Ich baue digitale Fundamente, die
+				stabil, skalierbar und durchdacht sind.
 			</p>
 			<div class="hero__cta">
 				<a
@@ -90,23 +55,7 @@
 	<div class="hero__scroll-hint" class:hero__scroll-hint--loaded={loaded}>
 		<div class="hero__scroll-line"></div>
 	</div>
-	<div class="hero__ticker" class:hero__ticker--loaded={loaded}>
-		<svg
-			class="hero__ticker-svg"
-			viewBox="0 0 1200 100"
-			preserveAspectRatio="xMidYMid slice"
-			aria-hidden="true"
-		>
-			<defs>
-				<path id="hero-wave" d={pathDefinition} />
-			</defs>
-			<text class="hero__ticker-text" font-size={fontSize}>
-				<textPath {@attach waveMarquee} href="#hero-wave" startOffset="0%">
-					{marqueeText}
-				</textPath>
-			</text>
-		</svg>
-	</div>
+	<HeroTicker {loaded} items={tickerItems} />
 </section>
 
 <style>
@@ -283,42 +232,6 @@
 			max-width: 280px;
 			margin: 16px auto 0;
 		}
-	}
-
-	.hero__ticker {
-		position: relative;
-		background: var(--primary-container);
-	}
-
-	.hero__ticker::before {
-		content: '';
-		position: absolute;
-		top: -22px;
-		left: -2%;
-		width: 104%;
-		height: 44px;
-		background: var(--primary-container);
-		border-radius: 50% 50% 0 0 / 44px 44px 0 0;
-		pointer-events: none;
-	}
-
-	.hero__ticker-svg {
-		display: block;
-		width: 100%;
-		height: 80px;
-	}
-
-	.hero__ticker-text {
-		font-family: var(--font-body);
-		font-weight: 600;
-		letter-spacing: 1.5px;
-		fill: var(--on-primary);
-		opacity: 0;
-		transition: opacity 0.55s var(--ease-out-expo) 1.9s;
-	}
-
-	.hero__ticker--loaded .hero__ticker-text {
-		opacity: 0.75;
 	}
 
 	@media (max-width: 640px) {

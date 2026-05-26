@@ -1,30 +1,14 @@
 <section id="expertise" class="expertise section-pad">
 	<div class="expertise__inner">
 		<div class="reveal">
-			<span class="label-lg text-secondary">Was ich baue</span>
+			<span class="label-lg text-secondary">Fokus</span>
 			<h2 class="display-md expertise__headline">
-				Massive Systeme.<br /><em>Fundierte Logik.</em>
+				Was ich kann.<br /><em>Backend & Systemdesign.</em>
 			</h2>
 		</div>
 
 		<div class="expertise__grid">
-			{#each [
-				{
-					num: '01',
-					title: 'Technische Architektur',
-					desc: 'Enterprise-Systeme mit Java & Spring Boot — von der Konzeption bis zum Deployment. Saubere Schichten, klare Verantwortlichkeiten, skalierbare Strukturen.'
-				},
-				{
-					num: '02',
-					title: 'Robuste Backend-Logik',
-					desc: 'Komplexe Domänenlogik für Plattformen wie das „Amazon für Landwirte". Systeme, die Millionen von Transaktionen zuverlässig verarbeiten.'
-				},
-				{
-					num: '03',
-					title: 'Performance & Audits',
-					desc: 'Bestehende Architekturen analysieren, Engpässe identifizieren, Systeme härten. Keine Flickarbeit — strukturelle Verbesserung.'
-				}
-			] as card (card.num)}
+			{#each [{ num: '01', title: 'Backend & Architektur', desc: 'Ich baue Enterprise-Systeme mit Java und Spring Boot. Von der ersten Konzeption bis zum stabilen Deployment achte ich auf saubere Schichten und klare Verantwortlichkeiten.' }, { num: '02', title: 'Systemdesign', desc: 'Komplexe fachliche Anforderungen übersetze ich in skalierbare Architekturen. Ob große Plattformen oder Millionen von Transaktionen – ich sorge dafür, dass das Fundament hält.' }, { num: '03', title: 'Performance & Refactoring', desc: 'Ich analysiere bestehende Architekturen, decke Engpässe auf und härte die Systeme. Dabei geht es mir nicht um schnelle Patches, sondern um echte, strukturelle Verbesserungen.' }] as card (card.num)}
 				<article class="expertise__card reveal">
 					<span class="expertise__card-num">{card.num}</span>
 					<h3 class="headline-md">{card.title}</h3>
