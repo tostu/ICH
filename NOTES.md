@@ -1,0 +1,3 @@
+- foto an wand seiteprofil
+  - links mit kamera
+  - rechts mit laptop
