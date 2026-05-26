@@ -89,16 +89,21 @@
 
 	.marquee-item :global(i) {
 		font-size: 2.25rem;
-		color: var(--tertiary-fixed);
+		color: var(--primary);
 		filter: grayscale(0.5);
 		transition:
 			filter 0.25s ease,
-			transform 0.25s ease;
+			transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
 	}
 
-	.marquee-item:hover :global(i) {
+	.marquee-item:nth-child(even):hover :global(i) {
 		filter: grayscale(0);
-		transform: translateY(-3px);
+		transform: translateY(-8px) rotate(6deg) scale(1.15);
+	}
+
+	.marquee-item:nth-child(odd):hover :global(i) {
+		filter: grayscale(0);
+		transform: translateY(-8px) rotate(-6deg) scale(1.15);
 	}
 
 	.marquee-item__label {
@@ -106,8 +111,8 @@
 		font-weight: 600;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: var(--on-primary);
-		opacity: 0.4;
+		color: var(--primary);
+		opacity: 0.55;
 		white-space: nowrap;
 	}
 </style>

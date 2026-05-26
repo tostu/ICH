@@ -1,4 +1,10 @@
 <script lang="ts">
+	import { isMuted, toggleMute } from '$lib/audio';
+	import { page } from '$app/state';
+	import { locales, localizeHref, getLocale } from '$lib/paraglide/runtime';
+	import * as m from '$lib/paraglide/messages';
+	import { onMount } from 'svelte';
+
 	let {
 		scrolled,
 		loaded,
@@ -6,44 +12,121 @@
 	}: { scrolled: boolean; loaded: boolean; onScrollTo: (id: string) => void } = $props();
 
 	let mobileMenuOpen = $state(false);
+	let muted = $state(false);
+
+	onMount(() => {
+		muted = isMuted();
+	});
+
+	function handleMuteToggle() {
+		muted = toggleMute();
+	}
 
 	function handleNavLink(e: MouseEvent, id: string) {
-		e.preventDefault();
-		mobileMenuOpen = false;
-		onScrollTo(id);
+		const isHomepage = page.url.pathname === '/';
+		if (isHomepage) {
+			e.preventDefault();
+			mobileMenuOpen = false;
+			onScrollTo(id);
+		}
 	}
 </script>
 
+<!-- eslint-disable svelte/no-navigation-without-resolve -->
+
 <nav class="nav" class:nav--scrolled={scrolled} class:nav--loaded={loaded}>
 	<div class="nav__inner">
+		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 		<a
-			href="#hero"
+			href={localizeHref('/')}
 			class="nav__wordmark"
 			onclick={(e) => {
-				e.preventDefault();
-				onScrollTo('hero');
+				const isHomepage = page.url.pathname === '/';
+				if (isHomepage) {
+					e.preventDefault();
+					onScrollTo('hero');
+				}
 			}}
 		>
 			TORGE STUBBE
 		</a>
 
-		<button
-			class="nav__burger"
-			onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
-			aria-label="Menu"
-			aria-expanded={mobileMenuOpen}
-		>
-			<span class="nav__burger-line" class:open={mobileMenuOpen}></span>
-			<span class="nav__burger-line" class:open={mobileMenuOpen}></span>
-		</button>
+		<div class="nav__right-group">
+			<ul class="nav__links" class:nav__links--open={mobileMenuOpen}>
+				{#each [['expertise', m.nav_expertise ? m.nav_expertise() : 'Expertise'], ['philosophie', m.nav_philosophie ? m.nav_philosophie() : 'Philosophie'], ['galerie', m.nav_galerie ? m.nav_galerie() : 'Galerie'], ['dauerbaustellen', m.nav_baustellen ? m.nav_baustellen() : 'Baustellen'], ['kontakt', m.nav_kontakt ? m.nav_kontakt() : 'Kontakt']] as [id, label] (id)}
+					<li>
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+						<a href="/#{id}" onclick={(e) => handleNavLink(e, id)}>{label}</a>
+					</li>
+				{/each}
+			</ul>
 
-		<ul class="nav__links" class:nav__links--open={mobileMenuOpen}>
-			{#each [['expertise', 'Expertise'], ['philosophie', 'Philosophie'], ['galerie', 'Galerie'], ['logbuch', 'Logbuch'], ['kontakt', 'Kontakt']] as [id, label] (id)}
-				<li>
-					<a href="#{id}" onclick={(e) => handleNavLink(e, id)}>{label}</a>
-				</li>
-			{/each}
-		</ul>
+			<div class="nav__controls">
+				<!-- Language Switcher -->
+				<div class="nav__lang">
+					{#each locales as l (l)}
+						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+						<a
+							href={localizeHref(page.url.pathname, { locale: l })}
+							class="nav__lang-btn"
+							class:active={getLocale() === l}
+						>
+							{l.toUpperCase()}
+						</a>
+					{/each}
+				</div>
+
+				<!-- Audio Toggle Button -->
+				<button
+					type="button"
+					class="nav__audio-toggle"
+					onclick={handleMuteToggle}
+					aria-label={muted ? 'Ton einschalten' : 'Ton stummlegen'}
+					title={muted ? 'Ton einschalten' : 'Ton stummlegen'}
+				>
+					{#if muted}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon-svg"
+							><path d="M11 5L6 9H2v6h4l5 4V5z" /><line x1="23" y1="9" x2="17" y2="15" /><line
+								x1="17"
+								y1="9"
+								x2="23"
+								y2="15"
+							/></svg
+						>
+					{:else}
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2.5"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="icon-svg"
+							><path d="M11 5L6 9H2v6h4l5 4V5z" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07" /></svg
+						>
+					{/if}
+				</button>
+			</div>
+
+			<button
+				class="nav__burger"
+				onclick={() => (mobileMenuOpen = !mobileMenuOpen)}
+				aria-label="Menu"
+				aria-expanded={mobileMenuOpen}
+			>
+				<span class="nav__burger-line" class:open={mobileMenuOpen}></span>
+				<span class="nav__burger-line" class:open={mobileMenuOpen}></span>
+			</button>
+		</div>
 	</div>
 </nav>
 
@@ -69,7 +152,7 @@
 	}
 
 	.nav--scrolled {
-		background: rgba(252, 249, 240, 0.82);
+		background: color-mix(in srgb, var(--surface) 82%, transparent);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
 	}
@@ -94,6 +177,12 @@
 
 	.nav--scrolled .nav__wordmark {
 		color: var(--primary);
+	}
+
+	.nav__right-group {
+		display: flex;
+		align-items: center;
+		gap: 2rem;
 	}
 
 	.nav__links {
@@ -124,12 +213,82 @@
 		color: var(--primary);
 	}
 
+	.nav__controls {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		border-left: 1px solid rgba(255, 255, 255, 0.15);
+		padding-left: 1rem;
+	}
+
+	.nav--scrolled .nav__controls {
+		border-left-color: rgba(6, 27, 14, 0.15);
+	}
+
+	.nav__lang {
+		display: flex;
+		gap: 0.4rem;
+		font-family: var(--font-body);
+		font-size: 0.75rem;
+		font-weight: 600;
+		letter-spacing: 0.05em;
+	}
+
+	.nav__lang-btn {
+		color: rgba(255, 255, 255, 0.45);
+		transition: color var(--duration-fast);
+		cursor: pointer;
+	}
+
+	.nav--scrolled .nav__lang-btn {
+		color: rgba(29, 27, 32, 0.45);
+	}
+
+	.nav__lang-btn.active,
+	.nav__lang-btn:hover {
+		color: var(--on-primary);
+	}
+
+	.nav--scrolled .nav__lang-btn.active,
+	.nav--scrolled .nav__lang-btn:hover {
+		color: var(--primary);
+	}
+
+	.nav__audio-toggle {
+		background: transparent;
+		color: rgba(255, 255, 255, 0.7);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		padding: 4px;
+		transition: color var(--duration-fast);
+		cursor: pointer;
+	}
+
+	.nav__audio-toggle:hover {
+		color: var(--on-primary);
+	}
+
+	.nav--scrolled .nav__audio-toggle {
+		color: var(--on-surface-variant);
+	}
+
+	.nav--scrolled .nav__audio-toggle:hover {
+		color: var(--primary);
+	}
+
+	.icon-svg {
+		width: 1rem;
+		height: 1rem;
+	}
+
 	.nav__burger {
 		display: none;
 		flex-direction: column;
 		gap: 5px;
 		background: none;
 		padding: 4px;
+		cursor: pointer;
 	}
 
 	.nav__burger-line {

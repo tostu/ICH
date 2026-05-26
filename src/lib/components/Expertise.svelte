@@ -1,14 +1,49 @@
-<section id="expertise" class="expertise section-pad">
+<script lang="ts">
+	import * as m from '$lib/paraglide/messages';
+
+	let cards = $derived([
+		{
+			num: '01',
+			title: m.expertise_card1_title ? m.expertise_card1_title() : 'Technische Architektur',
+			desc: m.expertise_card1_desc
+				? m.expertise_card1_desc()
+				: 'Enterprise-Systeme mit Java & Spring Boot — von der Konzeption bis zum Deployment. Saubere Schichten, klare Verantwortlichkeiten, skalierbare Strukturen.'
+		},
+		{
+			num: '02',
+			title: m.expertise_card2_title ? m.expertise_card2_title() : 'Robuste Backend-Logik',
+			desc: m.expertise_card2_desc
+				? m.expertise_card2_desc()
+				: 'Komplexe Domänenlogik für Plattformen wie das „Amazon für Landwirte“. Systeme, die Millionen von Transaktionen zuverlässig verarbeiten.'
+		},
+		{
+			num: '03',
+			title: m.expertise_card3_title ? m.expertise_card3_title() : 'Performance & Audits',
+			desc: m.expertise_card3_desc
+				? m.expertise_card3_desc()
+				: 'Bestehende Architekturen analysieren, Engpässe identifizieren, Systeme härten. Keine Flickarbeit — strukturelle Verbesserung.'
+		}
+	]);
+</script>
+
+<!-- eslint-disable svelte/no-at-html-tags -->
+
+<section id="expertise" class="expertise pattern-architectural-grid section-pad">
 	<div class="expertise__inner">
 		<div class="reveal">
-			<span class="label-lg text-secondary">Fokus</span>
+			<span class="label-lg text-secondary"
+				>{m.expertise_label ? m.expertise_label() : 'Was ich baue'}</span
+			>
+			<!-- eslint-disable-next-line svelte/no-at-html-tags -->
 			<h2 class="display-md expertise__headline">
-				Was ich kann.<br /><em>Backend & Systemdesign.</em>
+				{@html m.expertise_title
+					? m.expertise_title()
+					: 'Massive Systeme.<br /><em>Fundierte Logik.</em>'}
 			</h2>
 		</div>
 
 		<div class="expertise__grid">
-			{#each [{ num: '01', title: 'Backend & Architektur', desc: 'Ich baue Enterprise-Systeme mit Java und Spring Boot. Von der ersten Konzeption bis zum stabilen Deployment achte ich auf saubere Schichten und klare Verantwortlichkeiten.' }, { num: '02', title: 'Systemdesign', desc: 'Komplexe fachliche Anforderungen übersetze ich in skalierbare Architekturen. Ob große Plattformen oder Millionen von Transaktionen – ich sorge dafür, dass das Fundament hält.' }, { num: '03', title: 'Performance & Refactoring', desc: 'Ich analysiere bestehende Architekturen, decke Engpässe auf und härte die Systeme. Dabei geht es mir nicht um schnelle Patches, sondern um echte, strukturelle Verbesserungen.' }] as card (card.num)}
+			{#each cards as card (card.num)}
 				<article class="expertise__card reveal">
 					<span class="expertise__card-num">{card.num}</span>
 					<h3 class="headline-md">{card.title}</h3>
@@ -22,11 +57,14 @@
 <style>
 	.expertise {
 		background: var(--surface);
+		padding-bottom: var(--space-lg) !important;
 	}
 
 	.expertise__inner {
 		max-width: 1280px;
 		margin: 0 auto;
+		position: relative;
+		z-index: 1;
 	}
 
 	.expertise__headline {
@@ -34,7 +72,7 @@
 		color: var(--primary);
 	}
 
-	.expertise__headline em {
+	.expertise__headline :global(em) {
 		font-style: italic;
 		color: var(--secondary);
 	}
