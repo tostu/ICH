@@ -52,6 +52,7 @@
 	.footer__links {
 		display: flex;
 		gap: var(--space-md);
+		flex-wrap: wrap;
 	}
 
 	.footer__links a {
@@ -72,9 +73,18 @@
 	}
 
 	@media (max-width: 640px) {
+		.footer {
+			padding: var(--space-md) var(--space-sm);
+		}
+
 		.footer__inner {
 			flex-direction: column;
 			text-align: center;
+		}
+
+		.footer__links {
+			justify-content: center;
+			gap: var(--space-sm);
 		}
 	}
 </style>

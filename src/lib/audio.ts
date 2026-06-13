@@ -111,83 +111,168 @@ export function playCameraShutter(): void {
 		const now = ctx.currentTime;
 		const noiseBuffer = createNoiseBuffer(ctx, 0.25);
 
-		// --- 1. Mirror Flip Up (First Transient) ---
-		const osc1 = ctx.createOscillator();
-		const oscGain1 = ctx.createGain();
-		osc1.type = 'triangle';
-		osc1.frequency.setValueAtTime(450, now);
-		osc1.frequency.exponentialRampToValueAtTime(150, now + 0.015);
-		oscGain1.gain.setValueAtTime(0.06, now);
-		oscGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
-		osc1.connect(oscGain1);
-		oscGain1.connect(ctx.destination);
+		// --- 1. Mirror Flip Up & Shutter Open (First Transient) ---
+		// Crisp high-frequency snap
+		const snapNoise1 = ctx.createBufferSource();
+		snapNoise1.buffer = noiseBuffer;
+		const snapFilter1 = ctx.createBiquadFilter();
+		snapFilter1.type = 'highpass';
+		snapFilter1.frequency.setValueAtTime(3500, now);
+		snapFilter1.Q.setValueAtTime(1.5, now);
 
-		const noise1 = ctx.createBufferSource();
-		noise1.buffer = noiseBuffer;
-		const noiseGain1 = ctx.createGain();
-		const filter1 = ctx.createBiquadFilter();
-		filter1.type = 'bandpass';
-		filter1.frequency.setValueAtTime(1400, now);
-		filter1.Q.setValueAtTime(2.0, now);
-		noiseGain1.gain.setValueAtTime(0.04, now);
-		noiseGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.02);
-		noise1.connect(filter1);
-		filter1.connect(noiseGain1);
-		noiseGain1.connect(ctx.destination);
+		const snapGain1 = ctx.createGain();
+		snapGain1.gain.setValueAtTime(0.12, now);
+		snapGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.015);
+
+		snapNoise1.connect(snapFilter1);
+		snapFilter1.connect(snapGain1);
+		snapGain1.connect(ctx.destination);
+
+		// Metallic/mid-frequency transient
+		const metalNoise1 = ctx.createBufferSource();
+		metalNoise1.buffer = noiseBuffer;
+		const metalFilter1 = ctx.createBiquadFilter();
+		metalFilter1.type = 'bandpass';
+		metalFilter1.frequency.setValueAtTime(1200, now);
+		metalFilter1.Q.setValueAtTime(3.0, now);
+
+		const metalGain1 = ctx.createGain();
+		metalGain1.gain.setValueAtTime(0.08, now);
+		metalGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.025);
+
+		metalNoise1.connect(metalFilter1);
+		metalFilter1.connect(metalGain1);
+		metalGain1.connect(ctx.destination);
+
+		// Body thump (lower frequency noise burst)
+		const thumpNoise1 = ctx.createBufferSource();
+		thumpNoise1.buffer = noiseBuffer;
+		const thumpFilter1 = ctx.createBiquadFilter();
+		thumpFilter1.type = 'bandpass';
+		thumpFilter1.frequency.setValueAtTime(250, now);
+		thumpFilter1.Q.setValueAtTime(2.0, now);
+
+		const thumpGain1 = ctx.createGain();
+		thumpGain1.gain.setValueAtTime(0.06, now);
+		thumpGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+
+		thumpNoise1.connect(thumpFilter1);
+		thumpFilter1.connect(thumpGain1);
+		thumpGain1.connect(ctx.destination);
+
+		// Faint high-frequency ring (tension release)
+		const ringOsc1 = ctx.createOscillator();
+		ringOsc1.type = 'sine';
+		ringOsc1.frequency.setValueAtTime(2200, now);
+
+		const ringGain1 = ctx.createGain();
+		ringGain1.gain.setValueAtTime(0.01, now);
+		ringGain1.gain.exponentialRampToValueAtTime(0.001, now + 0.03);
+
+		ringOsc1.connect(ringGain1);
+		ringGain1.connect(ctx.destination);
 
 		// --- 2. Shutter Curtain Travel (Middle mechanical friction) ---
 		const travelNoise = ctx.createBufferSource();
 		travelNoise.buffer = noiseBuffer;
-		const travelGain = ctx.createGain();
 		const travelFilter = ctx.createBiquadFilter();
 		travelFilter.type = 'bandpass';
 		travelFilter.frequency.setValueAtTime(950, now);
 		travelFilter.Q.setValueAtTime(1.0, now);
+
+		const travelGain = ctx.createGain();
 		travelGain.gain.setValueAtTime(0.0, now);
 		travelGain.gain.linearRampToValueAtTime(0.015, now + 0.01);
-		travelGain.gain.exponentialRampToValueAtTime(0.001, now + 0.075);
+		travelGain.gain.exponentialRampToValueAtTime(0.001, now + 0.08);
+
 		travelNoise.connect(travelFilter);
 		travelFilter.connect(travelGain);
 		travelGain.connect(ctx.destination);
 
-		// --- 3. Shutter Closing & Mirror Down (Second Transient at ~75ms) ---
-		const closeTime = now + 0.075;
-		const osc2 = ctx.createOscillator();
-		const oscGain2 = ctx.createGain();
-		osc2.type = 'sine';
-		osc2.frequency.setValueAtTime(320, closeTime);
-		osc2.frequency.exponentialRampToValueAtTime(90, closeTime + 0.025);
-		oscGain2.gain.setValueAtTime(0.08, closeTime);
-		oscGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.025);
-		osc2.connect(oscGain2);
-		oscGain2.connect(ctx.destination);
+		// --- 3. Shutter Closing & Mirror Down (Second Transient at ~80ms) ---
+		const closeTime = now + 0.08;
 
-		const noise2 = ctx.createBufferSource();
-		noise2.buffer = noiseBuffer;
-		const noiseGain2 = ctx.createGain();
-		const filter2 = ctx.createBiquadFilter();
-		filter2.type = 'bandpass';
-		filter2.frequency.setValueAtTime(2000, closeTime);
-		filter2.Q.setValueAtTime(2.0, closeTime);
-		noiseGain2.gain.setValueAtTime(0.06, closeTime);
-		noiseGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.035);
-		noise2.connect(filter2);
-		filter2.connect(noiseGain2);
-		noiseGain2.connect(ctx.destination);
+		// Crisp closing high-frequency snap
+		const snapNoise2 = ctx.createBufferSource();
+		snapNoise2.buffer = noiseBuffer;
+		const snapFilter2 = ctx.createBiquadFilter();
+		snapFilter2.type = 'highpass';
+		snapFilter2.frequency.setValueAtTime(4500, closeTime);
+		snapFilter2.Q.setValueAtTime(2.0, closeTime);
 
-		// Start all scheduled playbacks
-		osc1.start(now);
-		osc1.stop(now + 0.03);
-		noise1.start(now);
-		noise1.stop(now + 0.03);
+		const snapGain2 = ctx.createGain();
+		snapGain2.gain.setValueAtTime(0.15, closeTime);
+		snapGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.018);
+
+		snapNoise2.connect(snapFilter2);
+		snapFilter2.connect(snapGain2);
+		snapGain2.connect(ctx.destination);
+
+		// Mechanical curtain impact
+		const metalNoise2 = ctx.createBufferSource();
+		metalNoise2.buffer = noiseBuffer;
+		const metalFilter2 = ctx.createBiquadFilter();
+		metalFilter2.type = 'bandpass';
+		metalFilter2.frequency.setValueAtTime(1600, closeTime);
+		metalFilter2.Q.setValueAtTime(4.0, closeTime);
+
+		const metalGain2 = ctx.createGain();
+		metalGain2.gain.setValueAtTime(0.12, closeTime);
+		metalGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.025);
+
+		metalNoise2.connect(metalFilter2);
+		metalFilter2.connect(metalGain2);
+		metalGain2.connect(ctx.destination);
+
+		// Mirror slap / damped body thud
+		const slapNoise2 = ctx.createBufferSource();
+		slapNoise2.buffer = noiseBuffer;
+		const slapFilter2 = ctx.createBiquadFilter();
+		slapFilter2.type = 'bandpass';
+		slapFilter2.frequency.setValueAtTime(180, closeTime);
+		slapFilter2.Q.setValueAtTime(1.5, closeTime);
+
+		const slapGain2 = ctx.createGain();
+		slapGain2.gain.setValueAtTime(0.12, closeTime);
+		slapGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.06);
+
+		slapNoise2.connect(slapFilter2);
+		slapFilter2.connect(slapGain2);
+		slapGain2.connect(ctx.destination);
+
+		// Metallic ring/spring ping
+		const ringOsc2 = ctx.createOscillator();
+		ringOsc2.type = 'sine';
+		ringOsc2.frequency.setValueAtTime(2900, closeTime);
+
+		const ringGain2 = ctx.createGain();
+		ringGain2.gain.setValueAtTime(0.015, closeTime);
+		ringGain2.gain.exponentialRampToValueAtTime(0.001, closeTime + 0.04);
+
+		ringOsc2.connect(ringGain2);
+		ringGain2.connect(ctx.destination);
+
+		// --- Playback Activation ---
+		snapNoise1.start(now);
+		snapNoise1.stop(now + 0.02);
+		metalNoise1.start(now);
+		metalNoise1.stop(now + 0.03);
+		thumpNoise1.start(now);
+		thumpNoise1.stop(now + 0.03);
+		ringOsc1.start(now);
+		ringOsc1.stop(now + 0.03);
 
 		travelNoise.start(now);
-		travelNoise.stop(now + 0.09);
+		travelNoise.stop(now + 0.08);
 
-		osc2.start(closeTime);
-		osc2.stop(closeTime + 0.04);
-		noise2.start(closeTime);
-		noise2.stop(closeTime + 0.04);
+		snapNoise2.start(closeTime);
+		snapNoise2.stop(closeTime + 0.02);
+		metalNoise2.start(closeTime);
+		metalNoise2.stop(closeTime + 0.03);
+		slapNoise2.start(closeTime);
+		slapNoise2.stop(closeTime + 0.06);
+		ringOsc2.start(closeTime);
+		ringOsc2.stop(closeTime + 0.04);
 	} catch (e) {
 		console.warn('Audio shutter playback failed:', e);
 	}

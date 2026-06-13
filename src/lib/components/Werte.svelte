@@ -126,6 +126,11 @@
 	});
 
 	function selectAndScrollTo(index: number) {
+		if (selectedIndex === index && !isStickyActive) {
+			selectedIndex = -1;
+			return;
+		}
+
 		selectedIndex = index;
 
 		if (typeof window === 'undefined' || !trackElement || !isStickyActive) return;

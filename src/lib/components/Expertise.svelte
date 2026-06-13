@@ -112,5 +112,9 @@
 			gap: var(--space-sm);
 			margin-top: var(--space-xl);
 		}
+
+		.expertise__card {
+			padding: var(--space-md) var(--space-sm);
+		}
 	}
 </style>

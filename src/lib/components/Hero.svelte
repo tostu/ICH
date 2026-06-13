@@ -743,7 +743,7 @@
 
 		.hero__portrait {
 			max-width: 280px;
-			margin: 16px auto 0;
+			margin: 24px auto 16px;
 		}
 	}
 
@@ -753,13 +753,22 @@
 		}
 
 		.hero__cta {
-			flex-direction: column;
-			width: 100%;
+			display: none;
 		}
 
-		.hero__cta :global(.btn) {
-			width: 100%;
-			text-align: center;
+		.hero__portrait {
+			max-width: 250px;
+		}
+
+		.crop-marks {
+			inset: -8px;
+		}
+
+		.hero__portrait::before {
+			top: -8px;
+			left: -8px;
+			right: 8px;
+			bottom: 8px;
 		}
 	}
 
@@ -778,6 +787,12 @@
 		flex-direction: column;
 		justify-content: space-between;
 		user-select: none;
+	}
+
+	@media (max-width: 480px) {
+		.viewfinder {
+			padding: 10px;
+		}
 	}
 
 	.viewfinder--active {
@@ -850,6 +865,12 @@
 		color: rgba(255, 255, 255, 0.9);
 	}
 
+	@media (max-width: 480px) {
+		.telemetry-top {
+			font-size: 8.5px;
+		}
+	}
+
 	.rec-indicator {
 		display: flex;
 		align-items: center;
@@ -878,6 +899,12 @@
 		letter-spacing: 0.05em;
 		text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 		color: rgba(255, 255, 255, 0.9);
+	}
+
+	@media (max-width: 480px) {
+		.telemetry-bottom {
+			font-size: 8.5px;
+		}
 	}
 
 	/* Center autofocus reticle */

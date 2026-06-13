@@ -496,6 +496,13 @@
 		justify-content: center;
 		padding: var(--space-lg);
 		outline: none;
+		overflow-y: auto;
+	}
+
+	@media (max-width: 640px) {
+		.lightbox {
+			padding: 12px;
+		}
 	}
 
 	.lightbox__overlay {
@@ -519,6 +526,7 @@
 		overflow: hidden;
 		box-shadow: 0 24px 50px rgba(0, 0, 0, 0.5);
 		animation: lightboxFadeIn var(--duration-normal) var(--ease-out-expo) forwards;
+		margin: auto;
 	}
 
 	@keyframes lightboxFadeIn {
@@ -570,6 +578,7 @@
 	@media (max-width: 640px) {
 		.lightbox__image-wrapper {
 			aspect-ratio: 4 / 3;
+			max-height: 55vh;
 		}
 	}
 
@@ -590,10 +599,26 @@
 		gap: var(--space-sm);
 	}
 
+	@media (max-width: 640px) {
+		.lightbox__info {
+			flex-direction: column;
+			align-items: stretch;
+			padding: var(--space-sm) var(--space-md);
+			gap: 1rem;
+		}
+	}
+
 	.lightbox__telemetry {
 		display: flex;
 		gap: var(--space-md);
 		flex-wrap: wrap;
+	}
+
+	@media (max-width: 640px) {
+		.lightbox__telemetry {
+			justify-content: space-between;
+			gap: 0.5rem;
+		}
 	}
 
 	.telemetry-tag {
@@ -631,11 +656,13 @@
 		}
 
 		.galerie__stack {
-			grid-template-rows: unset;
+			grid-template-rows: none;
+			grid-template-columns: 1fr 1fr;
+			gap: 4px;
 		}
 
 		.galerie__item.small {
-			aspect-ratio: 16 / 9;
+			aspect-ratio: 4 / 3;
 			height: auto;
 		}
 

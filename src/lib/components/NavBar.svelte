@@ -59,6 +59,61 @@
 						<a href="/#{id}" onclick={(e) => handleNavLink(e, id)}>{label}</a>
 					</li>
 				{/each}
+				<!-- Mobile-only controls row -->
+				<li class="nav__mobile-controls-item">
+					<div class="nav__mobile-controls">
+						<div class="nav__lang">
+							{#each locales as l (l)}
+								<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
+								<a
+									href={localizeHref(page.url.pathname, { locale: l })}
+									class="nav__lang-btn"
+									class:active={getLocale() === l}
+								>
+									{l.toUpperCase()}
+								</a>
+							{/each}
+						</div>
+						<button
+							type="button"
+							class="nav__audio-toggle"
+							onclick={handleMuteToggle}
+							aria-label={muted ? 'Ton einschalten' : 'Ton stummlegen'}
+							title={muted ? 'Ton einschalten' : 'Ton stummlegen'}
+						>
+							{#if muted}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="icon-svg"
+									><path d="M11 5L6 9H2v6h4l5 4V5z" /><line x1="23" y1="9" x2="17" y2="15" /><line
+										x1="17"
+										y1="9"
+										x2="23"
+										y2="15"
+									/></svg
+								>
+							{:else}
+								<svg
+									xmlns="http://www.w3.org/2000/svg"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									stroke-width="2.5"
+									stroke-linecap="round"
+									stroke-linejoin="round"
+									class="icon-svg"
+									><path d="M11 5L6 9H2v6h4l5 4V5z" /><path d="M15.54 8.46a5 5 0 0 1 0 7.07" /></svg
+								>
+							{/if}
+						</button>
+					</div>
+				</li>
 			</ul>
 
 			<div class="nav__controls">
@@ -313,6 +368,10 @@
 		transform: translateY(-3.5px) rotate(-45deg);
 	}
 
+	.nav__mobile-controls-item {
+		display: none;
+	}
+
 	@media (max-width: 768px) {
 		.nav__inner {
 			padding: 1rem 1.25rem;
@@ -320,6 +379,10 @@
 
 		.nav__burger {
 			display: flex;
+		}
+
+		.nav__controls {
+			display: none;
 		}
 
 		.nav__links {
@@ -337,7 +400,7 @@
 		}
 
 		.nav__links--open {
-			max-height: 320px;
+			max-height: 380px;
 		}
 
 		.nav--scrolled .nav__links {
@@ -352,6 +415,49 @@
 			display: block;
 			padding: 1rem 1.5rem;
 			font-size: 0.875rem;
+		}
+
+		.nav__mobile-controls-item {
+			display: block;
+			border-top: 1px solid rgba(255, 255, 255, 0.1);
+			padding: 0.75rem 1.5rem;
+		}
+
+		.nav--scrolled .nav__mobile-controls-item {
+			border-top-color: rgba(6, 27, 14, 0.1);
+		}
+
+		.nav__mobile-controls {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			width: 100%;
+		}
+
+		.nav__mobile-controls .nav__lang {
+			gap: 1rem;
+		}
+
+		.nav__mobile-controls .nav__lang-btn {
+			font-size: 0.8125rem;
+			padding: 0.25rem 0.5rem;
+		}
+
+		.nav__mobile-controls .nav__audio-toggle {
+			padding: 8px;
+			color: rgba(255, 255, 255, 0.7);
+		}
+
+		.nav--scrolled .nav__mobile-controls .nav__audio-toggle {
+			color: var(--on-surface-variant);
+		}
+
+		.nav__mobile-controls .nav__audio-toggle:hover {
+			color: var(--on-primary);
+		}
+
+		.nav--scrolled .nav__mobile-controls .nav__audio-toggle:hover {
+			color: var(--primary);
 		}
 	}
 </style>

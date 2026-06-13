@@ -88,6 +88,13 @@
 		z-index: 1;
 	}
 
+	@media (max-width: 1280px) {
+		.offgrid__inner {
+			padding-left: calc(var(--notebook-margin) + var(--space-sm));
+			padding-right: var(--space-md);
+		}
+	}
+
 	.offgrid__content {
 		display: grid;
 		grid-template-columns: 1fr 1fr;
