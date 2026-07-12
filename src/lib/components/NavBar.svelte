@@ -5,11 +5,9 @@
 	import * as m from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
 
-	let {
-		scrolled,
-		loaded,
-		onScrollTo
-	}: { scrolled: boolean; loaded: boolean; onScrollTo: (id: string) => void } = $props();
+	import { navItems, navLabel } from '$lib/chapters';
+
+	let { scrolled, loaded }: { scrolled: boolean; loaded: boolean } = $props();
 
 	let mobileMenuOpen = $state(false);
 	let muted = $state(false);
@@ -21,15 +19,6 @@
 	function handleMuteToggle() {
 		muted = toggleMute();
 	}
-
-	function handleNavLink(e: MouseEvent, id: string) {
-		const isHomepage = page.url.pathname === '/';
-		if (isHomepage) {
-			e.preventDefault();
-			mobileMenuOpen = false;
-			onScrollTo(id);
-		}
-	}
 </script>
 
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
@@ -40,23 +29,16 @@
 		<a
 			href={localizeHref('/')}
 			class="nav__wordmark"
-			onclick={(e) => {
-				const isHomepage = page.url.pathname === '/';
-				if (isHomepage) {
-					e.preventDefault();
-					onScrollTo('hero');
-				}
-			}}
 		>
 			TORGE STUBBE
 		</a>
 
 		<div class="nav__right-group">
 			<ul class="nav__links" class:nav__links--open={mobileMenuOpen}>
-				{#each [['expertise', m.nav_expertise ? m.nav_expertise() : 'Expertise'], ['philosophie', m.nav_philosophie ? m.nav_philosophie() : 'Philosophie'], ['galerie', m.nav_galerie ? m.nav_galerie() : 'Galerie'], ['dauerbaustellen', m.nav_baustellen ? m.nav_baustellen() : 'Baustellen'], ['kontakt', m.nav_kontakt ? m.nav_kontakt() : 'Kontakt']] as [id, label] (id)}
+				{#each navItems as item (item.slug)}
 					<li>
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-						<a href="/#{id}" onclick={(e) => handleNavLink(e, id)}>{label}</a>
+						<a href={localizeHref(item.slug)} class:active={page.url.pathname === localizeHref(item.slug)} onclick={() => (mobileMenuOpen = false)}>{navLabel(item)}</a>
 					</li>
 				{/each}
 				<!-- Mobile-only controls row -->
@@ -218,20 +200,26 @@
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		padding: 1.25rem 2.5rem;
+		padding: 1.375rem 3.5rem;
+	}
+
+	@media (max-width: 767px) {
+		.nav__inner {
+			padding: 1.125rem 1.5rem;
+		}
 	}
 
 	.nav__wordmark {
-		font-family: var(--font-display);
-		font-size: 0.875rem;
-		font-weight: 700;
-		letter-spacing: 0.12em;
-		color: var(--on-primary);
+		font-family: var(--font-mono);
+		font-size: 0.8125rem;
+		font-weight: 500;
+		letter-spacing: 0.14em;
+		color: var(--forest-dark, #1e2b24);
 		transition: color var(--duration-normal) var(--ease-out);
 	}
 
 	.nav--scrolled .nav__wordmark {
-		color: var(--primary);
+		color: var(--forest-dark, #1e2b24);
 	}
 
 	.nav__right-group {
