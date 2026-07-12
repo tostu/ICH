@@ -11,7 +11,7 @@
 	];
 </script>
 
-<section id="entdecken" class="max-w-measure mx-auto px-6 md:px-14 pt-12 pb-2">
+<section id="entdecken" class="bg-surface max-w-measure mx-auto px-6 md:px-14 pt-12 pb-2">
 	<div class="flex items-baseline gap-[1.1rem] mb-[1.9rem] flex-wrap">
 		<span class="font-mono text-[0.7rem] font-medium tracking-[0.2em] uppercase text-warm-deep">{m.stat_band_label()}</span>
 		<span class="text-[0.95rem] font-medium text-muted">{m.stat_band_note()}</span>
@@ -27,16 +27,18 @@
 			<div class="flex-1 basis-[calc(50%_-_0.7rem)] md:basis-0 min-w-0 rounded-[16px] p-[26px_26px_22px] flex flex-col gap-1.5 {cardClass}">
 				<div class="font-display font-semibold text-[clamp(2.6rem,4.5vw,3.5rem)] border-none leading-none">
 					{stat.base}<i class="not-italic"
-						class:text-warm-bright={i === 0 || i === 3}
+						class:text-warm-bright={i === 0}
 						class:text-warm-deep={i === 1}
 						class:text-forest-dark={i === 2}
 						class:opacity-70={i === 2}
+						class:text-accent-bright={i === 3}
 					>{stat.accent}</i>{stat.tail}
 				</div>
 				<div class="font-mono text-[0.68rem] font-medium tracking-[0.16em] uppercase"
-					class:text-warm-bright={i === 0 || i === 3}
+					class:text-warm-bright={i === 0}
 					class:text-warm-deep={i === 1}
 					class:text-forest-dark={i === 2}
+					class:text-accent-bright={i === 3}
 				>{stat.label}</div>
 				<div class="text-[0.82rem] font-medium leading-[1.45] opacity-80">{stat.note}</div>
 			</div>

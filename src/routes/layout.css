@@ -15,8 +15,8 @@
 	--color-on-secondary: #2a1700;
 
 	/* ── Surfaces · Warm Cream ── */
-	--color-surface: #fcf9f0;
-	--color-surface-container-lowest: #ffffff;
+	--color-surface: #f7f2e5;
+	--color-surface-container-lowest: #fffdf6;
 	--color-surface-container-low: #f7f4ec;
 	--color-surface-container: #f1eee5;
 	--color-surface-container-high: #ebe8e0;
@@ -98,8 +98,8 @@
 	--secondary: #e89234;
 	--secondary-container: #a85513;
 	--on-secondary: #2a1700;
-	--surface: #fcf9f0;
-	--surface-container-lowest: #ffffff;
+	--surface: #f7f2e5;
+	--surface-container-lowest: #fffdf6;
 	--surface-container-low: #f7f4ec;
 	--surface-container: #f1eee5;
 	--surface-container-high: #ebe8e0;

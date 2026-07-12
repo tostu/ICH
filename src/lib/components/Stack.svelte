@@ -20,7 +20,7 @@
 
 <!-- eslint-disable svelte/no-at-html-tags -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
-<section class="max-w-measure mx-auto px-6 md:px-14 pt-20 pb-6">
+<section class="bg-surface max-w-measure mx-auto px-6 md:px-14 pt-20 pb-6">
 	<div class="max-w-[42rem] mb-9">
 		<span class="block font-mono text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-deep mb-3.5">{m.stack_label()}</span>
 		<h2 class="font-display font-semibold text-[clamp(2.25rem,4.5vw,3.625rem)] leading-[1.05] tracking-[-0.01em] text-on-surface">{@html m.stack_title()}</h2>
@@ -29,8 +29,8 @@
 
 	<div class="flex flex-col gap-[30px]">
 		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
-			<span class="absolute top-2 left-[42%] md:left-[42%] font-display font-semibold text-[clamp(120px,16vw,190px)] leading-none text-black/5 pointer-events-none z-0" aria-hidden="true">01</span>
-			<div class="relative z-[1] flex flex-col items-start gap-[0.85rem]">
+			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
+				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">01</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card1_idx()}</span>
 				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card1_eyebrow()}</span>
 				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card1_title()}</h3>
@@ -44,7 +44,7 @@
 			</div>
 			<div class="relative z-[1] self-center">
 				<div class="absolute inset-[14px_-12px_-12px_14px] bg-secondary rounded-[18px] z-0"></div>
-				<div class="relative z-[1] border-2 border-forest-dark rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
+				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
 					<svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
 						<defs>
 							<pattern id="arch-grid" width="22" height="22" patternUnits="userSpaceOnUse"
@@ -457,8 +457,8 @@
 		</article>
 
 		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
-			<span class="absolute top-2 right-6 font-display font-semibold text-[clamp(120px,16vw,190px)] leading-none text-black/5 pointer-events-none z-0" aria-hidden="true">02</span>
-			<div class="relative z-[1] flex flex-col items-start gap-[0.85rem]">
+			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
+				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">02</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card2_idx()}</span>
 				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card2_eyebrow()}</span>
 				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card2_title()}</h3>
@@ -472,15 +472,15 @@
 			</div>
 			<div class="relative z-[1] self-center md:order-first">
 				<div class="absolute inset-[14px_14px_-12px_-12px] bg-primary rounded-[18px] z-0"></div>
-				<div class="relative z-[1] border-2 border-forest-dark rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
+				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
 					<img src={londonImg} alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 				</div>
 			</div>
 		</article>
 
 		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
-			<span class="absolute top-2 left-[42%] font-display font-semibold text-[clamp(120px,16vw,190px)] leading-none text-primary/10 pointer-events-none z-0" aria-hidden="true">03</span>
-			<div class="relative z-[1] flex flex-col items-start gap-[0.85rem]">
+			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
+				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">03</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card3_idx()}</span>
 				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card3_eyebrow()}</span>
 				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card3_title()}</h3>
@@ -494,7 +494,7 @@
 			</div>
 			<div class="relative z-[1] self-center">
 				<div class="absolute inset-[14px_-12px_-12px_14px] bg-secondary rounded-[18px] z-0"></div>
-				<div class="relative z-[1] border-2 border-forest-dark rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
+				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
 					<svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
 						<defs>
 							<pattern id="proj-grid" width="22" height="22" patternUnits="userSpaceOnUse"
@@ -747,8 +747,8 @@
 		</article>
 
 		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
-			<span class="absolute top-2 right-6 font-display font-semibold text-[clamp(120px,16vw,190px)] leading-none text-warm/20 pointer-events-none z-0" aria-hidden="true">04</span>
-			<div class="relative z-[1] flex flex-col items-start gap-[0.85rem]">
+			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
+				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">04</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card4_idx()}</span>
 				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card4_eyebrow()}</span>
 				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card4_title()}</h3>
@@ -761,8 +761,8 @@
 				</div>
 			</div>
 			<div class="relative z-[1] self-center md:order-first">
-				<div class="absolute inset-[14px_14px_-12px_-12px] bg-warm-deep/20 rounded-[18px] z-0"></div>
-				<div class="relative z-[1] border-2 border-forest-dark rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
+				<div class="absolute inset-[14px_14px_-12px_-12px] bg-primary rounded-[18px] z-0"></div>
+				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
 					<img src={portraitDoubt} alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
 				</div>
 			</div>

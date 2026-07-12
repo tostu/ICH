@@ -12,7 +12,7 @@
 <!-- eslint-disable svelte/no-at-html-tags -->
 <section
 	id="hero"
-	class="max-w-measure mx-auto px-6 md:px-14 pt-[104px] md:pt-[112px] pb-10 grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 md:gap-16 items-center"
+	class="bg-surface max-w-measure mx-auto px-6 md:px-14 pt-[104px] md:pt-[112px] pb-10 grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 md:gap-16 items-center"
 >
 	<div
 		class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
