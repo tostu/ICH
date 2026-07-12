@@ -25,7 +25,7 @@
 	/>
 </svelte:head>
 
-<NavBar scrolled={true} {loaded} onScrollTo={handleScrollTo} />
+<NavBar scrolled={true} {loaded} />
 
 <main class="legal-page reveal" class:visible={loaded}>
 	<div class="legal-page__inner">
