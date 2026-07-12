@@ -153,6 +153,11 @@
    Must live in @layer base: unlayered rules outrank everything Tailwind puts
    in @layer utilities, so an unlayered `* { margin: 0; padding: 0 }` silently
    defeats every px-*/mx-* utility on the page. */
+
+html {
+	background: #f7f2e5 !important;
+}
+
 @layer base {
 	*,
 	*::before,
@@ -163,7 +168,6 @@
 	}
 
 	html {
-		background: #f7f2e5;
 		scroll-behavior: smooth;
 	}
 
@@ -172,7 +176,7 @@
 		font-size: 1rem;
 		line-height: 1.55;
 		color: var(--on-surface);
-		background: #f7f2e5;
+		background: #f7f2e5 !important;
 		overflow-x: hidden;
 	}
 
