@@ -27,8 +27,8 @@
 		<p class="font-body text-[1.03rem] font-medium leading-[1.6] text-muted mt-4 max-w-[32.5rem]">{m.stack_desc()}</p>
 	</div>
 
-	<div class="flex flex-col gap-[30px]">
-		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+	<div class="stack-list flex flex-col gap-[30px]">
+		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
 				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">01</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card1_idx()}</span>
@@ -456,7 +456,7 @@
 			</div>
 		</article>
 
-		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
 				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">02</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card2_idx()}</span>
@@ -478,7 +478,7 @@
 			</div>
 		</article>
 
-		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
 				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">03</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card3_idx()}</span>
@@ -746,7 +746,7 @@
 			</div>
 		</article>
 
-		<article class="relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
 				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">04</span>
 				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card4_idx()}</span>
@@ -774,5 +774,62 @@
 	h2 :global(em) {
 		font-style: italic;
 		color: var(--primary);
+	}
+
+	/* Sticky stacking: each card pins below the nav and the next one
+	   scrolls up over it, leaving a peeking sliver of the ones below. */
+	.stack-list {
+		--stack-top: 96px;
+		--stack-peek: 22px;
+	}
+
+	.stack-card {
+		position: sticky;
+		top: var(--stack-top);
+		transform-origin: center top;
+		will-change: transform;
+	}
+
+	.stack-card:nth-child(1) {
+		top: var(--stack-top);
+	}
+	.stack-card:nth-child(2) {
+		top: calc(var(--stack-top) + var(--stack-peek));
+	}
+	.stack-card:nth-child(3) {
+		top: calc(var(--stack-top) + var(--stack-peek) * 2);
+	}
+	.stack-card:nth-child(4) {
+		top: calc(var(--stack-top) + var(--stack-peek) * 3);
+	}
+
+	/* Scroll-driven depth: shrink + dim a card as it gets covered. */
+	@supports (animation-timeline: view()) {
+		.stack-card {
+			animation: stack-recede linear both;
+			animation-timeline: view();
+			animation-range: exit-crossing 0% exit-crossing 90%;
+		}
+
+		@keyframes stack-recede {
+			to {
+				transform: scale(0.94);
+				filter: brightness(0.92);
+			}
+		}
+
+		/* Last card has nothing stacking over it — keep it flat. */
+		.stack-card:last-child {
+			animation: none;
+		}
+	}
+
+	@media (prefers-reduced-motion: reduce) {
+		.stack-card {
+			position: static;
+			animation: none;
+			transform: none;
+			filter: none;
+		}
 	}
 </style>
