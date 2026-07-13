@@ -38,7 +38,12 @@
 				{#each navItems as item (item.slug)}
 					<li>
 						<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-						<a href={localizeHref(item.slug)} class:active={page.url.pathname === localizeHref(item.slug)} onclick={() => (mobileMenuOpen = false)}>{navLabel(item)}</a>
+						<a
+							href={localizeHref(item.slug)}
+							class:active={page.url.pathname === localizeHref(item.slug)}
+							class:nav__cta={item.navKey === 'nav_kontakt'}
+							onclick={() => (mobileMenuOpen = false)}>{navLabel(item)}</a
+						>
 					</li>
 				{/each}
 				<!-- Mobile-only controls row -->
@@ -254,6 +259,37 @@
 
 	.nav--scrolled .nav__links a:hover {
 		color: var(--primary);
+	}
+
+	.nav__links a.active {
+		color: var(--on-primary);
+		border-bottom: 2px solid var(--color-accent);
+		padding-bottom: 2px;
+	}
+
+	.nav--scrolled .nav__links a.active {
+		color: var(--forest-dark, #1e2b24);
+	}
+
+	.nav__links a.nav__cta {
+		background: var(--primary);
+		color: var(--on-primary) !important;
+		padding: 8px 16px;
+		border-radius: var(--radius-pill, 999px);
+		border-bottom: none !important;
+	}
+
+	.nav__links a.nav__cta:hover {
+		color: var(--on-primary) !important;
+		opacity: 0.9;
+	}
+
+	@media (max-width: 768px) {
+		.nav__links a.nav__cta {
+			display: inline-block;
+			margin: 0.75rem 1.5rem;
+			padding: 10px 20px;
+		}
 	}
 
 	.nav__controls {
