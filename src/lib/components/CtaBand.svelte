@@ -25,6 +25,6 @@
 <style>
 	h2 :global(em) {
 		font-style: italic;
-		color: var(--primary);
+		color: var(--color-accent-deep);
 	}
 </style>

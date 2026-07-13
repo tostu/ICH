@@ -110,16 +110,17 @@
 		border-radius: 14px;
 		transform: rotate(2.5deg);
 		box-shadow: 0 18px 40px rgba(30, 43, 36, 0.22);
+		background-color: var(--color-accent);
 	}
 
 	.hero__caption {
 		position: absolute;
 		bottom: -14px;
 		left: -12px;
-		background: var(--surface);
+		background: var(--color-warm);
 		border: 1px solid rgba(30, 43, 36, 0.12);
 		font-size: 0.7rem;
-		color: var(--on-surface-variant);
+		color: var(--on-surface);
 		padding: 8px 12px;
 		border-radius: 8px;
 		transform: rotate(-2deg);
