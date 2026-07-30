@@ -19,8 +19,8 @@
 
 <NavBar scrolled={true} {loaded} />
 
-<div class="pg pg--inner">
+<main>
 	<Kontakt />
-</div>
+</main>
 
 <Footer />

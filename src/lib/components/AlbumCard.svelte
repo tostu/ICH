@@ -37,18 +37,21 @@
 	.card {
 		display: flex;
 		flex-direction: column;
-		border-radius: 18px;
+		border-radius: var(--radius-card);
 		overflow: hidden;
-		background: var(--surface-container, #efe8d6);
-		box-shadow: 0 8px 24px rgba(30, 43, 36, 0.12);
+		background: var(--surface-container-lowest);
+		border: 1px solid rgba(0, 0, 0, 0.1);
+		box-shadow: 0 3px 14px rgba(30, 43, 36, 0.07);
 		transition:
-			transform var(--duration-normal, 0.3s) var(--ease-out, ease),
-			box-shadow var(--duration-normal, 0.3s) var(--ease-out, ease);
+			transform var(--duration-normal) var(--ease-out),
+			box-shadow var(--duration-normal) var(--ease-out),
+			border-color var(--duration-normal) var(--ease-out);
 	}
 
 	.card:hover {
 		transform: translateY(-4px);
-		box-shadow: 0 18px 40px rgba(30, 43, 36, 0.2);
+		border-color: var(--outline-variant);
+		box-shadow: 0 14px 36px rgba(30, 43, 36, 0.12);
 	}
 
 	.card__media {
@@ -85,11 +88,11 @@
 		position: absolute;
 		top: 14px;
 		left: 16px;
-		font-family: var(--font-mono, monospace);
+		font-family: var(--font-mono);
 		font-size: 11px;
 		font-weight: 500;
 		letter-spacing: 0.16em;
-		color: #f7f2e5;
+		color: var(--surface);
 	}
 
 	.card__foot {
@@ -101,10 +104,11 @@
 	}
 
 	.card__label {
-		font-family: var(--font-display, serif);
-		font-size: 1.65rem;
+		font-family: var(--font-display);
+		font-size: 1.55rem;
 		font-weight: 600;
-		color: var(--on-surface, #1e2b24);
+		letter-spacing: -0.01em;
+		color: var(--on-surface);
 	}
 
 	.card__meta {
@@ -114,16 +118,16 @@
 	}
 
 	.card__count {
-		font-family: var(--font-mono, monospace);
+		font-family: var(--font-mono);
 		font-size: 11px;
 		letter-spacing: 0.08em;
-		color: var(--on-surface-variant, #8a8672);
+		color: var(--muted);
 	}
 
 	.card__arrow {
-		font-family: var(--font-mono, monospace);
-		color: var(--color-accent-deep, #c96f1f);
-		transition: transform var(--duration-fast, 0.15s) var(--ease-out, ease);
+		font-family: var(--font-mono);
+		color: var(--warm-deep);
+		transition: transform var(--duration-fast) var(--ease-out);
 	}
 
 	.card:hover .card__arrow {

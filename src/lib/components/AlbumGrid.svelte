@@ -88,7 +88,9 @@
 					<img src={featured.source.full} alt={featured.alt} loading="eager" />
 				{/if}
 				<span class="album__featured-cap">
-					<span class="album__featured-loc">● {album.label.toUpperCase()} — {featured.title.toUpperCase()}</span>
+					<span class="album__featured-loc"
+						>● {album.label.toUpperCase()} — {featured.title.toUpperCase()}</span
+					>
 					<span class="album__featured-exif">{exif(featured)} · {featured.exif.lens}</span>
 				</span>
 			</span>
@@ -132,8 +134,8 @@
 
 <style>
 	.album {
-		max-width: var(--measure, 1280px);
-		margin: 0 auto;
+		/* Measure and gutters come from the page's <Section> wrapper. */
+		width: 100%;
 	}
 
 	/* Featured */
@@ -146,14 +148,14 @@
 	.album__featured-shadow {
 		position: absolute;
 		inset: 16px -14px 0 16px;
-		background: var(--color-accent, #e89b3c);
-		border-radius: 20px;
+		background: var(--secondary);
+		border-radius: var(--radius-card);
 	}
 
 	.album__featured-frame {
 		position: relative;
 		display: block;
-		border-radius: 18px;
+		border-radius: var(--radius);
 		overflow: hidden;
 		box-shadow: 0 16px 38px rgba(30, 43, 36, 0.22);
 	}
@@ -224,7 +226,7 @@
 		width: 100%;
 		height: 300px;
 		object-fit: cover;
-		border-radius: 14px;
+		border-radius: var(--radius);
 		box-shadow: 0 6px 18px rgba(30, 43, 36, 0.12);
 		transition: transform var(--duration-normal, 0.3s) var(--ease-out, ease);
 	}
@@ -298,7 +300,7 @@
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
-		color: var(--color-accent, #e89b3c);
+		color: var(--warm-bright);
 	}
 
 	:global(.pswp-exif__title) {

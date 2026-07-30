@@ -2,6 +2,8 @@
 	import { onMount } from 'svelte';
 	import NavBar from '$lib/components/NavBar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
+	import PageHero from '$lib/components/ui/PageHero.svelte';
+	import Section from '$lib/components/ui/Section.svelte';
 	import * as m from '$lib/paraglide/messages';
 
 	let loaded = $state(false);
@@ -9,11 +11,6 @@
 	onMount(() => {
 		loaded = true;
 	});
-
-	function handleScrollTo(id: string) {
-		// Since we are on a subpage, we navigate to the home page anchor
-		window.location.href = `/#${id}`;
-	}
 </script>
 
 <svelte:head>
@@ -26,16 +23,14 @@
 
 <NavBar scrolled={true} {loaded} />
 
-<main class="legal-page reveal" class:visible={loaded}>
-	<div class="legal-page__inner">
-		<span class="label-lg text-secondary"
-			>{m.legal_imprint_label ? m.legal_imprint_label() : 'RECHTLICHE ANGABEN'}</span
-		>
-		<h1 class="display-lg mt-2 text-primary">
-			{m.impressum_title ? m.impressum_title() : 'Impressum'}
-		</h1>
+<main class="bg-surface">
+	<PageHero
+		label={m.legal_imprint_label ? m.legal_imprint_label() : 'Rechtliche Angaben'}
+		title={m.impressum_title ? m.impressum_title() : 'Impressum'}
+	/>
 
-		<div class="legal-page__content">
+	<Section class="pt-4 pb-16">
+		<div class="legal-page__content max-w-[46rem]">
 			<section class="legal-page__section">
 				<h2 class="headline-md">
 					{m.impressum_section_info ? m.impressum_section_info() : 'Angaben gemäß § 5 TMG'}
@@ -107,50 +102,27 @@
 				</p>
 			</section>
 		</div>
-	</div>
+	</Section>
 </main>
 
 <Footer />
 
 <style>
-	.legal-page {
-		background: var(--surface);
-		min-height: 80vh;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-		padding-top: 10rem;
-		opacity: 0;
-		transform: translateY(20px);
-		transition:
-			opacity 0.8s var(--ease-out-expo),
-			transform 0.8s var(--ease-out-expo);
-	}
-
-	.legal-page.visible {
-		opacity: 1;
-		transform: translateY(0);
-	}
-
-	.legal-page__inner {
-		max-width: 800px;
-		margin: 0 auto;
-		width: 100%;
-		padding: 0 var(--space-lg) var(--space-2xl);
-	}
-
 	.legal-page__content {
-		margin-top: var(--space-xl);
-		border-top: 1px solid var(--surface-container-high);
+		border-top: 1.5px solid rgba(30, 43, 36, 0.15);
 		padding-top: var(--space-lg);
 	}
 
 	.legal-page__section h2 {
+		color: var(--on-surface);
+	}
+
+	.legal-page__section h3 {
 		color: var(--primary);
 	}
 
 	.legal-page__link {
-		color: var(--secondary);
+		color: var(--warm-deep);
 		text-decoration: underline;
 		text-underline-offset: 3px;
 	}
@@ -161,5 +133,6 @@
 
 	.legal-page__section p {
 		line-height: 1.6;
+		color: var(--on-surface-variant);
 	}
 </style>
