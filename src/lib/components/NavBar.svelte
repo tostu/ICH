@@ -2,7 +2,6 @@
 	import { isMuted, toggleMute } from '$lib/audio';
 	import { page } from '$app/state';
 	import { locales, localizeHref, getLocale } from '$lib/paraglide/runtime';
-	import * as m from '$lib/paraglide/messages';
 	import { onMount } from 'svelte';
 
 	import { navItems, navLabel } from '$lib/chapters';
