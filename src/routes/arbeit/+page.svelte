@@ -3,9 +3,8 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import PageHead from '$lib/components/PageHead.svelte';
-	import Expertise from '$lib/components/Expertise.svelte';
+	import ArbeitShowcase from '$lib/components/ArbeitShowcase.svelte';
 	import TechStack from '$lib/components/TechStack.svelte';
-	import Philosophie from '$lib/components/Philosophie.svelte';
 	import Dauerbaustellen from '$lib/components/Dauerbaustellen.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 	import * as m from '$lib/paraglide/messages';
@@ -14,6 +13,22 @@
 
 	onMount(() => {
 		loaded = true;
+
+		const observer = new IntersectionObserver(
+			(entries) => {
+				entries.forEach((entry) => {
+					if (entry.isIntersecting) {
+						entry.target.classList.add('visible');
+						observer.unobserve(entry.target);
+					}
+				});
+			},
+			{ threshold: 0.12, rootMargin: '0px 0px -60px 0px' }
+		);
+
+		document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
+
+		return () => observer.disconnect();
 	});
 </script>
 
@@ -31,9 +46,8 @@
 		title={m.arbeit_head_title()}
 		lede={m.arbeit_head_lede()}
 	/>
-	<Expertise />
+	<ArbeitShowcase />
 	<TechStack />
-	<Philosophie />
 	<Dauerbaustellen />
 </div>
 
