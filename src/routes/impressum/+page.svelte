@@ -32,10 +32,12 @@
 	<Section class="pt-4 pb-16">
 		<div class="legal-page__content max-w-[46rem]">
 			<section class="legal-page__section">
-				<h2 class="headline-md">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
 					{m.impressum_section_info ? m.impressum_section_info() : 'Angaben gemäß § 5 TMG'}
 				</h2>
-				<p class="body-md mt-2">
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Torge Stubbe<br />
 					Software-Architekt & Street Photographer<br />
 					Hamburg, Deutschland
@@ -43,10 +45,12 @@
 			</section>
 
 			<section class="legal-page__section mt-8">
-				<h2 class="headline-md">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
 					{m.impressum_section_contact ? m.impressum_section_contact() : 'Kontakt'}
 				</h2>
-				<p class="body-md mt-2">
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					E-Mail: <a href="mailto:hello@torgestubbe.de" class="legal-page__link"
 						>hello@torgestubbe.de</a
 					><br />
@@ -55,17 +59,19 @@
 			</section>
 
 			<section class="legal-page__section mt-8">
-				<h2 class="headline-md">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
 					{m.impressum_section_disclaimer_title
 						? m.impressum_section_disclaimer_title()
 						: 'Haftungsausschluss (Disclaimer)'}
 				</h2>
-				<h3 class="title-sm mt-4">
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
 					{m.impressum_disclaimer_content_title
 						? m.impressum_disclaimer_content_title()
 						: 'Haftung für Inhalte'}
 				</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Als Diensteanbieter sind wir gemäß § 7 Abs.1 TMG für eigene Inhalte auf diesen Seiten nach
 					den allgemeinen Gesetzen verantwortlich. Nach §§ 8 bis 10 TMG sind wir als Diensteanbieter
 					jedoch nicht verpflichtet, übermittelte oder gespeicherte fremde Informationen zu
@@ -74,12 +80,12 @@
 					den allgemeinen Gesetzen bleiben hiervon unberührt.
 				</p>
 
-				<h3 class="title-sm mt-4">
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
 					{m.impressum_disclaimer_links_title
 						? m.impressum_disclaimer_links_title()
 						: 'Haftung für Links'}
 				</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Unser Angebot enthält Links zu externen Websites Dritter, auf deren Inhalte wir keinen
 					Einfluss haben. Deshalb können wir für diese fremden Inhalte auch keine Gewähr übernehmen.
 					Für die Inhalte der verlinkten Seiten ist stets der jeweilige Anbieter oder Betreiber der
@@ -88,12 +94,12 @@
 					Verlinkung nicht erkennbar.
 				</p>
 
-				<h3 class="title-sm mt-4">
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
 					{m.impressum_disclaimer_copyright_title
 						? m.impressum_disclaimer_copyright_title()
 						: 'Urheberrecht'}
 				</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die durch die Seitenbetreiber erstellten Inhalte und Werke auf diesen Seiten unterliegen
 					dem deutschen Urheberrecht. Die Vervielfältigung, Bearbeitung, Verbreitung und jede Art
 					der Verwertung außerhalb der Grenzen des Urheberrechtes bedürfen der schriftlichen
@@ -110,29 +116,16 @@
 <style>
 	.legal-page__content {
 		border-top: 1.5px solid rgba(30, 43, 36, 0.15);
-		padding-top: var(--space-lg);
-	}
-
-	.legal-page__section h2 {
-		color: var(--on-surface);
-	}
-
-	.legal-page__section h3 {
-		color: var(--primary);
+		padding-top: var(--spacing-lg);
 	}
 
 	.legal-page__link {
-		color: var(--warm-deep);
+		color: var(--color-warm-deep);
 		text-decoration: underline;
 		text-underline-offset: 3px;
 	}
 
 	.legal-page__link:hover {
-		color: var(--secondary-container);
-	}
-
-	.legal-page__section p {
-		line-height: 1.6;
-		color: var(--on-surface-variant);
+		color: var(--color-secondary-container);
 	}
 </style>

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Album } from '$lib/photos';
+	import Card from './ui/Card.svelte';
 
 	let {
 		album,
@@ -9,8 +10,7 @@
 	}: { album: Album; href: string; index: string; countLabel: string } = $props();
 </script>
 
-<!-- eslint-disable svelte/no-navigation-without-resolve -->
-<a class="card" {href}>
+<Card pad="none" interactive {href} class="album-card flex flex-col overflow-hidden">
 	<span class="card__media">
 		{#if album.cover.source.kind === 'local'}
 			<enhanced:img
@@ -31,29 +31,9 @@
 			<span class="card__arrow" aria-hidden="true">→</span>
 		</span>
 	</span>
-</a>
+</Card>
 
 <style>
-	.card {
-		display: flex;
-		flex-direction: column;
-		border-radius: var(--radius-card);
-		overflow: hidden;
-		background: var(--surface-container-lowest);
-		border: 1px solid rgba(0, 0, 0, 0.1);
-		box-shadow: 0 3px 14px rgba(30, 43, 36, 0.07);
-		transition:
-			transform var(--duration-normal) var(--ease-out),
-			box-shadow var(--duration-normal) var(--ease-out),
-			border-color var(--duration-normal) var(--ease-out);
-	}
-
-	.card:hover {
-		transform: translateY(-4px);
-		border-color: var(--outline-variant);
-		box-shadow: 0 14px 36px rgba(30, 43, 36, 0.12);
-	}
-
 	.card__media {
 		position: relative;
 		display: block;
@@ -71,10 +51,12 @@
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
-		transition: transform var(--duration-slow, 0.5s) var(--ease-out, ease);
+		transition: transform var(--duration-slow) var(--ease-out);
 	}
 
-	.card:hover .card__media :global(img) {
+	/* `.album-card` sits on <Card>'s root, so it carries no scoping hash —
+	   anchor the hover chain with :global and keep the rest scoped. */
+	:global(.album-card:hover) .card__media :global(img) {
 		transform: scale(1.05);
 	}
 
@@ -92,7 +74,7 @@
 		font-size: 11px;
 		font-weight: 500;
 		letter-spacing: 0.16em;
-		color: var(--surface);
+		color: var(--color-surface);
 	}
 
 	.card__foot {
@@ -108,7 +90,7 @@
 		font-size: 1.55rem;
 		font-weight: 600;
 		letter-spacing: -0.01em;
-		color: var(--on-surface);
+		color: var(--color-on-surface);
 	}
 
 	.card__meta {
@@ -121,16 +103,16 @@
 		font-family: var(--font-mono);
 		font-size: 11px;
 		letter-spacing: 0.08em;
-		color: var(--muted);
+		color: var(--color-muted);
 	}
 
 	.card__arrow {
 		font-family: var(--font-mono);
-		color: var(--warm-deep);
+		color: var(--color-warm-deep);
 		transition: transform var(--duration-fast) var(--ease-out);
 	}
 
-	.card:hover .card__arrow {
+	:global(.album-card:hover) .card__arrow {
 		transform: translateX(4px);
 	}
 </style>

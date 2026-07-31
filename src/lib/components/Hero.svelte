@@ -12,7 +12,7 @@
 <!-- eslint-disable svelte/no-at-html-tags -->
 <section
 	id="hero"
-	class="bg-surface max-w-measure mx-auto px-6 md:px-14 pt-[104px] md:pt-[112px] pb-10 grid grid-cols-1 md:grid-cols-[1fr_340px] gap-10 md:gap-16 items-center"
+	class="mx-auto grid max-w-measure grid-cols-1 items-center gap-10 bg-surface px-6 pt-[104px] pb-10 md:grid-cols-[1fr_340px] md:gap-16 md:px-14 md:pt-[112px]"
 >
 	<div
 		class="transition-all duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]"
@@ -20,40 +20,40 @@
 		class:translate-y-6={!loaded}
 	>
 		<span
-			class="font-mono text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-deep block mb-5"
+			class="mb-5 block font-mono text-[0.72rem] font-medium tracking-[0.2em] text-warm-deep uppercase"
 			>{m.hero_label ? m.hero_label() : 'Hamburg · Hannover · London'}</span
 		>
 		<h1
-			class="hero__headline font-display font-semibold text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[1] tracking-[-0.01em] text-on-surface"
+			class="hero__headline font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[1] font-semibold tracking-[-0.01em] text-on-surface"
 		>
 			{@html m.hero_title ? m.hero_title() : 'Moin, ich bin <em>Torge</em>.'}
 		</h1>
 		<p
-			class="hero__subtitle font-body text-[1.2rem] font-medium leading-[1.6] text-on-surface-variant max-w-[35rem] mt-7"
+			class="hero__subtitle mt-7 max-w-[35rem] font-body text-[1.2rem] leading-[1.6] font-medium text-on-surface-variant"
 		>
 			{@html m.hero_subtitle
 				? m.hero_subtitle()
 				: 'Tagsüber baue ich als <em class="c-green">Software-Architekt</em> Systeme, die einfach laufen.'}
 		</p>
-		<div class="flex gap-3.5 mt-8 flex-wrap">
+		<div class="mt-8 flex flex-wrap gap-3.5">
 			<button
 				type="button"
 				onclick={scrollToNext}
-				class="inline-flex items-center gap-2 bg-secondary text-on-secondary font-semibold text-[0.95rem] px-[26px] py-[14px] rounded-pill cursor-pointer transition-transform duration-200 ease-out hover:-translate-y-0.5"
+				class="inline-flex cursor-pointer items-center gap-2 rounded-pill bg-secondary px-[26px] py-[14px] text-[0.95rem] font-semibold text-on-secondary transition-transform duration-200 ease-out hover:-translate-y-0.5"
 			>
 				{m.hero_cta_primary ? m.hero_cta_primary() : 'Schau dich um'}
 				<span class="font-mono">↓</span>
 			</button>
 			<a
 				href={localizeHref('/kontakt')}
-				class="hero__cta-secondary inline-flex items-center border-[1.5px] font-semibold text-[0.95rem] px-[26px] py-[14px] rounded-pill transition-transform duration-200 ease-out hover:-translate-y-0.5"
+				class="hero__cta-secondary inline-flex items-center rounded-pill border-[1.5px] px-[26px] py-[14px] text-[0.95rem] font-semibold transition-transform duration-200 ease-out hover:-translate-y-0.5"
 				>{m.hero_cta_secondary ? m.hero_cta_secondary() : 'Direkt zu Kontakt'}</a
 			>
 		</div>
 	</div>
 
 	<div
-		class="hero__portrait mx-auto md:mx-0 md:ml-auto transition-all duration-700 delay-150 ease-[cubic-bezier(0.16,1,0.3,1)]"
+		class="hero__portrait mx-auto transition-all delay-150 duration-700 ease-[cubic-bezier(0.16,1,0.3,1)] md:mx-0 md:ml-auto"
 		class:opacity-0={!loaded}
 		class:translate-y-6={!loaded}
 	>
@@ -120,7 +120,7 @@
 		background: var(--color-warm);
 		border: 1px solid rgba(30, 43, 36, 0.12);
 		font-size: 0.7rem;
-		color: var(--on-surface);
+		color: var(--color-on-surface);
 		padding: 8px 12px;
 		border-radius: 8px;
 		transform: rotate(-2deg);

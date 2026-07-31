@@ -89,7 +89,7 @@
 
 	.marquee-item :global(i) {
 		font-size: 2.25rem;
-		color: var(--primary);
+		color: var(--color-primary);
 		filter: grayscale(0.5);
 		transition:
 			filter 0.25s ease,
@@ -111,7 +111,7 @@
 		font-weight: 600;
 		letter-spacing: 0.1em;
 		text-transform: uppercase;
-		color: var(--primary);
+		color: var(--color-primary);
 		opacity: 0.55;
 		white-space: nowrap;
 	}

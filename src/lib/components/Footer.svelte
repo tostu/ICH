@@ -20,15 +20,15 @@
 				>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutz'}</a
 			>
 		</div>
-		<span class="footer__copy body-md">2026 — Hamburg, DE</span>
+		<span class="footer__copy">2026 — Hamburg, DE</span>
 	</div>
 </footer>
 
 <style>
 	.footer {
-		background: var(--primary);
-		padding: var(--space-lg) var(--space-lg);
-		border-top: 1px solid color-mix(in srgb, var(--on-primary) 5%, transparent);
+		background: var(--color-primary);
+		padding: var(--spacing-lg) var(--spacing-lg);
+		border-top: 1px solid color-mix(in srgb, var(--color-on-primary) 5%, transparent);
 	}
 
 	.footer__inner {
@@ -38,7 +38,7 @@
 		align-items: center;
 		justify-content: space-between;
 		flex-wrap: wrap;
-		gap: var(--space-sm);
+		gap: var(--spacing-sm);
 	}
 
 	.footer__wordmark {
@@ -46,35 +46,38 @@
 		font-size: 0.75rem;
 		font-weight: 700;
 		letter-spacing: 0.12em;
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 	}
 
 	.footer__links {
 		display: flex;
-		gap: var(--space-md);
+		gap: var(--spacing-md);
 		flex-wrap: wrap;
 	}
 
 	.footer__links a {
 		font-size: 0.8125rem;
 		font-weight: 500;
-		color: color-mix(in srgb, var(--on-primary) 70%, transparent);
+		color: color-mix(in srgb, var(--color-on-primary) 70%, transparent);
 		text-transform: uppercase;
 		letter-spacing: 0.04em;
 		transition: color var(--duration-fast);
 	}
 
 	.footer__links a:hover {
-		color: var(--tertiary-fixed);
+		color: var(--color-tertiary-fixed);
 	}
 
 	.footer__copy {
-		color: color-mix(in srgb, var(--on-primary) 40%, transparent);
+		font-family: var(--font-body);
+		font-size: 1rem;
+		line-height: 1.55;
+		color: color-mix(in srgb, var(--color-on-primary) 40%, transparent);
 	}
 
 	@media (max-width: 640px) {
 		.footer {
-			padding: var(--space-md) var(--space-sm);
+			padding: var(--spacing-md) var(--spacing-sm);
 		}
 
 		.footer__inner {
@@ -84,7 +87,7 @@
 
 		.footer__links {
 			justify-content: center;
-			gap: var(--space-sm);
+			gap: var(--spacing-sm);
 		}
 	}
 </style>

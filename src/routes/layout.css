@@ -1,8 +1,6 @@
 @import '@xyflow/svelte/dist/style.css' layer(base);
 @import '@xyflow/svelte/dist/base.css' layer(base);
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
 /* TAILWIND v4 THEME — Design System Color Tokens (Urban Craftsman) */
 @theme {
@@ -26,8 +24,6 @@
 
 	/* ── Tertiary / Warm Orange ── */
 	--color-tertiary-fixed: #ffbe66;
-	--color-tertiary-container: #3a2800;
-	--color-on-tertiary-fixed: #261900;
 
 	/* ── Text & Dividers ── */
 	--color-outline-variant: #c3c8c1;
@@ -44,7 +40,6 @@
 	--color-accent: #8c7ad6;
 	--color-accent-bright: #cabdf5;
 	--color-accent-deep: #6052a2;
-	--color-accent-container: #3a3168;
 	--color-on-accent: #ffffff;
 
 	/* ── Forest Dark ── */
@@ -62,7 +57,6 @@
 
 	/* ── Typography ── */
 	--font-display: 'Instrument Serif', 'Georgia', serif;
-	--font-editorial: 'Instrument Serif', 'Georgia', serif;
 	--font-body: 'Instrument Sans', system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
@@ -93,60 +87,6 @@
 	--shadow-pop: 0 28px 70px -20px rgba(6, 27, 14, 0.28), 0 10px 24px -12px rgba(6, 27, 14, 0.14);
 	--shadow-accent: 0 10px 36px -12px rgba(140, 122, 214, 0.4);
 	--shadow-warm: 0 10px 36px -12px rgba(232, 146, 52, 0.42);
-}
-
-/* DESIGN SYSTEM: Architectural Tactility */
-:root {
-	/* ── Surfaces ── */
-	--primary: #357056;
-	--primary-container: #295a45;
-	--on-primary: #ffffff;
-	--secondary: #e89234;
-	--secondary-container: #a85513;
-	--on-secondary: #2a1700;
-	--surface: #f7f2e5;
-	--surface-container-lowest: #fffdf6;
-	--surface-container-low: #f7f4ec;
-	--surface-container: #f1eee5;
-	--surface-container-high: #ebe8e0;
-	--surface-container-highest: #e5e2da;
-	--tertiary-fixed: #ffbe66;
-	--tertiary-container: #3a2800;
-	--on-tertiary-fixed: #261900;
-	--outline-variant: #c3c8c1;
-	--on-surface: #1d1b20;
-	--on-surface-variant: #49454f;
-	--forest-dark: #1e2b24;
-	--warm: #e89234;
-	--warm-bright: #ffbe66;
-	--warm-deep: #a85513;
-	--accent: #8c7ad6;
-	--accent-deep: #6052a2;
-
-	/* ── Typography ── */
-	--font-display: 'Instrument Serif', 'Georgia', serif;
-	--font-editorial: 'Instrument Serif', 'Georgia', serif;
-	--font-body: 'Instrument Sans', system-ui, sans-serif;
-	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-	--muted: #6f6c5c;
-
-	/* ── Radius ── mirrors the @theme scale so scoped CSS and utilities agree. */
-	--radius-xs: 0.375rem;
-	--radius-sm: 0.625rem;
-	--radius: 1rem;
-	--radius-lg: 1.5rem;
-	--radius-xl: 2rem;
-	--radius-card: 22px;
-	--radius-pill: 999px;
-
-	/* ── Spacing ── */
-	--space-xs: 0.5rem;
-	--space-sm: 1rem;
-	--space-md: 1.5rem;
-	--space-lg: 2.5rem;
-	--space-xl: 4rem;
-	--space-2xl: 5.5rem;
-	--space-3xl: 7rem;
 
 	/* ── Motion ── */
 	--ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -155,7 +95,12 @@
 	--duration-normal: 0.4s;
 	--duration-slow: 0.7s;
 	--duration-reveal: 1s;
+}
 
+/* Every design token lives in @theme above and is emitted as --color-* /
+   --spacing-* / --radius-* / --font-* on :root. Scoped CSS reads those names
+   directly — there is deliberately no second, unprefixed alias set. */
+:root {
 	/* Instrument Serif ships only weight 400; the mock's display type is a
 	   synthesized 600. Keep weight synthesis on or headlines render thin. */
 	font-synthesis: weight;
@@ -169,7 +114,7 @@
    in @layer utilities, so an unlayered `* { margin: 0; padding: 0 }` silently
    defeats every padding and margin utility on the page. */
 html {
-	background: var(--surface) !important;
+	background: var(--color-surface) !important;
 }
 
 @layer base {
@@ -189,8 +134,8 @@ html {
 		font-family: var(--font-body);
 		font-size: 1rem;
 		line-height: 1.55;
-		color: var(--on-surface);
-		background: var(--surface) !important;
+		color: var(--color-on-surface);
+		background: var(--color-surface) !important;
 		overflow-x: hidden;
 	}
 
@@ -224,28 +169,6 @@ html {
 		word-wrap: break-word;
 		hyphens: auto;
 	}
-}
-
-/* ── Typography Scale ── */
-.headline-md {
-	font-family: var(--font-editorial);
-	font-size: clamp(1.25rem, 3vw, 2rem);
-	font-weight: 600;
-	line-height: 1.2;
-}
-
-.title-sm {
-	font-family: var(--font-body);
-	font-size: 0.9375rem;
-	font-weight: 600;
-	line-height: 1.4;
-	letter-spacing: 0.01em;
-}
-
-.body-md {
-	font-family: var(--font-body);
-	font-size: 1rem;
-	line-height: 1.55;
 }
 
 /* ── Scroll Reveal ── */

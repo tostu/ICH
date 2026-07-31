@@ -165,12 +165,12 @@
 
 	.portrait__backing--green {
 		inset: 16px 16px -14px -14px;
-		background: var(--primary);
+		background: var(--color-primary);
 	}
 
 	.portrait__backing--amber {
 		inset: 14px -12px -12px 14px;
-		background: var(--secondary);
+		background: var(--color-secondary);
 	}
 
 	.portrait__img {
@@ -198,10 +198,10 @@
 		bottom: -16px;
 		right: -14px;
 		z-index: 2;
-		background: var(--surface);
+		background: var(--color-surface);
 		border: 1px solid rgba(30, 43, 36, 0.12);
 		font-size: 0.68rem;
-		color: var(--on-surface-variant);
+		color: var(--color-on-surface-variant);
 		padding: 8px 12px;
 		border-radius: var(--radius-sm);
 		transform: rotate(-2.5deg);
@@ -211,7 +211,7 @@
 
 	/* Current Context — the one dark surface on the page. */
 	.context {
-		background: var(--forest-dark);
+		background: var(--color-forest-dark);
 		border-radius: var(--radius-card);
 		padding: 52px 56px;
 		display: grid;
@@ -244,14 +244,14 @@
 		font-family: var(--font-body);
 		font-size: 1rem;
 		font-weight: 500;
-		color: var(--surface);
+		color: var(--color-surface);
 		margin: 0;
 	}
 
 	@media (max-width: 900px) {
 		.context {
 			grid-template-columns: 1fr;
-			gap: var(--space-lg);
+			gap: var(--spacing-lg);
 			padding: 36px 28px;
 		}
 

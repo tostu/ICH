@@ -34,17 +34,25 @@
 	<Section class="pt-4 pb-16">
 		<div class="legal-page__content max-w-[46rem]">
 			<section class="legal-page__section">
-				<h2 class="headline-md">1. Datenschutz auf einen Blick</h2>
-				<h3 class="title-sm mt-4">Allgemeine Hinweise</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
+					1. Datenschutz auf einen Blick
+				</h2>
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
+					Allgemeine Hinweise
+				</h3>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die folgenden Hinweise geben einen einfachen Überblick darüber, was mit Ihren
 					personenbezogenen Daten passiert, wenn Sie diese Website besuchen. Personenbezogene Daten
 					sind alle Daten, mit denen Sie persönlich identifiziert werden können. Ausführliche
 					Informationen zum Thema Datenschutz entnehmen Sie der unter diesem Text aufgeführten
 					Datenschutzerklärung.
 				</p>
-				<h3 class="title-sm mt-4">Datenerfassung auf dieser Website</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
+					Datenerfassung auf dieser Website
+				</h3>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die Datenverarbeitung auf dieser Website erfolgt durch den Websitebetreiber. Dessen
 					Kontaktdaten können Sie dem Impressum dieser Website entnehmen. Ihre Daten werden zum
 					einen dadurch erhoben, dass Sie uns diese mitteilen. Hierbei kann es sich z. B. um Daten
@@ -55,8 +63,12 @@
 			</section>
 
 			<section class="legal-page__section mt-8">
-				<h2 class="headline-md">2. Hosting und Content Delivery Networks (CDN)</h2>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
+					2. Hosting und Content Delivery Networks (CDN)
+				</h2>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Wir hosten die Inhalte unserer Website bei einem externen Anbieter (Hoster). Die
 					personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des
 					Hosters gespeichert. Dies dient dem Zweck der Vertragserfüllung gegenüber unseren
@@ -67,9 +79,15 @@
 			</section>
 
 			<section class="legal-page__section mt-8">
-				<h2 class="headline-md">3. Allgemeine Hinweise und Pflichtinformationen</h2>
-				<h3 class="title-sm mt-4">Datenschutz</h3>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
+					3. Allgemeine Hinweise und Pflichtinformationen
+				</h2>
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
+					Datenschutz
+				</h3>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die Betreiber dieser Seiten nehmen den Schutz Ihrer persönlichen Daten sehr ernst. Wir
 					behandeln Ihre personenbezogenen Daten vertraulich und entsprechend den gesetzlichen
 					Datenschutzvorschriften sowie dieser Datenschutzerklärung. Wenn Sie diese Website
@@ -77,8 +95,10 @@
 					erläutert, welche Daten wir erheben und wofür wir sie nutzen. Sie erläutert auch, wie und
 					zu welchem Zweck das geschieht.
 				</p>
-				<h3 class="title-sm mt-4">Hinweis zur verantwortlichen Stelle</h3>
-				<p class="body-md mt-2">
+				<h3 class="mt-4 font-body text-[0.9375rem] font-semibold tracking-[0.01em] text-primary">
+					Hinweis zur verantwortlichen Stelle
+				</h3>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br /><br />
 					Torge Stubbe<br />
 					E-Mail: hello@torgestubbe.de
@@ -86,8 +106,12 @@
 			</section>
 
 			<section class="legal-page__section mt-8">
-				<h2 class="headline-md">4. Ihre Rechte</h2>
-				<p class="body-md mt-2 text-on-surface-variant">
+				<h2
+					class="font-display text-[1.75rem] leading-[1.2] font-semibold tracking-[-0.01em] text-on-surface"
+				>
+					4. Ihre Rechte
+				</h2>
+				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck
 					Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die
 					Berichtigung oder Löschung dieser Daten zu verlangen. Wenn Sie eine Einwilligung zur
@@ -106,19 +130,6 @@
 <style>
 	.legal-page__content {
 		border-top: 1.5px solid rgba(30, 43, 36, 0.15);
-		padding-top: var(--space-lg);
-	}
-
-	.legal-page__section h2 {
-		color: var(--on-surface);
-	}
-
-	.legal-page__section h3 {
-		color: var(--primary);
-	}
-
-	.legal-page__section p {
-		line-height: 1.6;
-		color: var(--on-surface-variant);
+		padding-top: var(--spacing-lg);
 	}
 </style>

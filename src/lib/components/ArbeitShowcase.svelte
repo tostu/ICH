@@ -47,7 +47,7 @@
 	]);
 
 	const flowEdge = 'stroke:var(--color-warm-deep);stroke-width:1.5';
-	const flowEdgeMuted = 'stroke:var(--outline-variant);stroke-width:1';
+	const flowEdgeMuted = 'stroke:var(--color-outline-variant);stroke-width:1';
 
 	let edges = $state.raw<Edge[]>([
 		{
@@ -79,21 +79,21 @@
 			source: 'be',
 			target: 'data',
 			style: flowEdgeMuted,
-			markerEnd: { type: 'arrowclosed', color: 'var(--outline-variant)' }
+			markerEnd: { type: 'arrowclosed', color: 'var(--color-outline-variant)' }
 		},
 		{
 			id: 'e-fe-infra',
 			source: 'fe',
 			target: 'infra',
 			style: flowEdgeMuted,
-			markerEnd: { type: 'arrowclosed', color: 'var(--outline-variant)' }
+			markerEnd: { type: 'arrowclosed', color: 'var(--color-outline-variant)' }
 		},
 		{
 			id: 'e-data-infra',
 			source: 'data',
 			target: 'infra',
 			style: `${flowEdgeMuted};stroke-dasharray:4 4`,
-			markerEnd: { type: 'arrowclosed', color: 'var(--outline-variant)' }
+			markerEnd: { type: 'arrowclosed', color: 'var(--color-outline-variant)' }
 		}
 	]);
 
@@ -305,13 +305,13 @@
 
 <style>
 	:global(.svelte-flow) {
-		--xy-node-border-default: 1px solid var(--surface-container-high);
-		--xy-node-background-color-default: var(--surface-container-lowest);
-		--xy-handle-background-color-default: var(--secondary);
-		--xy-edge-stroke-default: var(--outline-variant);
-		--xy-edge-stroke-selected-default: var(--secondary);
-		--xy-connectionline-stroke-default: var(--secondary);
-		--xy-background-color-default: var(--surface-container-low);
+		--xy-node-border-default: 1px solid var(--color-surface-container-high);
+		--xy-node-background-color-default: var(--color-surface-container-lowest);
+		--xy-handle-background-color-default: var(--color-secondary);
+		--xy-edge-stroke-default: var(--color-outline-variant);
+		--xy-edge-stroke-selected-default: var(--color-secondary);
+		--xy-connectionline-stroke-default: var(--color-secondary);
+		--xy-background-color-default: var(--color-surface-container-low);
 	}
 
 	:global(.flow-canvas) {

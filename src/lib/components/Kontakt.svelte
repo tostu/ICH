@@ -46,7 +46,7 @@
 
 <style>
 	.kontakt {
-		background: var(--primary);
+		background: var(--color-primary);
 		position: relative;
 		overflow: hidden;
 		min-height: 70vh;
@@ -84,16 +84,16 @@
 		width: 100%;
 		/* Clear the fixed NavBar when this section is the top of a page. */
 		padding-top: 7rem;
-		padding-bottom: var(--space-xl);
+		padding-bottom: var(--spacing-xl);
 	}
 
 	.kontakt__headline {
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 	}
 
 	.kontakt__headline :global(em) {
 		font-style: italic;
-		color: var(--tertiary-fixed);
+		color: var(--color-tertiary-fixed);
 	}
 
 	@media (max-width: 768px) {

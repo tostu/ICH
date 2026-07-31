@@ -148,7 +148,7 @@
 	.album__featured-shadow {
 		position: absolute;
 		inset: 16px -14px 0 16px;
-		background: var(--secondary);
+		background: var(--color-secondary);
 		border-radius: var(--radius-card);
 	}
 
@@ -169,7 +169,7 @@
 		width: 100%;
 		height: clamp(320px, 40vw, 520px);
 		object-fit: cover;
-		transition: transform var(--duration-normal, 0.3s) var(--ease-out, ease);
+		transition: transform var(--duration-normal) var(--ease-out);
 	}
 
 	.album__featured:hover :global(img) {
@@ -187,7 +187,7 @@
 		gap: 1rem;
 		padding: 16px 24px;
 		background: linear-gradient(transparent, rgba(30, 43, 36, 0.75));
-		font-family: var(--font-mono, monospace);
+		font-family: var(--font-mono);
 	}
 
 	.album__featured-loc {
@@ -228,7 +228,7 @@
 		object-fit: cover;
 		border-radius: var(--radius);
 		box-shadow: 0 6px 18px rgba(30, 43, 36, 0.12);
-		transition: transform var(--duration-normal, 0.3s) var(--ease-out, ease);
+		transition: transform var(--duration-normal) var(--ease-out);
 	}
 
 	.album__cell:hover :global(img) {
@@ -240,19 +240,19 @@
 		justify-content: space-between;
 		align-items: baseline;
 		gap: 0.75rem;
-		font-family: var(--font-mono, monospace);
+		font-family: var(--font-mono);
 	}
 
 	.album__cap-loc {
 		font-size: 11px;
 		font-weight: 500;
 		letter-spacing: 0.14em;
-		color: var(--on-surface, #1e2b24);
+		color: var(--color-on-surface);
 	}
 
 	.album__cap-exif {
 		font-size: 10px;
-		color: var(--on-surface-variant, #8a8672);
+		color: var(--color-muted);
 		white-space: nowrap;
 	}
 
@@ -284,7 +284,7 @@
 		gap: 0.75rem 1.5rem;
 		padding: 18px 24px;
 		background: linear-gradient(transparent, rgba(6, 27, 14, 0.82));
-		font-family: var(--font-mono, monospace);
+		font-family: var(--font-mono);
 		z-index: 10;
 		pointer-events: none;
 	}
@@ -300,7 +300,7 @@
 		font-weight: 600;
 		letter-spacing: 0.16em;
 		text-transform: uppercase;
-		color: var(--warm-bright);
+		color: var(--color-warm-bright);
 	}
 
 	:global(.pswp-exif__title) {

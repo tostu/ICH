@@ -25,12 +25,7 @@
 <nav class="nav" class:nav--scrolled={scrolled} class:nav--loaded={loaded}>
 	<div class="nav__inner">
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-		<a
-			href={localizeHref('/')}
-			class="nav__wordmark"
-		>
-			TORGE STUBBE
-		</a>
+		<a href={localizeHref('/')} class="nav__wordmark"> TORGE STUBBE </a>
 
 		<div class="nav__right-group">
 			<ul class="nav__links" class:nav__links--open={mobileMenuOpen}>
@@ -193,7 +188,7 @@
 	}
 
 	.nav--scrolled {
-		background: color-mix(in srgb, var(--surface) 82%, transparent);
+		background: color-mix(in srgb, var(--color-surface) 82%, transparent);
 		backdrop-filter: blur(20px);
 		-webkit-backdrop-filter: blur(20px);
 	}
@@ -218,12 +213,12 @@
 		font-size: 0.8125rem;
 		font-weight: 500;
 		letter-spacing: 0.14em;
-		color: var(--forest-dark, #1e2b24);
+		color: var(--color-forest-dark);
 		transition: color var(--duration-normal) var(--ease-out);
 	}
 
 	.nav--scrolled .nav__wordmark {
-		color: var(--forest-dark, #1e2b24);
+		color: var(--color-forest-dark);
 	}
 
 	.nav__right-group {
@@ -249,37 +244,37 @@
 	}
 
 	.nav--scrolled .nav__links a {
-		color: var(--on-surface-variant);
+		color: var(--color-on-surface-variant);
 	}
 
 	.nav__links a:hover {
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 	}
 
 	.nav--scrolled .nav__links a:hover {
-		color: var(--primary);
+		color: var(--color-primary);
 	}
 
 	.nav__links a.active {
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 		border-bottom: 2px solid var(--color-accent);
 		padding-bottom: 2px;
 	}
 
 	.nav--scrolled .nav__links a.active {
-		color: var(--forest-dark, #1e2b24);
+		color: var(--color-forest-dark);
 	}
 
 	.nav__links a.nav__cta {
-		background: var(--primary);
-		color: var(--on-primary) !important;
+		background: var(--color-primary);
+		color: var(--color-on-primary) !important;
 		padding: 8px 16px;
-		border-radius: var(--radius-pill, 999px);
+		border-radius: var(--radius-pill);
 		border-bottom: none !important;
 	}
 
 	.nav__links a.nav__cta:hover {
-		color: var(--on-primary) !important;
+		color: var(--color-on-primary) !important;
 		opacity: 0.9;
 	}
 
@@ -324,12 +319,12 @@
 
 	.nav__lang-btn.active,
 	.nav__lang-btn:hover {
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 	}
 
 	.nav--scrolled .nav__lang-btn.active,
 	.nav--scrolled .nav__lang-btn:hover {
-		color: var(--primary);
+		color: var(--color-primary);
 	}
 
 	.nav__audio-toggle {
@@ -344,15 +339,15 @@
 	}
 
 	.nav__audio-toggle:hover {
-		color: var(--on-primary);
+		color: var(--color-on-primary);
 	}
 
 	.nav--scrolled .nav__audio-toggle {
-		color: var(--on-surface-variant);
+		color: var(--color-on-surface-variant);
 	}
 
 	.nav--scrolled .nav__audio-toggle:hover {
-		color: var(--primary);
+		color: var(--color-primary);
 	}
 
 	.icon-svg {
@@ -373,14 +368,14 @@
 		display: block;
 		width: 22px;
 		height: 2px;
-		background: var(--on-primary);
+		background: var(--color-on-primary);
 		transition:
 			transform var(--duration-normal) var(--ease-out),
 			opacity var(--duration-fast);
 	}
 
 	.nav--scrolled .nav__burger-line {
-		background: var(--primary);
+		background: var(--color-primary);
 	}
 
 	.nav__burger-line.open:first-child {
@@ -415,7 +410,7 @@
 			right: 0;
 			flex-direction: column;
 			gap: 0;
-			background: var(--primary);
+			background: var(--color-primary);
 			padding: 0;
 			max-height: 0;
 			overflow: hidden;
@@ -472,15 +467,15 @@
 		}
 
 		.nav--scrolled .nav__mobile-controls .nav__audio-toggle {
-			color: var(--on-surface-variant);
+			color: var(--color-on-surface-variant);
 		}
 
 		.nav__mobile-controls .nav__audio-toggle:hover {
-			color: var(--on-primary);
+			color: var(--color-on-primary);
 		}
 
 		.nav--scrolled .nav__mobile-controls .nav__audio-toggle:hover {
-			color: var(--primary);
+			color: var(--color-primary);
 		}
 	}
 </style>
