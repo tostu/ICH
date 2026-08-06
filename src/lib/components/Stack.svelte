@@ -3,49 +3,68 @@
 	import * as m from '$lib/paraglide/messages';
 	import londonImg from '$lib/assets/STREET_LONDON_SUNSET.jpg';
 	import portraitDoubt from '$lib/assets/PORTRAIT_DOUBT.jpg';
+	import Card from './ui/Card.svelte';
+	import ArrowLink from './ui/ArrowLink.svelte';
 </script>
-
-{#snippet arrow()}
-	<svg
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		stroke-width="2"
-		stroke-linecap="round"
-		stroke-linejoin="round"
-		aria-hidden="true"
-		><line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" /></svg
-	>
-{/snippet}
 
 <!-- eslint-disable svelte/no-at-html-tags -->
 <!-- eslint-disable svelte/no-navigation-without-resolve -->
-<section class="bg-surface max-w-measure mx-auto px-6 md:px-14 pt-20 pb-6">
-	<div class="max-w-[42rem] mb-9">
-		<span class="block font-mono text-[0.72rem] font-medium tracking-[0.2em] uppercase text-warm-deep mb-3.5">{m.stack_label()}</span>
-		<h2 class="font-display font-semibold text-[clamp(2.25rem,4.5vw,3.625rem)] leading-[1.05] tracking-[-0.01em] text-on-surface">{@html m.stack_title()}</h2>
-		<p class="font-body text-[1.03rem] font-medium leading-[1.6] text-muted mt-4 max-w-[32.5rem]">{m.stack_desc()}</p>
+<section class="mx-auto max-w-measure bg-surface px-6 pt-20 pb-6 md:px-14">
+	<div class="mb-9 max-w-[42rem]">
+		<span
+			class="mb-3.5 block font-mono text-[0.72rem] font-medium tracking-[0.2em] text-warm-deep uppercase"
+			>{m.stack_label()}</span
+		>
+		<h2
+			class="font-display text-[clamp(2.25rem,4.5vw,3.625rem)] leading-[1.05] font-semibold tracking-[-0.01em] text-on-surface"
+		>
+			{@html m.stack_title()}
+		</h2>
+		<p class="mt-4 max-w-[32.5rem] font-body text-[1.03rem] leading-[1.6] font-medium text-muted">
+			{m.stack_desc()}
+		</p>
 	</div>
 
 	<div class="stack-list flex flex-col gap-[30px]">
-		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<Card
+			as="article"
+			pad="none"
+			class="stack-card relative grid grid-cols-1 items-center gap-8 overflow-hidden p-7 md:grid-cols-[1fr_520px] md:gap-[60px] md:p-[52px_56px]"
+		>
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
-				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">01</span>
-				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card1_idx()}</span>
-				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card1_eyebrow()}</span>
-				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card1_title()}</h3>
-				<p class="font-body text-[clamp(0.95rem,1.3vw,1.05rem)] font-medium leading-[1.6] text-on-surface-variant max-w-[28rem]">{m.stack_card1_desc()}</p>
+				<span
+					class="pointer-events-none absolute top-0 right-0 z-0 font-display text-[clamp(3rem,5vw,6.5rem)] leading-none font-semibold text-secondary/30 select-none"
+					aria-hidden="true">01</span
+				>
+				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] text-warm-deep uppercase"
+					>{m.stack_card1_idx()}</span
+				>
+				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase"
+					>{m.stack_card1_eyebrow()}</span
+				>
+				<h3
+					class="mt-[0.15rem] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-warm-deep"
+				>
+					{@html m.stack_card1_title()}
+				</h3>
+				<p
+					class="max-w-[28rem] font-body text-[clamp(0.95rem,1.3vw,1.05rem)] leading-[1.6] font-medium text-on-surface-variant"
+				>
+					{m.stack_card1_desc()}
+				</p>
 				<div class="mt-[0.6rem]">
-					<a href={localizeHref('/arbeit')} class="inline-flex items-center gap-2 font-mono text-[0.72rem] font-medium tracking-[0.16em] uppercase text-warm-deep cursor-pointer transition-[gap] duration-250 ease-out hover:gap-3.5">
-						{m.stack_card1_cta()}
-						<div class="w-4 h-4">{@render arrow()}</div>
-					</a>
+					<ArrowLink href={localizeHref('/arbeit')} label={m.stack_card1_cta()} />
 				</div>
 			</div>
 			<div class="relative z-[1] self-center">
-				<div class="absolute inset-[14px_-12px_-12px_14px] bg-secondary rounded-[18px] z-0"></div>
-				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
-					<svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
+				<div class="absolute inset-[14px_-12px_-12px_14px] z-0 rounded-[18px] bg-secondary"></div>
+				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+					<svg
+						viewBox="0 0 460 400"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						class="absolute inset-0 h-full w-full"
+					>
 						<defs>
 							<pattern id="arch-grid" width="22" height="22" patternUnits="userSpaceOnUse"
 								><path
@@ -454,48 +473,90 @@
 					</svg>
 				</div>
 			</div>
-		</article>
+		</Card>
 
-		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<Card
+			as="article"
+			pad="none"
+			class="stack-card relative grid grid-cols-1 items-center gap-8 overflow-hidden p-7 md:grid-cols-[520px_1fr] md:gap-[60px] md:p-[52px_56px]"
+		>
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
-				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">02</span>
-				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card2_idx()}</span>
-				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card2_eyebrow()}</span>
-				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card2_title()}</h3>
-				<p class="font-body text-[clamp(0.95rem,1.3vw,1.05rem)] font-medium leading-[1.6] text-on-surface-variant max-w-[28rem]">{m.stack_card2_desc()}</p>
+				<span
+					class="pointer-events-none absolute top-0 right-0 z-0 font-display text-[clamp(3rem,5vw,6.5rem)] leading-none font-semibold text-primary/30 select-none"
+					aria-hidden="true">02</span
+				>
+				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] text-warm-deep uppercase"
+					>{m.stack_card2_idx()}</span
+				>
+				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase"
+					>{m.stack_card2_eyebrow()}</span
+				>
+				<h3
+					class="mt-[0.15rem] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-warm-deep"
+				>
+					{@html m.stack_card2_title()}
+				</h3>
+				<p
+					class="max-w-[28rem] font-body text-[clamp(0.95rem,1.3vw,1.05rem)] leading-[1.6] font-medium text-on-surface-variant"
+				>
+					{m.stack_card2_desc()}
+				</p>
 				<div class="mt-[0.6rem]">
-					<a href={localizeHref('/fotografie')} class="inline-flex items-center gap-2 font-mono text-[0.72rem] font-medium tracking-[0.16em] uppercase text-warm-deep cursor-pointer transition-[gap] duration-250 ease-out hover:gap-3.5">
-						{m.stack_card2_cta()}
-						<div class="w-4 h-4">{@render arrow()}</div>
-					</a>
+					<ArrowLink href={localizeHref('/fotografie')} label={m.stack_card2_cta()} />
 				</div>
 			</div>
 			<div class="relative z-[1] self-center md:order-first">
-				<div class="absolute inset-[14px_14px_-12px_-12px] bg-primary rounded-[18px] z-0"></div>
-				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
-					<img src={londonImg} alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+				<div class="absolute inset-[14px_14px_-12px_-12px] z-0 rounded-[18px] bg-primary"></div>
+				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+					<img
+						src={londonImg}
+						alt=""
+						loading="lazy"
+						class="absolute inset-0 h-full w-full object-cover"
+					/>
 				</div>
 			</div>
-		</article>
+		</Card>
 
-		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[1fr_520px] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<Card
+			as="article"
+			pad="none"
+			class="stack-card relative grid grid-cols-1 items-center gap-8 overflow-hidden p-7 md:grid-cols-[1fr_520px] md:gap-[60px] md:p-[52px_56px]"
+		>
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
-				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-secondary/30 pointer-events-none select-none z-0" aria-hidden="true">03</span>
-				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card3_idx()}</span>
-				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card3_eyebrow()}</span>
-				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card3_title()}</h3>
-				<p class="font-body text-[clamp(0.95rem,1.3vw,1.05rem)] font-medium leading-[1.6] text-on-surface-variant max-w-[28rem]">{m.stack_card3_desc()}</p>
+				<span
+					class="pointer-events-none absolute top-0 right-0 z-0 font-display text-[clamp(3rem,5vw,6.5rem)] leading-none font-semibold text-secondary/30 select-none"
+					aria-hidden="true">03</span
+				>
+				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] text-warm-deep uppercase"
+					>{m.stack_card3_idx()}</span
+				>
+				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase"
+					>{m.stack_card3_eyebrow()}</span
+				>
+				<h3
+					class="mt-[0.15rem] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-warm-deep"
+				>
+					{@html m.stack_card3_title()}
+				</h3>
+				<p
+					class="max-w-[28rem] font-body text-[clamp(0.95rem,1.3vw,1.05rem)] leading-[1.6] font-medium text-on-surface-variant"
+				>
+					{m.stack_card3_desc()}
+				</p>
 				<div class="mt-[0.6rem]">
-					<a href={localizeHref('/arbeit')} class="inline-flex items-center gap-2 font-mono text-[0.72rem] font-medium tracking-[0.16em] uppercase text-warm-deep cursor-pointer transition-[gap] duration-250 ease-out hover:gap-3.5">
-						{m.stack_card3_cta()}
-						<div class="w-4 h-4">{@render arrow()}</div>
-					</a>
+					<ArrowLink href={localizeHref('/arbeit')} label={m.stack_card3_cta()} />
 				</div>
 			</div>
 			<div class="relative z-[1] self-center">
-				<div class="absolute inset-[14px_-12px_-12px_14px] bg-secondary rounded-[18px] z-0"></div>
-				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
-					<svg viewBox="0 0 460 400" fill="none" xmlns="http://www.w3.org/2000/svg" class="absolute inset-0 w-full h-full">
+				<div class="absolute inset-[14px_-12px_-12px_14px] z-0 rounded-[18px] bg-secondary"></div>
+				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+					<svg
+						viewBox="0 0 460 400"
+						fill="none"
+						xmlns="http://www.w3.org/2000/svg"
+						class="absolute inset-0 h-full w-full"
+					>
 						<defs>
 							<pattern id="proj-grid" width="22" height="22" patternUnits="userSpaceOnUse"
 								><path
@@ -744,36 +805,57 @@
 					</svg>
 				</div>
 			</div>
-		</article>
+		</Card>
 
-		<article class="stack-card relative overflow-hidden rounded-[22px] bg-surface-container-lowest border border-black/10 shadow-[0_3px_14px_rgba(30,43,36,0.07)] grid grid-cols-1 md:grid-cols-[520px_1fr] gap-8 md:gap-[60px] items-center p-7 md:p-[52px_56px]">
+		<Card
+			as="article"
+			pad="none"
+			class="stack-card relative grid grid-cols-1 items-center gap-8 overflow-hidden p-7 md:grid-cols-[520px_1fr] md:gap-[60px] md:p-[52px_56px]"
+		>
 			<div class="relative isolate z-[1] flex flex-col items-start gap-[0.85rem]">
-				<span class="absolute top-0 right-0 font-display font-semibold text-[clamp(3rem,5vw,6.5rem)] leading-none text-primary/30 pointer-events-none select-none z-0" aria-hidden="true">04</span>
-				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] uppercase text-warm-deep">{m.stack_card4_idx()}</span>
-				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] uppercase text-muted">{m.stack_card4_eyebrow()}</span>
-				<h3 class="font-display font-semibold text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] tracking-[-0.01em] text-warm-deep mt-[0.15rem]">{@html m.stack_card4_title()}</h3>
-				<p class="font-body text-[clamp(0.95rem,1.3vw,1.05rem)] font-medium leading-[1.6] text-on-surface-variant max-w-[28rem]">{m.stack_card4_desc()}</p>
+				<span
+					class="pointer-events-none absolute top-0 right-0 z-0 font-display text-[clamp(3rem,5vw,6.5rem)] leading-none font-semibold text-primary/30 select-none"
+					aria-hidden="true">04</span
+				>
+				<span class="font-mono text-[0.7rem] font-medium tracking-[0.16em] text-warm-deep uppercase"
+					>{m.stack_card4_idx()}</span
+				>
+				<span class="font-body text-[0.72rem] font-semibold tracking-[0.14em] text-muted uppercase"
+					>{m.stack_card4_eyebrow()}</span
+				>
+				<h3
+					class="mt-[0.15rem] font-display text-[clamp(1.9rem,3.4vw,2.6rem)] leading-[1.1] font-semibold tracking-[-0.01em] text-warm-deep"
+				>
+					{@html m.stack_card4_title()}
+				</h3>
+				<p
+					class="max-w-[28rem] font-body text-[clamp(0.95rem,1.3vw,1.05rem)] leading-[1.6] font-medium text-on-surface-variant"
+				>
+					{m.stack_card4_desc()}
+				</p>
 				<div class="mt-[0.6rem]">
-					<a href={localizeHref('/ueber')} class="inline-flex items-center gap-2 font-mono text-[0.72rem] font-medium tracking-[0.16em] uppercase text-warm-deep cursor-pointer transition-[gap] duration-250 ease-out hover:gap-3.5">
-						{m.stack_card4_cta()}
-						<div class="w-4 h-4">{@render arrow()}</div>
-					</a>
+					<ArrowLink href={localizeHref('/ueber')} label={m.stack_card4_cta()} />
 				</div>
 			</div>
 			<div class="relative z-[1] self-center md:order-first">
-				<div class="absolute inset-[14px_14px_-12px_-12px] bg-primary rounded-[18px] z-0"></div>
-				<div class="relative z-[1]  rounded-[16px] overflow-hidden aspect-[47/36] bg-forest-dark">
-					<img src={portraitDoubt} alt="" loading="lazy" class="absolute inset-0 w-full h-full object-cover" />
+				<div class="absolute inset-[14px_14px_-12px_-12px] z-0 rounded-[18px] bg-primary"></div>
+				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+					<img
+						src={portraitDoubt}
+						alt=""
+						loading="lazy"
+						class="absolute inset-0 h-full w-full object-cover"
+					/>
 				</div>
 			</div>
-		</article>
+		</Card>
 	</div>
 </section>
 
 <style>
 	h2 :global(em) {
 		font-style: italic;
-		color: var(--primary);
+		color: var(--color-primary);
 	}
 
 	/* Sticky stacking: each card pins below the nav and the next one
@@ -783,29 +865,29 @@
 		--stack-peek: 22px;
 	}
 
-	.stack-card {
+	.stack-list :global(.stack-card) {
 		position: sticky;
 		top: var(--stack-top);
 		transform-origin: center top;
 		will-change: transform;
 	}
 
-	.stack-card:nth-child(1) {
+	.stack-list :global(.stack-card:nth-child(1)) {
 		top: var(--stack-top);
 	}
-	.stack-card:nth-child(2) {
+	.stack-list :global(.stack-card:nth-child(2)) {
 		top: calc(var(--stack-top) + var(--stack-peek));
 	}
-	.stack-card:nth-child(3) {
+	.stack-list :global(.stack-card:nth-child(3)) {
 		top: calc(var(--stack-top) + var(--stack-peek) * 2);
 	}
-	.stack-card:nth-child(4) {
+	.stack-list :global(.stack-card:nth-child(4)) {
 		top: calc(var(--stack-top) + var(--stack-peek) * 3);
 	}
 
 	/* Scroll-driven depth: shrink + dim a card as it gets covered. */
 	@supports (animation-timeline: view()) {
-		.stack-card {
+		.stack-list :global(.stack-card) {
 			animation: stack-recede linear both;
 			animation-timeline: view();
 			animation-range: exit-crossing 0% exit-crossing 90%;
@@ -819,13 +901,13 @@
 		}
 
 		/* Last card has nothing stacking over it — keep it flat. */
-		.stack-card:last-child {
+		.stack-list :global(.stack-card:last-child) {
 			animation: none;
 		}
 	}
 
 	@media (prefers-reduced-motion: reduce) {
-		.stack-card {
+		.stack-list :global(.stack-card) {
 			position: static;
 			animation: none;
 			transform: none;

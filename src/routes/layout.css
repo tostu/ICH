@@ -1,8 +1,6 @@
 @import '@xyflow/svelte/dist/style.css' layer(base);
 @import '@xyflow/svelte/dist/base.css' layer(base);
 @import 'tailwindcss';
-@plugin '@tailwindcss/forms';
-@plugin '@tailwindcss/typography';
 
 /* TAILWIND v4 THEME — Design System Color Tokens (Urban Craftsman) */
 @theme {
@@ -26,8 +24,6 @@
 
 	/* ── Tertiary / Warm Orange ── */
 	--color-tertiary-fixed: #ffbe66;
-	--color-tertiary-container: #3a2800;
-	--color-on-tertiary-fixed: #261900;
 
 	/* ── Text & Dividers ── */
 	--color-outline-variant: #c3c8c1;
@@ -44,7 +40,6 @@
 	--color-accent: #8c7ad6;
 	--color-accent-bright: #cabdf5;
 	--color-accent-deep: #6052a2;
-	--color-accent-container: #3a3168;
 	--color-on-accent: #ffffff;
 
 	/* ── Forest Dark ── */
@@ -55,12 +50,13 @@
 	--color-status-red: #d62246;
 	--color-status-green: #4cd964;
 
-	/* ── Muted body text on cream (mock: #8A8672) ── */
-	--color-muted: #8a8672;
+	/* ── Muted body text on cream ──
+	   Darkened from the mock's #8a8672 (3.28:1 on --surface) to clear the
+	   4.5:1 AA floor for body copy. */
+	--color-muted: #6f6c5c;
 
 	/* ── Typography ── */
 	--font-display: 'Instrument Serif', 'Georgia', serif;
-	--font-editorial: 'Instrument Serif', 'Georgia', serif;
 	--font-body: 'Instrument Sans', system-ui, sans-serif;
 	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
 
@@ -81,6 +77,8 @@
 	--radius-lg: 1.5rem;
 	--radius-xl: 2rem;
 	--radius-pill: 999px;
+	/* Signature card corner — the landing cards' 22px, as a token. */
+	--radius-card: 22px;
 
 	/* ── Shadows ── */
 	--shadow-xs: 0 1px 2px rgba(6, 27, 14, 0.06);
@@ -89,51 +87,6 @@
 	--shadow-pop: 0 28px 70px -20px rgba(6, 27, 14, 0.28), 0 10px 24px -12px rgba(6, 27, 14, 0.14);
 	--shadow-accent: 0 10px 36px -12px rgba(140, 122, 214, 0.4);
 	--shadow-warm: 0 10px 36px -12px rgba(232, 146, 52, 0.42);
-}
-
-/* DESIGN SYSTEM: Architectural Tactility */
-:root {
-	/* ── Surfaces ── */
-	--primary: #357056;
-	--primary-container: #295a45;
-	--on-primary: #ffffff;
-	--secondary: #e89234;
-	--secondary-container: #a85513;
-	--on-secondary: #2a1700;
-	--surface: #f7f2e5;
-	--surface-container-lowest: #fffdf6;
-	--surface-container-low: #f7f4ec;
-	--surface-container: #f1eee5;
-	--surface-container-high: #ebe8e0;
-	--surface-container-highest: #e5e2da;
-	--tertiary-fixed: #ffbe66;
-	--tertiary-container: #3a2800;
-	--on-tertiary-fixed: #261900;
-	--outline-variant: #c3c8c1;
-	--on-surface: #1d1b20;
-	--on-surface-variant: #49454f;
-
-	/* ── Typography ── */
-	--font-display: 'Instrument Serif', 'Georgia', serif;
-	--font-editorial: 'Instrument Serif', 'Georgia', serif;
-	--font-body: 'Instrument Sans', system-ui, sans-serif;
-	--font-mono: 'IBM Plex Mono', ui-monospace, 'SFMono-Regular', Menlo, monospace;
-	--muted: #8a8672;
-
-	/* ── Radius ── */
-	--radius: 0.125rem;
-
-	/* ── Grid/Margins ── */
-	--notebook-margin: clamp(2.25rem, 12vw, 6rem);
-
-	/* ── Spacing ── */
-	--space-xs: 0.5rem;
-	--space-sm: 1rem;
-	--space-md: 1.5rem;
-	--space-lg: 2.5rem;
-	--space-xl: 4rem;
-	--space-2xl: 5.5rem;
-	--space-3xl: 7rem;
 
 	/* ── Motion ── */
 	--ease-out: cubic-bezier(0.25, 0.46, 0.45, 0.94);
@@ -142,7 +95,12 @@
 	--duration-normal: 0.4s;
 	--duration-slow: 0.7s;
 	--duration-reveal: 1s;
+}
 
+/* Every design token lives in @theme above and is emitted as --color-* /
+   --spacing-* / --radius-* / --font-* on :root. Scoped CSS reads those names
+   directly — there is deliberately no second, unprefixed alias set. */
+:root {
 	/* Instrument Serif ships only weight 400; the mock's display type is a
 	   synthesized 600. Keep weight synthesis on or headlines render thin. */
 	font-synthesis: weight;
@@ -154,9 +112,9 @@
 /* ── Reset ──
    Must live in @layer base: unlayered rules outrank everything Tailwind puts
    in @layer utilities, so an unlayered `* { margin: 0; padding: 0 }` silently
-   defeats every px-*/
-mx-* utility on the page. */ html {
-	background: #f7f2e5 !important;
+   defeats every padding and margin utility on the page. */
+html {
+	background: var(--color-surface) !important;
 }
 
 @layer base {
@@ -176,8 +134,8 @@ mx-* utility on the page. */ html {
 		font-family: var(--font-body);
 		font-size: 1rem;
 		line-height: 1.55;
-		color: var(--on-surface);
-		background: #f7f2e5 !important;
+		color: var(--color-on-surface);
+		background: var(--color-surface) !important;
 		overflow-x: hidden;
 	}
 
@@ -192,11 +150,13 @@ mx-* utility on the page. */ html {
 		text-decoration: none;
 	}
 
+	/* No default radius — buttons opt into --radius-pill / --radius-card
+	   themselves, so raising --radius to 1rem can't silently round the
+	   nav's icon buttons. */
 	button {
 		font-family: inherit;
 		cursor: pointer;
 		border: none;
-		border-radius: var(--radius);
 	}
 
 	h1,
@@ -211,73 +171,6 @@ mx-* utility on the page. */ html {
 	}
 }
 
-/* ── Typography Scale ── */
-.display-lg {
-	font-family: var(--font-display);
-	font-size: clamp(2.1rem, 7vw, 5.5rem);
-	font-weight: 800;
-	line-height: 1;
-	letter-spacing: -0.03em;
-}
-
-.display-md {
-	font-family: var(--font-editorial);
-	font-size: clamp(1.75rem, 5vw, 3.5rem);
-	font-weight: 700;
-	line-height: 1.05;
-	letter-spacing: -0.02em;
-}
-
-.headline-lg {
-	font-family: var(--font-editorial);
-	font-size: clamp(1.45rem, 3.5vw, 2.5rem);
-	font-weight: 700;
-	line-height: 1.15;
-	letter-spacing: -0.01em;
-}
-
-.headline-md {
-	font-family: var(--font-editorial);
-	font-size: clamp(1.25rem, 3vw, 2rem);
-	font-weight: 600;
-	line-height: 1.2;
-}
-
-.title-lg {
-	font-family: var(--font-editorial);
-	font-size: 1.5rem;
-	font-weight: 600;
-	line-height: 1.3;
-}
-
-.title-sm {
-	font-family: var(--font-body);
-	font-size: 0.9375rem;
-	font-weight: 600;
-	line-height: 1.4;
-	letter-spacing: 0.01em;
-}
-
-.body-lg {
-	font-family: var(--font-body);
-	font-size: 1.125rem;
-	line-height: 1.6;
-}
-
-.body-md {
-	font-family: var(--font-body);
-	font-size: 1rem;
-	line-height: 1.55;
-}
-
-.label-lg {
-	font-family: var(--font-body);
-	font-size: 0.8125rem;
-	font-weight: 600;
-	letter-spacing: 0.08em;
-	text-transform: uppercase;
-}
-
 /* ── Scroll Reveal ── */
 .reveal {
 	opacity: 0;
@@ -290,69 +183,6 @@ mx-* utility on the page. */ html {
 .reveal.visible {
 	opacity: 1;
 	transform: translateY(0);
-}
-
-/* ── Utility ── */
-.section-pad {
-	padding: var(--space-xl) var(--space-lg);
-}
-
-@media (max-width: 1024px) {
-	.section-pad {
-		padding: var(--space-lg) var(--space-md);
-	}
-}
-
-@media (max-width: 640px) {
-	.section-pad {
-		padding: var(--space-md) var(--space-sm);
-	}
-}
-
-/* ── Buttons ── */
-.btn {
-	display: inline-block;
-	font-family: var(--font-body);
-	font-size: 0.9375rem;
-	font-weight: 600;
-	letter-spacing: 0.02em;
-	padding: 0.875rem 2rem;
-	border-radius: var(--radius);
-	transition:
-		background var(--duration-fast) var(--ease-out),
-		transform var(--duration-fast) var(--ease-out);
-}
-
-.btn:hover {
-	transform: translateY(-1px);
-}
-
-.btn--primary {
-	background: linear-gradient(135deg, var(--surface) 0%, var(--surface-container) 100%);
-	color: var(--primary);
-}
-
-.btn--primary:hover {
-	background: var(--surface-container-lowest);
-}
-
-.btn--secondary {
-	background: var(--secondary);
-	color: var(--on-secondary);
-}
-
-.btn--secondary:hover {
-	background: var(--secondary-container);
-}
-
-.btn--ghost {
-	background: transparent;
-	color: var(--on-primary);
-	border: 2px solid rgba(255, 255, 255, 0.25);
-}
-
-.btn--ghost:hover {
-	border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* ACCESSIBILITY: Motion Reduction */
@@ -377,117 +207,4 @@ mx-* utility on the page. */ html {
 		transform: none !important;
 		transition: none !important;
 	}
-}
-
-/* PATTERN CRAFT BACKGROUNDS */
-
-/* Tech Blueprint Grid — used in Dauerbaustellen */
-.pattern-blueprint-grid {
-	position: relative;
-}
-
-.pattern-blueprint-grid::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image:
-		linear-gradient(
-			to right,
-			color-mix(in srgb, var(--outline-variant) 30%, transparent) 1px,
-			transparent 1px
-		),
-		linear-gradient(
-			to bottom,
-			color-mix(in srgb, var(--outline-variant) 30%, transparent) 1px,
-			transparent 1px
-		),
-		radial-gradient(
-			circle 800px at 100% 0%,
-			color-mix(in srgb, var(--tertiary-fixed) 25%, transparent),
-			transparent
-		);
-	background-size:
-		40px 40px,
-		40px 40px,
-		100% 100%;
-	pointer-events: none;
-	z-index: 0;
-}
-
-/* Lined Notebook style (ruled paper) — used in OffTheGrid */
-.pattern-notebook-ruled {
-	position: relative;
-}
-
-.pattern-notebook-ruled::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: linear-gradient(
-		transparent 31px,
-		color-mix(in srgb, var(--outline-variant) 50%, transparent) 31px,
-		color-mix(in srgb, var(--outline-variant) 50%, transparent) 32px,
-		transparent 32px
-	);
-	background-size: 100% 32px;
-	pointer-events: none;
-	z-index: 0;
-}
-
-/* Red margin line for notebook */
-.pattern-notebook-ruled::after {
-	content: '';
-	position: absolute;
-	top: 0;
-	left: var(--notebook-margin);
-	bottom: 0;
-	width: 1px;
-	background-color: color-mix(in srgb, var(--secondary) 30%, transparent);
-	pointer-events: none;
-	z-index: 0;
-}
-
-/* Fading Architectural Grid — used in Expertise */
-.pattern-architectural-grid {
-	position: relative;
-}
-
-.pattern-architectural-grid::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image:
-		linear-gradient(
-			to right,
-			color-mix(in srgb, var(--outline-variant) 40%, transparent) 1px,
-			transparent 1px
-		),
-		linear-gradient(
-			to bottom,
-			color-mix(in srgb, var(--outline-variant) 40%, transparent) 1px,
-			transparent 1px
-		);
-	background-size: 48px 48px;
-	mask-image: radial-gradient(circle at 20% 50%, black 20%, transparent 70%);
-	-webkit-mask-image: radial-gradient(circle at 20% 50%, black 20%, transparent 70%);
-	pointer-events: none;
-	opacity: 0.85;
-	z-index: 0;
-}
-
-/* Subtle tactile grain — used in Philosophie */
-.pattern-subtle-grain {
-	position: relative;
-	overflow: hidden;
-}
-
-.pattern-subtle-grain::before {
-	content: '';
-	position: absolute;
-	inset: 0;
-	background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-	opacity: 0.04;
-	filter: contrast(120%) brightness(120%);
-	pointer-events: none;
-	z-index: 0;
 }

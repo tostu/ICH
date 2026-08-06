@@ -1,22 +1,22 @@
-# sv
+# torgestubbe.de
 
-Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
+Personal site of Torge Stubbe — software architect and street photographer. SvelteKit,
+Tailwind v4, Paraglide (de/en), static adapter.
+
+- **Design system** — `CLAUDE.md` → _Design System_. The landing page and
+  `src/lib/components/ui/` are the source of truth for every page.
+- **Positioning & brand rationale** — `BRAND.md`.
 
 ## Creating a project
 
-If you're seeing this, you've probably already done this step. Congrats!
+Scaffolded with [`sv`](https://github.com/sveltejs/cli). To recreate the base project:
 
 ```sh
-# create a new project
-npx sv create my-app
+bun x sv@0.12.8 create --template minimal --types ts --add prettier eslint tailwindcss sveltekit-adapter="adapter:static" mdsvex paraglide="languageTags:de, en+demo:no" mcp="ide:claude-code,gemini,other+setup:remote" --install bun ./
 ```
 
-To recreate this project with the same configuration:
-
-```sh
-# recreate this project
-bun x sv@0.12.8 create --template minimal --types ts --add prettier eslint tailwindcss="plugins:typography,forms" sveltekit-adapter="adapter:static" mdsvex paraglide="languageTags:de, en+demo:no" mcp="ide:claude-code,gemini,other+setup:remote" --install bun ./
-```
+The Tailwind typography and forms plugins were part of the original scaffold but have since
+been removed — nothing used them.
 
 ## Developing
 
