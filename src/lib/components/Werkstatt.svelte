@@ -3,78 +3,54 @@
 	import SectionHead from './ui/SectionHead.svelte';
 	import Card from './ui/Card.svelte';
 	import TechBadge from './ui/TechBadge.svelte';
+	import { workshopProjects } from '$lib/cv';
+	import { msg } from '$lib/messages';
 	import * as m from '$lib/paraglide/messages';
 
-	let projects = $derived([
-		{
-			id: 'wohin',
-			tag: 'App',
-			title: 'WOHIN',
-			desc: m.baustellen_wohin_desc(),
-			tech: ['Flutter', 'Hono', 'Astro', 'Sanity'],
-			progress: 50,
-			pulseSpeed: 'slow',
-			statusText: m.baustellen_status_slow(),
-			irony: m.baustellen_wohin_irony()
-		},
-		{
-			id: 'welche-partei',
-			tag: 'Quiz App',
-			title: 'Welche Partei?',
-			desc: m.baustellen_quiz_desc(),
-			tech: ['Svelte 5', 'SvelteKit', 'TailwindCSS', 'D3.js', 'Playwright'],
-			progress: 92,
-			pulseSpeed: 'slow',
-			statusText: m.baustellen_status_slow(),
-			irony: m.baustellen_quiz_irony()
-		},
-		{
-			id: 'sofa-showdown',
-			tag: 'Party Game',
-			title: 'Sofa-Showdown',
-			desc: m.baustellen_party_desc(),
-			tech: [],
-			progress: 0,
-			pulseSpeed: 'chaotic',
-			statusText: m.baustellen_status_chaotic(),
-			irony: m.baustellen_party_irony()
-		}
-	]);
+	const statusText = (speed: 'slow' | 'chaotic') =>
+		speed === 'slow' ? m.werkstatt_status_slow() : m.werkstatt_status_chaotic();
 </script>
 
-<Section id="dauerbaustellen" class="pt-16 pb-4">
+<Section id="werkstatt" class="pt-16 pb-4">
 	<div class="reveal">
 		<SectionHead
-			label={m.baustellen_label()}
-			title={m.baustellen_title()}
-			desc={m.baustellen_desc()}
+			label={m.werkstatt_label()}
+			title={m.werkstatt_title()}
+			desc={m.werkstatt_desc()}
 		/>
 	</div>
 
-	<div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-		{#each projects as project (project.id)}
+	<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+		{#each workshopProjects as project (project.id)}
 			<div class="reveal flex">
 				<Card pad="md" interactive class="flex w-full flex-col gap-4">
 					<div class="flex items-end justify-between gap-3">
 						<TechBadge tone="green">{project.tag}</TechBadge>
-						<span class="font-display text-[1.875rem] leading-none font-semibold text-warm-deep"
-							>{project.progress}%</span
-						>
+						{#if project.mode === 'laufend'}
+							<span class="font-display text-[1.875rem] leading-none font-semibold text-warm-deep"
+								>{project.progress}%</span
+							>
+						{:else}
+							<!-- Bei einem Experiment ist „0 % fertig" keine Aussage, sondern eine Wertung. -->
+							<TechBadge tone="warm">{m.werkstatt_mode_experiment()}</TechBadge>
+						{/if}
 					</div>
 
-					<div
-						class="h-[3px] overflow-hidden rounded-full bg-surface-container-high"
-						role="progressbar"
-						aria-valuenow={project.progress}
-						aria-valuemin={0}
-						aria-valuemax={100}
-						aria-label="{project.title}: {project.statusText}"
-					>
+					{#if project.mode === 'laufend'}
 						<div
-							class="h-full rounded-full bg-secondary transition-[width] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
-							style="width: {project.progress}%"
-						></div>
-					</div>
+							class="h-[3px] overflow-hidden rounded-full bg-surface-container-high"
+							role="progressbar"
+							aria-valuenow={project.progress}
+							aria-valuemin={0}
+							aria-valuemax={100}
+							aria-label="{project.title}: {statusText(project.pulseSpeed)}"
+						>
+							<div
+								class="h-full rounded-full bg-secondary transition-[width] duration-1000 ease-[cubic-bezier(0.16,1,0.3,1)]"
+								style="width: {project.progress}%"
+							></div>
+						</div>
+					{/if}
 
 					<div class="flex grow flex-col">
 						<h3
@@ -83,10 +59,10 @@
 							{project.title}
 						</h3>
 						<p class="mt-2 font-body text-[0.95rem] leading-[1.55] text-on-surface-variant">
-							{project.desc}
+							{msg(project.messageKey, '_desc')}
 						</p>
 						<p class="mt-3 font-body text-[0.875rem] leading-[1.45] text-muted italic">
-							„{project.irony}“
+							„{msg(project.messageKey, '_irony')}“
 						</p>
 					</div>
 
@@ -102,7 +78,7 @@
 							class="flex items-center gap-2 font-mono text-[0.65rem] tracking-[0.1em] text-muted uppercase"
 						>
 							<span class="pulse pulse--{project.pulseSpeed}" aria-hidden="true"></span>
-							{project.statusText}
+							{statusText(project.pulseSpeed)}
 						</span>
 					</div>
 				</Card>
@@ -113,7 +89,10 @@
 
 <style>
 	/* Status lights — a slow amber blink for "creeping along", a fast red one
-	   for "still just a concept". */
+	   for "still just a concept".
+	   `.pulse::after` erbt seine Farbe über `background-color: inherit` von
+	   `.pulse--*`. Wird die Klasse dynamisch/über Tailwind gesetzt, ist der Ring
+	   unsichtbar — deshalb bleiben diese Klassen statisch in diesem Block. */
 	.pulse {
 		display: inline-block;
 		width: 8px;

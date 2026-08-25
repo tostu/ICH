@@ -3,9 +3,12 @@
 	import NavBar from '$lib/components/NavBar.svelte';
 	import Footer from '$lib/components/Footer.svelte';
 	import PageHero from '$lib/components/ui/PageHero.svelte';
-	import ArbeitShowcase from '$lib/components/ArbeitShowcase.svelte';
+	import QuickFacts from '$lib/components/QuickFacts.svelte';
+	import SkillMatrix from '$lib/components/SkillMatrix.svelte';
+	import Werdegang from '$lib/components/Werdegang.svelte';
+	import ArbeitProjekte from '$lib/components/ArbeitProjekte.svelte';
+	import Werkstatt from '$lib/components/Werkstatt.svelte';
 	import TechStack from '$lib/components/TechStack.svelte';
-	import Dauerbaustellen from '$lib/components/Dauerbaustellen.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 	import * as m from '$lib/paraglide/messages';
 
@@ -40,15 +43,17 @@
 <NavBar scrolled={true} {loaded} />
 
 <main class="bg-surface">
-	<PageHero
-		label={m.arbeit_head_label()}
-		title={m.arbeit_head_title()}
-		lede={m.arbeit_head_lede()}
-	/>
+	<PageHero label={m.arbeit_head_label()} title={m.arbeit_head_title()} lede={m.arbeit_head_lede()}>
+		{#snippet aside()}
+			<QuickFacts />
+		{/snippet}
+	</PageHero>
 
-	<ArbeitShowcase />
+	<SkillMatrix />
+	<Werdegang variant="timeline" />
+	<ArbeitProjekte />
+	<Werkstatt />
 	<TechStack />
-	<Dauerbaustellen />
 </main>
 
 <CtaBand />

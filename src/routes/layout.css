@@ -1,5 +1,3 @@
-@import '@xyflow/svelte/dist/style.css' layer(base);
-@import '@xyflow/svelte/dist/base.css' layer(base);
 @import 'tailwindcss';
 
 /* TAILWIND v4 THEME — Design System Color Tokens (Urban Craftsman) */
