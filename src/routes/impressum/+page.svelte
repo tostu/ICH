@@ -17,7 +17,7 @@
 	<title>{m.impressum_title ? m.impressum_title() : 'Impressum'} — Torge Stubbe</title>
 	<meta
 		name="description"
-		content="Legal Imprint (Impressum) of Torge Stubbe, Software Architect & Photographer based in Hamburg."
+		content="Legal Imprint (Impressum) of Torge Stubbe, Software developer & photographer based in Hamburg."
 	/>
 </svelte:head>
 
@@ -39,7 +39,7 @@
 				</h2>
 				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Torge Stubbe<br />
-					Software-Architekt & Street Photographer<br />
+					Softwareentwickler & Street Photographer<br />
 					Hamburg, Deutschland
 				</p>
 			</section>

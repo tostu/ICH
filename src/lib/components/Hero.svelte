@@ -33,7 +33,7 @@
 		>
 			{@html m.hero_subtitle
 				? m.hero_subtitle()
-				: 'Tagsüber baue ich als <em class="c-green">Software-Architekt</em> Systeme, die einfach laufen.'}
+				: 'Tagsüber baue ich als <em class="c-green">Softwareentwickler</em> Systeme, die einfach laufen.'}
 		</p>
 		<div class="mt-8 flex flex-wrap gap-3.5">
 			<button

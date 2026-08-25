@@ -19,7 +19,7 @@
 	>
 	<meta
 		name="description"
-		content="Privacy Policy (Datenschutzerklärung) of Torge Stubbe, Software Architect & Photographer based in Hamburg."
+		content="Privacy Policy (Datenschutzerklärung) of Torge Stubbe, Software developer & photographer based in Hamburg."
 	/>
 </svelte:head>
 

@@ -36,7 +36,7 @@ After completing the code, ask the user if they want a playground link. Only cal
 
 ### Users
 
-Mixed audience in one hub: hiring managers/recruiters evaluating Torge for senior/staff backend roles, freelance/client leads assessing fit for contract work, and people discovering him through street photography. Visitors skim fast and judge credibility quickly — the site must work whether someone lands on it for engineering proof or creative work.
+Mixed audience in one hub: hiring managers/recruiters looking for a backend developer with solid hands-on practice (apprenticeship 2020–2023, three years as a developer 2023–2026) and an ongoing degree from 2026, freelance/client leads assessing fit for contract work, and people discovering him through street photography. Do not write copy that positions him as senior/staff or architect-level — `src/lib/cv.ts` is the single source of truth for every claim about his experience. Visitors skim fast and judge credibility quickly — the site must work whether someone lands on it for engineering proof or creative work.
 
 ### Brand Personality
 
