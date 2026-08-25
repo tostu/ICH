@@ -545,7 +545,7 @@
 					{m.stack_card3_desc()}
 				</p>
 				<div class="mt-[0.6rem]">
-					<ArrowLink href={localizeHref('/arbeit')} label={m.stack_card3_cta()} />
+					<ArrowLink href="{localizeHref('/arbeit')}#werkstatt" label={m.stack_card3_cta()} />
 				</div>
 			</div>
 			<div class="relative z-[1] self-center">
@@ -863,6 +863,12 @@
 	.stack-list {
 		--stack-top: 96px;
 		--stack-peek: 22px;
+		/* Sticky-Elemente sind auf die Padding-Box ihres Containing Blocks
+		   begrenzt. Ohne diesen Auslauf endet `.stack-list` an der Unterkante von
+		   Karte 04 — die hat dann keinen Spielraum und pinnt nie.
+		   Padding statt Spacer-<div>, sonst matcht `.stack-card:last-child` unten
+		   ins Leere und Karte 04 bekommt die Recede-Animation. */
+		padding-bottom: 40vh;
 	}
 
 	.stack-list :global(.stack-card) {
