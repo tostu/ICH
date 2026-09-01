@@ -44,11 +44,13 @@
 				{m.hero_cta_primary ? m.hero_cta_primary() : 'Schau dich um'}
 				<span class="font-mono">↓</span>
 			</button>
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
 			<a
 				href={localizeHref('/kontakt')}
 				class="hero__cta-secondary inline-flex items-center rounded-pill border-[1.5px] px-[26px] py-[14px] text-[0.95rem] font-semibold transition-transform duration-200 ease-out hover:-translate-y-0.5"
 				>{m.hero_cta_secondary ? m.hero_cta_secondary() : 'Direkt zu Kontakt'}</a
 			>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		</div>
 	</div>
 

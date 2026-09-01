@@ -64,6 +64,7 @@
 	<!-- Featured -->
 	{#if featured}
 		{@const a = pswpAttrs(featured)}
+		<!-- eslint-disable svelte/no-navigation-without-resolve -->
 		<a
 			class="album__featured"
 			href={a.href}
@@ -95,12 +96,14 @@
 				</span>
 			</span>
 		</a>
+		<!-- eslint-enable svelte/no-navigation-without-resolve -->
 	{/if}
 
 	<!-- Grid -->
 	<div class="album__grid">
 		{#each rest as p, i (i)}
 			{@const a = pswpAttrs(p)}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
 			<a
 				class="album__cell"
 				href={a.href}
@@ -128,6 +131,7 @@
 					<span class="album__cap-exif">{exif(p)}</span>
 				</span>
 			</a>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		{/each}
 	</div>
 </div>
