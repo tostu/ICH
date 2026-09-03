@@ -8,6 +8,7 @@
 	import SectionHead from '$lib/components/ui/SectionHead.svelte';
 	import Card from '$lib/components/ui/Card.svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { site } from '$lib/site';
 	import PORTRAIT_BACKPACK from '$lib/assets/PORTRAIT_BACKPACK.jpg?enhanced';
 	import PORTRAIT_DOUBT from '$lib/assets/PORTRAIT_DOUBT.jpg?enhanced';
 
@@ -48,7 +49,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.nav_ueber()} — Torge Stubbe</title>
+	<title>{m.nav_ueber()} — {site.name}</title>
 	<meta name="description" content={m.ueber_hero_lede()} />
 </svelte:head>
 

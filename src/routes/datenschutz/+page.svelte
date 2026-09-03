@@ -5,6 +5,7 @@
 	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import Section from '$lib/components/ui/Section.svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { site } from '$lib/site';
 
 	let loaded = $state(false);
 
@@ -15,11 +16,11 @@
 
 <svelte:head>
 	<title
-		>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutzerklärung'} — Torge Stubbe</title
+		>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutzerklärung'} — {site.name}</title
 	>
 	<meta
 		name="description"
-		content="Privacy Policy (Datenschutzerklärung) of Torge Stubbe, Software developer & photographer based in Hamburg."
+		content="Privacy Policy (Datenschutzerklärung) of {site.name}, Software developer & photographer based in {site.location.city}."
 	/>
 </svelte:head>
 
@@ -100,8 +101,8 @@
 				</h3>
 				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					Die verantwortliche Stelle für die Datenverarbeitung auf dieser Website ist:<br /><br />
-					Torge Stubbe<br />
-					E-Mail: hello@torgestubbe.de
+					{site.name}<br />
+					E-Mail: {site.email}
 				</p>
 			</section>
 

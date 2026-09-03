@@ -11,6 +11,7 @@
 	import TechStack from '$lib/components/TechStack.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { site } from '$lib/site';
 
 	let loaded = $state(false);
 
@@ -36,7 +37,7 @@
 </script>
 
 <svelte:head>
-	<title>{m.nav_arbeit()} — Torge Stubbe</title>
+	<title>{m.nav_arbeit()} — {site.name}</title>
 	<meta name="description" content={m.arbeit_head_lede()} />
 </svelte:head>
 

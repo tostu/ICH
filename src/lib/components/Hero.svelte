@@ -1,6 +1,7 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
 	import { localizeHref } from '$lib/paraglide/runtime';
+	import { site } from '$lib/site';
 
 	let { loaded }: { loaded: boolean } = $props();
 
@@ -61,7 +62,7 @@
 	>
 		<enhanced:img
 			src="$lib/assets/PORTRAIT_WITH_CAMERA.jpg"
-			alt="Torge Stubbe mit Kamera in der Hamburger Speicherstadt"
+			alt="{site.name} mit Kamera in der Hamburger Speicherstadt"
 			loading="eager"
 		/>
 		<span class="hero__caption font-mono"

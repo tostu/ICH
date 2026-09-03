@@ -12,6 +12,7 @@
 		lede,
 		backHref,
 		backLabel,
+		actions,
 		aside
 	}: {
 		label: string;
@@ -19,6 +20,8 @@
 		lede?: string;
 		backHref?: string;
 		backLabel?: string;
+		/** Optionale Aktionszeile unter der Lede — Buttons in der Reihenfolge primär → sekundär. */
+		actions?: Snippet;
 		aside?: Snippet;
 	} = $props();
 </script>
@@ -54,6 +57,9 @@
 				>
 					{@html lede}
 				</p>
+			{/if}
+			{#if actions}
+				<div class="mt-9 flex flex-wrap items-center gap-3.5">{@render actions()}</div>
 			{/if}
 		</div>
 

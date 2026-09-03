@@ -5,6 +5,7 @@
 	import { onMount } from 'svelte';
 
 	import { navItems, navLabel } from '$lib/chapters';
+	import { site } from '$lib/site';
 
 	let { scrolled, loaded }: { scrolled: boolean; loaded: boolean } = $props();
 
@@ -25,7 +26,7 @@
 <nav class="nav" class:nav--scrolled={scrolled} class:nav--loaded={loaded}>
 	<div class="nav__inner">
 		<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
-		<a href={localizeHref('/')} class="nav__wordmark"> TORGE STUBBE </a>
+		<a href={localizeHref('/')} class="nav__wordmark"> {site.wordmark} </a>
 
 		<div class="nav__right-group">
 			<ul class="nav__links" class:nav__links--open={mobileMenuOpen}>

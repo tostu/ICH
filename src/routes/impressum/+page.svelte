@@ -5,6 +5,7 @@
 	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import Section from '$lib/components/ui/Section.svelte';
 	import * as m from '$lib/paraglide/messages';
+	import { site } from '$lib/site';
 
 	let loaded = $state(false);
 
@@ -14,10 +15,10 @@
 </script>
 
 <svelte:head>
-	<title>{m.impressum_title ? m.impressum_title() : 'Impressum'} — Torge Stubbe</title>
+	<title>{m.impressum_title ? m.impressum_title() : 'Impressum'} — {site.name}</title>
 	<meta
 		name="description"
-		content="Legal Imprint (Impressum) of Torge Stubbe, Software developer & photographer based in Hamburg."
+		content="Legal Imprint (Impressum) of {site.name}, Software developer & photographer based in {site.location.city}."
 	/>
 </svelte:head>
 
@@ -38,9 +39,9 @@
 					{m.impressum_section_info ? m.impressum_section_info() : 'Angaben gemäß § 5 TMG'}
 				</h2>
 				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
-					Torge Stubbe<br />
-					Softwareentwickler & Street Photographer<br />
-					Hamburg, Deutschland
+					{site.name}<br />
+					{site.jobTitle}<br />
+					{site.location.city}, {site.location.country}
 				</p>
 			</section>
 
@@ -51,10 +52,8 @@
 					{m.impressum_section_contact ? m.impressum_section_contact() : 'Kontakt'}
 				</h2>
 				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
-					E-Mail: <a href="mailto:hello@torgestubbe.de" class="legal-page__link"
-						>hello@torgestubbe.de</a
-					><br />
-					Webseite: <a href="https://torgestubbe.de" class="legal-page__link">torgestubbe.de</a>
+					E-Mail: <a href="mailto:{site.email}" class="legal-page__link">{site.email}</a><br />
+					Webseite: <a href={site.url} class="legal-page__link">{site.domain}</a>
 				</p>
 			</section>
 

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as m from '$lib/paraglide/messages';
+	import { site, mailto } from '$lib/site';
 </script>
 
 <!-- eslint-disable svelte/no-at-html-tags -->
@@ -19,10 +20,10 @@
 			</h2>
 		</div>
 		<div class="flex flex-wrap items-center gap-[0.9rem]">
-			<span class="font-mono text-[0.85rem] text-on-surface-variant">hello@torgestubbe.de</span>
+			<span class="font-mono text-[0.85rem] text-on-surface-variant">{site.email}</span>
 			<a
 				class="inline-flex items-center gap-2 rounded-pill bg-secondary px-6 py-[13px] text-[0.95rem] font-semibold text-on-secondary transition-transform duration-200 ease-out hover:-translate-y-0.5"
-				href="mailto:hello@torgestubbe.de?subject=Kontaktanfrage"
+				href={mailto('Kontaktanfrage')}
 			>
 				{m.kontakt_cta_primary()}
 				<span class="font-mono">→</span>

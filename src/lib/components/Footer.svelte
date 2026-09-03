@@ -1,16 +1,16 @@
 <script lang="ts">
 	import { localizeHref } from '$lib/paraglide/runtime';
 	import * as m from '$lib/paraglide/messages';
+	import { site, socials } from '$lib/site';
 </script>
 
 <footer class="footer">
 	<div class="footer__inner">
-		<span class="footer__wordmark">TORGE STUBBE</span>
+		<span class="footer__wordmark">{site.wordmark}</span>
 		<div class="footer__links">
-			<a href="https://linkedin.com/in/torgestubbe" target="_blank" rel="noopener noreferrer"
-				>LinkedIn</a
-			>
-			<a href="https://github.com/torgestubbe" target="_blank" rel="noopener noreferrer">GitHub</a>
+			{#each socials as social (social.id)}
+				<a href={social.href} target="_blank" rel="noopener noreferrer">{social.label}</a>
+			{/each}
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 			<a href={localizeHref('/impressum')}
 				>{m.impressum_title ? m.impressum_title() : 'Impressum'}</a
@@ -20,7 +20,7 @@
 				>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutz'}</a
 			>
 		</div>
-		<span class="footer__copy">2026 — Hamburg, DE</span>
+		<span class="footer__copy">{new Date().getFullYear()} — {site.location.city}, DE</span>
 	</div>
 </footer>
 
