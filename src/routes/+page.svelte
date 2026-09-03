@@ -5,8 +5,6 @@
 	import ProofBand from '$lib/components/ProofBand.svelte';
 	import Stack from '$lib/components/Stack.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-
 	let loaded = $state(false);
 
 	onMount(() => {
@@ -39,4 +37,3 @@
 <ProofBand />
 <Stack />
 <CtaBand />
-<Footer />

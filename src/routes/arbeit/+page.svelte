@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import NavBar from '$lib/components/NavBar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import PageHero from '$lib/components/ui/PageHero.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import QuickFacts from '$lib/components/QuickFacts.svelte';
 	import SkillMatrix from '$lib/components/SkillMatrix.svelte';
 	import Werdegang from '$lib/components/Werdegang.svelte';
@@ -58,4 +56,3 @@
 </main>
 
 <CtaBand />
-<Footer />

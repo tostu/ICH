@@ -1,8 +1,6 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import NavBar from '$lib/components/NavBar.svelte';
-	import Footer from '$lib/components/Footer.svelte';
-	import PageHero from '$lib/components/ui/PageHero.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import KontaktChannels from '$lib/components/KontaktChannels.svelte';
 	import * as m from '$lib/paraglide/messages';
 	import { site, mailto } from '$lib/site';
@@ -46,5 +44,3 @@
 		{/snippet}
 	</PageHero>
 </main>
-
-<Footer />

@@ -4,6 +4,7 @@
 	import './layout.css';
 	import favicon from '$lib/assets/favicon.svg';
 	import CameraFlash from '$lib/components/CameraFlash.svelte';
+	import Footer from '$lib/components/Footer.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
 	import { playKeyboardClick } from '$lib/audio';
 	import { onMount } from 'svelte';
@@ -38,9 +39,14 @@
 	<link rel="icon" href={favicon} />
 </svelte:head>
 
-{#key currentLocale}
-	{@render children()}
-{/key}
+<div class="flex min-h-svh flex-col">
+	<div class="flex-1">
+		{#key currentLocale}
+			{@render children()}
+		{/key}
+	</div>
+	<Footer />
+</div>
 
 <CameraFlash />
 
