@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import NavBar from '$lib/components/NavBar.svelte';	import CtaBand from '$lib/components/CtaBand.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
+	import CtaBand from '$lib/components/CtaBand.svelte';
 	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import Section from '$lib/components/ui/Section.svelte';
 	import SectionHead from '$lib/components/ui/SectionHead.svelte';
@@ -140,6 +141,7 @@
 </main>
 
 <CtaBand />
+
 <style>
 	/* Portrait with offset backing — same tactile treatment as the landing hero. */
 	.portrait {

@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { onMount } from 'svelte';
-	import NavBar from '$lib/components/NavBar.svelte';	import PageHero from '$lib/components/ui/PageHero.svelte';
+	import NavBar from '$lib/components/NavBar.svelte';
+	import PageHero from '$lib/components/ui/PageHero.svelte';
 	import Section from '$lib/components/ui/Section.svelte';
 	import * as m from '$lib/paraglide/messages';
 	import { site } from '$lib/site';
