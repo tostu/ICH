@@ -18,7 +18,8 @@
 	<title>{m.impressum_title ? m.impressum_title() : 'Impressum'} — {site.name}</title>
 	<meta
 		name="description"
-		content="Legal Imprint (Impressum) of {site.name}, Software developer & photographer based in {site.location.city}."
+		content="Legal Imprint (Impressum) of {site.name}, Software developer & photographer based in {site
+			.location.city}."
 	/>
 </svelte:head>
 
@@ -53,6 +54,7 @@
 				</h2>
 				<p class="mt-2 font-body text-[1rem] leading-[1.6] text-on-surface-variant">
 					E-Mail: <a href="mailto:{site.email}" class="legal-page__link">{site.email}</a><br />
+					<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 					Webseite: <a href={site.url} class="legal-page__link">{site.domain}</a>
 				</p>
 			</section>

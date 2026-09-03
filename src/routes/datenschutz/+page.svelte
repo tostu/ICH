@@ -15,12 +15,12 @@
 </script>
 
 <svelte:head>
-	<title
-		>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutzerklärung'} — {site.name}</title
+	<title>{m.datenschutz_title ? m.datenschutz_title() : 'Datenschutzerklärung'} — {site.name}</title
 	>
 	<meta
 		name="description"
-		content="Privacy Policy (Datenschutzerklärung) of {site.name}, Software developer & photographer based in {site.location.city}."
+		content="Privacy Policy (Datenschutzerklärung) of {site.name}, Software developer & photographer based in {site
+			.location.city}."
 	/>
 </svelte:head>
 

@@ -9,6 +9,7 @@
 		<span class="footer__wordmark">{site.wordmark}</span>
 		<div class="footer__links">
 			{#each socials as social (social.id)}
+				<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->
 				<a href={social.href} target="_blank" rel="noopener noreferrer">{social.label}</a>
 			{/each}
 			<!-- eslint-disable-next-line svelte/no-navigation-without-resolve -->

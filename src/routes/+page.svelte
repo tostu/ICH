@@ -6,7 +6,6 @@
 	import Stack from '$lib/components/Stack.svelte';
 	import CtaBand from '$lib/components/CtaBand.svelte';
 	import Footer from '$lib/components/Footer.svelte';
-	import { playKeyboardClick } from '$lib/audio';
 
 	let loaded = $state(false);
 
@@ -29,17 +28,7 @@
 
 		document.querySelectorAll('.reveal').forEach((el) => observer.observe(el));
 
-		const handleGlobalClick = (e: MouseEvent) => {
-			const target = e.target as HTMLElement;
-			const interactive = target.closest('button, a, [role="button"], .btn');
-			if (interactive) {
-				playKeyboardClick();
-			}
-		};
-		window.addEventListener('click', handleGlobalClick, { capture: true });
-
 		return () => {
-			window.removeEventListener('click', handleGlobalClick, { capture: true });
 			observer.disconnect();
 		};
 	});

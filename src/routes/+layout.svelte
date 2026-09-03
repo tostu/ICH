@@ -5,10 +5,27 @@
 	import favicon from '$lib/assets/favicon.svg';
 	import CameraFlash from '$lib/components/CameraFlash.svelte';
 	import { getLocale } from '$lib/paraglide/runtime';
+	import { playKeyboardClick } from '$lib/audio';
+	import { onMount } from 'svelte';
 
 	let { children } = $props();
 
 	let currentLocale = $derived(page.url.href && getLocale());
+
+	onMount(() => {
+		const handleGlobalClick = (e: MouseEvent) => {
+			const target = e.target as HTMLElement;
+			const interactive = target.closest('button, a, [role="button"], .btn');
+			if (interactive) {
+				playKeyboardClick();
+			}
+		};
+		window.addEventListener('click', handleGlobalClick, { capture: true });
+
+		return () => {
+			window.removeEventListener('click', handleGlobalClick, { capture: true });
+		};
+	});
 </script>
 
 <svelte:head>

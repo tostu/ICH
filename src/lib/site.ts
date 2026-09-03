@@ -39,5 +39,7 @@ export const socials: SocialLink[] = [
 ];
 
 export function mailto(subject?: string): string {
-	return subject ? `mailto:${site.email}?subject=${encodeURIComponent(subject)}` : `mailto:${site.email}`;
+	return subject
+		? `mailto:${site.email}?subject=${encodeURIComponent(subject)}`
+		: `mailto:${site.email}`;
 }

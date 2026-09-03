@@ -30,6 +30,7 @@
 		lede={m.kontakt_head_lede()}
 	>
 		{#snippet actions()}
+			<!-- eslint-disable svelte/no-navigation-without-resolve -->
 			<a
 				href={mailto('Kontaktanfrage')}
 				class="inline-flex items-center gap-2 rounded-pill bg-secondary px-[26px] py-[14px] text-[0.95rem] font-semibold text-on-secondary transition-transform duration-200 ease-out hover:-translate-y-0.5"
@@ -37,6 +38,7 @@
 				{m.kontakt_cta_primary()}
 				<span class="font-mono">→</span>
 			</a>
+			<!-- eslint-enable svelte/no-navigation-without-resolve -->
 		{/snippet}
 
 		{#snippet aside()}
