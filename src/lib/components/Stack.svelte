@@ -58,7 +58,9 @@
 			</div>
 			<div class="relative z-[1] self-center">
 				<div class="absolute inset-[14px_-12px_-12px_14px] z-0 rounded-[18px] bg-secondary"></div>
-				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+				<div
+					class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] border border-black/10 bg-surface-container"
+				>
 					<svg
 						viewBox="0 0 460 400"
 						fill="none"
@@ -70,15 +72,15 @@
 								><path
 									d="M22 0L0 0 0 22"
 									fill="none"
-									stroke="rgba(255,255,255,0.04)"
+									stroke="rgba(30,43,36,0.08)"
 									stroke-width="0.5"
 								></path></pattern
 							>
 							<marker id="arch-a" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"
-								><polygon points="0,0 5,2.5 0,5" fill="rgba(232,146,52,0.6)"></polygon></marker
+								><polygon points="0,0 5,2.5 0,5" fill="rgba(168,85,19,0.95)"></polygon></marker
 							>
 							<marker id="arch-w" markerWidth="5" markerHeight="5" refX="4" refY="2.5" orient="auto"
-								><polygon points="0,0 5,2.5 0,5" fill="rgba(255,255,255,0.2)"></polygon></marker
+								><polygon points="0,0 5,2.5 0,5" fill="rgba(30,43,36,0.46)"></polygon></marker
 							>
 						</defs>
 						<rect width="460" height="400" fill="url(#arch-grid)"></rect>
@@ -88,8 +90,8 @@
 							width="432"
 							height="68"
 							rx="7"
-							fill="rgba(255,255,255,0.04)"
-							stroke="rgba(255,255,255,0.1)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -97,7 +99,7 @@
 							y="30"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.8)"
+							fill="rgba(168,85,19,0.95)"
 							font-weight="700"
 							letter-spacing="1.5">CLIENT TIER</text
 						>
@@ -107,8 +109,8 @@
 							width="90"
 							height="28"
 							rx="5"
-							fill="rgba(255,255,255,0.05)"
-							stroke="rgba(255,255,255,0.12)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -116,7 +118,7 @@
 							y="55"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(255,255,255,0.65)"
+							fill="rgba(30,43,36,0.8)"
 							text-anchor="middle">Browser</text
 						>
 						<rect
@@ -125,8 +127,8 @@
 							width="90"
 							height="28"
 							rx="5"
-							fill="rgba(255,255,255,0.05)"
-							stroke="rgba(255,255,255,0.12)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -134,7 +136,7 @@
 							y="55"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(255,255,255,0.65)"
+							fill="rgba(30,43,36,0.8)"
 							text-anchor="middle">API Client</text
 						>
 						<rect
@@ -143,8 +145,8 @@
 							width="90"
 							height="28"
 							rx="5"
-							fill="rgba(255,255,255,0.05)"
-							stroke="rgba(255,255,255,0.12)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -152,7 +154,7 @@
 							y="55"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(255,255,255,0.65)"
+							fill="rgba(30,43,36,0.8)"
 							text-anchor="middle">Mobile App</text
 						>
 						<rect
@@ -161,8 +163,8 @@
 							width="110"
 							height="28"
 							rx="13"
-							fill="rgba(232,146,52,0.1)"
-							stroke="rgba(232,146,52,0.3)"
+							fill="rgba(232,146,52,0.18)"
+							stroke="rgba(168,85,19,0.4)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -170,7 +172,7 @@
 							y="55"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.85)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="middle">REST · gRPC</text
 						>
 						<line
@@ -178,7 +180,7 @@
 							y1="80"
 							x2="230"
 							y2="104"
-							stroke="rgba(232,146,52,0.5)"
+							stroke="rgba(168,85,19,0.55)"
 							stroke-width="1.5"
 							marker-end="url(#arch-a)"
 						></line>
@@ -188,8 +190,8 @@
 							width="432"
 							height="50"
 							rx="7"
-							fill="rgba(232,146,52,0.08)"
-							stroke="rgba(232,146,52,0.28)"
+							fill="rgba(232,146,52,0.14)"
+							stroke="rgba(168,85,19,0.4)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -197,11 +199,11 @@
 							y="123"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.85)"
+							fill="rgba(168,85,19,0.95)"
 							font-weight="700"
 							letter-spacing="1.5">API GATEWAY</text
 						>
-						<text x="22" y="141" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.38)"
+						<text x="22" y="141" font-family="monospace" font-size="7" fill="rgba(30,43,36,0.66)"
 							>Rate Limiting · JWT Auth · Load Balancing · Routing</text
 						>
 						<line
@@ -209,7 +211,7 @@
 							y1="154"
 							x2="90"
 							y2="176"
-							stroke="rgba(255,255,255,0.18)"
+							stroke="rgba(30,43,36,0.3)"
 							stroke-width="1"
 							marker-end="url(#arch-w)"
 						></line>
@@ -218,7 +220,7 @@
 							y1="154"
 							x2="230"
 							y2="176"
-							stroke="rgba(255,255,255,0.18)"
+							stroke="rgba(30,43,36,0.3)"
 							stroke-width="1"
 							marker-end="url(#arch-w)"
 						></line>
@@ -227,7 +229,7 @@
 							y1="154"
 							x2="372"
 							y2="176"
-							stroke="rgba(255,255,255,0.18)"
+							stroke="rgba(30,43,36,0.3)"
 							stroke-width="1"
 							marker-end="url(#arch-w)"
 						></line>
@@ -237,8 +239,8 @@
 							width="148"
 							height="72"
 							rx="7"
-							fill="rgba(255,255,255,0.04)"
-							stroke="rgba(255,255,255,0.1)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -246,7 +248,7 @@
 							y="196"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.85)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="middle"
 							font-weight="700">DOMAIN API</text
 						>
@@ -255,7 +257,7 @@
 							y="212"
 							font-family="monospace"
 							font-size="7"
-							fill="rgba(255,255,255,0.42)"
+							fill="rgba(30,43,36,0.66)"
 							text-anchor="middle">Java · Spring Boot</text
 						>
 						<text
@@ -263,7 +265,7 @@
 							y="226"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.28)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="middle">DDD · Hexagonal Arch</text
 						>
 						<text
@@ -271,7 +273,7 @@
 							y="239"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.2)"
+							fill="rgba(30,43,36,0.46)"
 							text-anchor="middle">Clean Code · SOLID</text
 						>
 						<rect
@@ -280,8 +282,8 @@
 							width="116"
 							height="72"
 							rx="7"
-							fill="rgba(255,255,255,0.04)"
-							stroke="rgba(255,255,255,0.1)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -289,7 +291,7 @@
 							y="196"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.85)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="middle"
 							font-weight="700">EVENT BUS</text
 						>
@@ -298,7 +300,7 @@
 							y="212"
 							font-family="monospace"
 							font-size="7"
-							fill="rgba(255,255,255,0.42)"
+							fill="rgba(30,43,36,0.66)"
 							text-anchor="middle">Kafka · Async</text
 						>
 						<text
@@ -306,7 +308,7 @@
 							y="226"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.28)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="middle">CQRS · Saga</text
 						>
 						<text
@@ -314,7 +316,7 @@
 							y="239"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.2)"
+							fill="rgba(30,43,36,0.46)"
 							text-anchor="middle">Event Sourcing</text
 						>
 						<rect
@@ -323,8 +325,8 @@
 							width="148"
 							height="72"
 							rx="7"
-							fill="rgba(255,255,255,0.04)"
-							stroke="rgba(255,255,255,0.1)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -332,7 +334,7 @@
 							y="196"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.85)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="middle"
 							font-weight="700">WORKER SVC</text
 						>
@@ -341,7 +343,7 @@
 							y="212"
 							font-family="monospace"
 							font-size="7"
-							fill="rgba(255,255,255,0.42)"
+							fill="rgba(30,43,36,0.66)"
 							text-anchor="middle">Scheduler · Jobs</text
 						>
 						<text
@@ -349,7 +351,7 @@
 							y="226"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.28)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="middle">Retry · Dead Letter Q</text
 						>
 						<text
@@ -357,33 +359,21 @@
 							y="239"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.2)"
+							fill="rgba(30,43,36,0.46)"
 							text-anchor="middle">Circuit Breaker</text
 						>
-						<line x1="88" y1="248" x2="88" y2="268" stroke="rgba(255,255,255,0.12)" stroke-width="1"
+						<line x1="88" y1="248" x2="88" y2="268" stroke="rgba(30,43,36,0.18)" stroke-width="1"
 						></line>
-						<line
-							x1="230"
-							y1="248"
-							x2="230"
-							y2="260"
-							stroke="rgba(255,255,255,0.12)"
-							stroke-width="1"
+						<line x1="230" y1="248" x2="230" y2="260" stroke="rgba(30,43,36,0.18)" stroke-width="1"
 						></line>
-						<line
-							x1="88"
-							y1="268"
-							x2="230"
-							y2="268"
-							stroke="rgba(255,255,255,0.08)"
-							stroke-width="1"
+						<line x1="88" y1="268" x2="230" y2="268" stroke="rgba(30,43,36,0.12)" stroke-width="1"
 						></line>
 						<line
 							x1="159"
 							y1="268"
 							x2="159"
 							y2="286"
-							stroke="rgba(255,255,255,0.12)"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 							marker-end="url(#arch-w)"
 						></line>
@@ -393,8 +383,8 @@
 							width="282"
 							height="58"
 							rx="7"
-							fill="rgba(255,255,255,0.04)"
-							stroke="rgba(255,255,255,0.1)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.18)"
 							stroke-width="1"
 						></rect>
 						<text
@@ -402,19 +392,15 @@
 							y="305"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.8)"
+							fill="rgba(168,85,19,0.95)"
 							font-weight="700"
 							letter-spacing="1.5">DATA LAYER</text
 						>
-						<text x="22" y="320" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.4)"
+						<text x="22" y="320" font-family="monospace" font-size="7" fill="rgba(30,43,36,0.66)"
 							>PostgreSQL · Redis Cache · S3</text
 						>
-						<text
-							x="22"
-							y="335"
-							font-family="monospace"
-							font-size="6.5"
-							fill="rgba(255,255,255,0.22)">ACID · Event Store · CDN</text
+						<text x="22" y="335" font-family="monospace" font-size="6.5" fill="rgba(30,43,36,0.46)"
+							>ACID · Event Store · CDN</text
 						>
 						<rect
 							x="308"
@@ -422,8 +408,8 @@
 							width="138"
 							height="26"
 							rx="6"
-							fill="rgba(255,255,255,0.03)"
-							stroke="rgba(255,255,255,0.07)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.12)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -431,7 +417,7 @@
 							y="303"
 							font-family="monospace"
 							font-size="7"
-							fill="rgba(255,255,255,0.3)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="middle">Docker · Kubernetes</text
 						>
 						<rect
@@ -440,8 +426,8 @@
 							width="138"
 							height="26"
 							rx="6"
-							fill="rgba(255,255,255,0.03)"
-							stroke="rgba(255,255,255,0.07)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.12)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -449,7 +435,7 @@
 							y="335"
 							font-family="monospace"
 							font-size="7"
-							fill="rgba(255,255,255,0.3)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="middle">CI/CD · IaC · Linux</text
 						>
 						<rect
@@ -458,8 +444,8 @@
 							width="432"
 							height="26"
 							rx="5"
-							fill="rgba(255,255,255,0.02)"
-							stroke="rgba(255,255,255,0.05)"
+							fill="#fffdf6"
+							stroke="rgba(30,43,36,0.08)"
 							stroke-width="0.75"
 						></rect>
 						<text
@@ -467,7 +453,7 @@
 							y="375"
 							font-family="monospace"
 							font-size="6.5"
-							fill="rgba(255,255,255,0.18)"
+							fill="rgba(30,43,36,0.46)"
 							text-anchor="middle">CLEAN ARCHITECTURE · MILLIONS OF TX · 99.9% UPTIME</text
 						>
 					</svg>
@@ -550,7 +536,9 @@
 			</div>
 			<div class="relative z-[1] self-center">
 				<div class="absolute inset-[14px_-12px_-12px_14px] z-0 rounded-[18px] bg-secondary"></div>
-				<div class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] bg-forest-dark">
+				<div
+					class="relative z-[1] aspect-[47/36] overflow-hidden rounded-[16px] border border-black/10 bg-surface-container"
+				>
 					<svg
 						viewBox="0 0 460 400"
 						fill="none"
@@ -562,7 +550,7 @@
 								><path
 									d="M22 0L0 0 0 22"
 									fill="none"
-									stroke="rgba(232,146,52,0.07)"
+									stroke="rgba(168,85,19,0.1)"
 									stroke-width="0.5"
 								></path></pattern
 							>
@@ -573,61 +561,46 @@
 							y="36"
 							font-family="monospace"
 							font-size="7.5"
-							fill="rgba(232,146,52,0.8)"
+							fill="rgba(168,85,19,0.95)"
 							font-weight="700"
 							letter-spacing="1.5">BAUSTELLEN STATUS</text
 						>
-						<line
-							x1="22"
-							y1="46"
-							x2="438"
-							y2="46"
-							stroke="rgba(232,146,52,0.15)"
-							stroke-width="0.75"
+						<line x1="22" y1="46" x2="438" y2="46" stroke="rgba(168,85,19,0.24)" stroke-width="0.75"
 						></line>
 						<text
 							x="22"
 							y="78"
 							font-family="monospace"
 							font-size="10"
-							fill="rgba(255,255,255,0.85)"
+							fill="rgba(30,43,36,0.9)"
 							font-weight="700">WOHIN</text
 						>
 						<circle cx="102" cy="74" r="4.5" fill="#E09F3E"></circle>
-						<text
-							x="114"
-							y="78"
-							font-family="monospace"
-							font-size="7.5"
-							fill="rgba(224,159,62,0.85)">SLOW</text
+						<text x="114" y="78" font-family="monospace" font-size="7.5" fill="rgba(168,85,19,0.95)"
+							>SLOW</text
 						>
 						<text
 							x="438"
 							y="78"
 							font-family="monospace"
 							font-size="9"
-							fill="rgba(232,146,52,0.9)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="end">50%</text
 						>
-						<rect x="22" y="86" width="416" height="5" rx="2.5" fill="rgba(255,255,255,0.07)"
-						></rect>
+						<rect x="22" y="86" width="416" height="5" rx="2.5" fill="rgba(30,43,36,0.46)"></rect>
 						<rect x="22" y="86" width="208" height="5" rx="2.5" fill="#E89234" opacity="0.8"></rect>
-						<text x="22" y="102" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.32)"
+						<text x="22" y="102" font-family="monospace" font-size="7" fill="rgba(30,43,36,0.56)"
 							>Flutter · Hono · Astro · Sanity</text
 						>
-						<text
-							x="22"
-							y="116"
-							font-family="monospace"
-							font-size="6.5"
-							fill="rgba(255,255,255,0.2)">Backend fertig — App-Neustart nach Flutter-Wechsel</text
+						<text x="22" y="116" font-family="monospace" font-size="6.5" fill="rgba(30,43,36,0.46)"
+							>Backend fertig — App-Neustart nach Flutter-Wechsel</text
 						>
 						<line
 							x1="22"
 							y1="130"
 							x2="438"
 							y2="130"
-							stroke="rgba(255,255,255,0.06)"
+							stroke="rgba(30,43,36,0.12)"
 							stroke-width="0.75"
 						></line>
 						<text
@@ -635,45 +608,36 @@
 							y="160"
 							font-family="monospace"
 							font-size="10"
-							fill="rgba(255,255,255,0.85)"
+							fill="rgba(30,43,36,0.9)"
 							font-weight="700">WELCHE PARTEI?</text
 						>
-						<circle cx="186" cy="156" r="4.5" fill="#4CD964"></circle>
-						<text
-							x="198"
-							y="160"
-							font-family="monospace"
-							font-size="7.5"
-							fill="rgba(76,217,100,0.85)">FAST FERTIG</text
+						<circle cx="186" cy="156" r="4.5" fill="#357056"></circle>
+						<text x="198" y="160" font-family="monospace" font-size="7.5" fill="#357056"
+							>FAST FERTIG</text
 						>
 						<text
 							x="438"
 							y="160"
 							font-family="monospace"
 							font-size="9"
-							fill="rgba(232,146,52,0.9)"
+							fill="rgba(168,85,19,0.95)"
 							text-anchor="end">92%</text
 						>
-						<rect x="22" y="168" width="416" height="5" rx="2.5" fill="rgba(255,255,255,0.07)"
+						<rect x="22" y="168" width="416" height="5" rx="2.5" fill="rgba(30,43,36,0.46)"></rect>
+						<rect x="22" y="168" width="383" height="5" rx="2.5" fill="#357056" opacity="0.85"
 						></rect>
-						<rect x="22" y="168" width="383" height="5" rx="2.5" fill="#4CD964" opacity="0.65"
-						></rect>
-						<text x="22" y="184" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.32)"
+						<text x="22" y="184" font-family="monospace" font-size="7" fill="rgba(30,43,36,0.56)"
 							>Svelte 5 · SvelteKit · D3.js · Playwright</text
 						>
-						<text
-							x="22"
-							y="198"
-							font-family="monospace"
-							font-size="6.5"
-							fill="rgba(255,255,255,0.2)">Feintuning wie echte Koalitionsverhandlungen</text
+						<text x="22" y="198" font-family="monospace" font-size="6.5" fill="rgba(30,43,36,0.46)"
+							>Feintuning wie echte Koalitionsverhandlungen</text
 						>
 						<line
 							x1="22"
 							y1="212"
 							x2="438"
 							y2="212"
-							stroke="rgba(255,255,255,0.06)"
+							stroke="rgba(30,43,36,0.12)"
 							stroke-width="0.75"
 						></line>
 						<text
@@ -681,27 +645,22 @@
 							y="242"
 							font-family="monospace"
 							font-size="10"
-							fill="rgba(255,255,255,0.85)"
+							fill="rgba(30,43,36,0.9)"
 							font-weight="700">SOFA-SHOWDOWN</text
 						>
 						<circle cx="202" cy="238" r="4.5" fill="#D62246"></circle>
-						<text
-							x="214"
-							y="242"
-							font-family="monospace"
-							font-size="7.5"
-							fill="rgba(214,34,70,0.85)">KONZEPT</text
+						<text x="214" y="242" font-family="monospace" font-size="7.5" fill="#b31d3c"
+							>KONZEPT</text
 						>
 						<text
 							x="438"
 							y="242"
 							font-family="monospace"
 							font-size="9"
-							fill="rgba(255,255,255,0.28)"
+							fill="rgba(30,43,36,0.56)"
 							text-anchor="end">0%</text
 						>
-						<rect x="22" y="250" width="416" height="5" rx="2.5" fill="rgba(255,255,255,0.07)"
-						></rect>
+						<rect x="22" y="250" width="416" height="5" rx="2.5" fill="rgba(30,43,36,0.46)"></rect>
 						<rect
 							x="22"
 							y="250"
@@ -709,48 +668,36 @@
 							height="5"
 							rx="2.5"
 							fill="none"
-							stroke="rgba(214,34,70,0.2)"
+							stroke="rgba(214,34,70,0.4)"
 							stroke-width="0.75"
 							stroke-dasharray="8 5"
 						></rect>
-						<text x="22" y="266" font-family="monospace" font-size="7" fill="rgba(255,255,255,0.32)"
+						<text x="22" y="266" font-family="monospace" font-size="7" fill="rgba(30,43,36,0.56)"
 							>Party Game · Smartphone als Controller</text
 						>
-						<text
-							x="22"
-							y="280"
-							font-family="monospace"
-							font-size="6.5"
-							fill="rgba(255,255,255,0.2)">Konzeptionsphase mit gutem Freund</text
+						<text x="22" y="280" font-family="monospace" font-size="6.5" fill="rgba(30,43,36,0.46)"
+							>Konzeptionsphase mit gutem Freund</text
 						>
 						<line
 							x1="22"
 							y1="300"
 							x2="438"
 							y2="300"
-							stroke="rgba(232,146,52,0.12)"
+							stroke="rgba(168,85,19,0.24)"
 							stroke-width="0.75"
 						></line>
-						<text
-							x="22"
-							y="326"
-							font-family="monospace"
-							font-size="7.5"
-							fill="rgba(255,255,255,0.28)">3 Projekte · Ø 47% Fortschritt · ∞ Baujahre</text
+						<text x="22" y="326" font-family="monospace" font-size="7.5" fill="rgba(30,43,36,0.56)"
+							>3 Projekte · Ø 47% Fortschritt · ∞ Baujahre</text
 						>
-						<text
-							x="22"
-							y="346"
-							font-family="monospace"
-							font-size="6.5"
-							fill="rgba(255,255,255,0.15)">last commit: irgendwann</text
+						<text x="22" y="346" font-family="monospace" font-size="6.5" fill="rgba(30,43,36,0.46)"
+							>last commit: irgendwann</text
 						>
 						<circle
 							cx="400"
 							cy="345"
 							r="36"
 							fill="none"
-							stroke="rgba(232,146,52,0.06)"
+							stroke="rgba(168,85,19,0.16)"
 							stroke-width="0.75"
 						></circle>
 						<circle
@@ -758,16 +705,16 @@
 							cy="345"
 							r="22"
 							fill="none"
-							stroke="rgba(232,146,52,0.06)"
+							stroke="rgba(168,85,19,0.16)"
 							stroke-width="0.75"
 						></circle>
-						<circle cx="400" cy="345" r="4" fill="rgba(232,146,52,0.35)"></circle>
+						<circle cx="400" cy="345" r="4" fill="rgba(232,146,52,0.6)"></circle>
 						<line
 							x1="400"
 							y1="305"
 							x2="400"
 							y2="321"
-							stroke="rgba(232,146,52,0.12)"
+							stroke="rgba(168,85,19,0.24)"
 							stroke-width="0.75"
 						></line>
 						<line
@@ -775,7 +722,7 @@
 							y1="369"
 							x2="400"
 							y2="385"
-							stroke="rgba(232,146,52,0.12)"
+							stroke="rgba(168,85,19,0.24)"
 							stroke-width="0.75"
 						></line>
 						<line
@@ -783,7 +730,7 @@
 							y1="345"
 							x2="376"
 							y2="345"
-							stroke="rgba(232,146,52,0.12)"
+							stroke="rgba(168,85,19,0.24)"
 							stroke-width="0.75"
 						></line>
 						<line
@@ -791,7 +738,7 @@
 							y1="345"
 							x2="440"
 							y2="345"
-							stroke="rgba(232,146,52,0.12)"
+							stroke="rgba(168,85,19,0.24)"
 							stroke-width="0.75"
 						></line>
 						<text
@@ -799,7 +746,7 @@
 							y="301"
 							font-family="monospace"
 							font-size="6"
-							fill="rgba(232,146,52,0.25)"
+							fill="rgba(168,85,19,0.5)"
 							text-anchor="middle">N</text
 						>
 					</svg>
