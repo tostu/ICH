@@ -115,6 +115,11 @@ html {
 	background: var(--color-surface) !important;
 }
 
+::selection {
+	background: var(--color-accent);
+	color: var(--color-surface);
+}
+
 @layer base {
 	*,
 	*::before,
