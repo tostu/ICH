@@ -22,7 +22,7 @@
 	>
 		<span
 			class="mb-5 block font-mono text-[0.72rem] font-medium tracking-[0.2em] text-warm-deep uppercase"
-			>{m.hero_label ? m.hero_label() : 'Hamburg · Hannover · London'}</span
+			>{m.hero_label ? m.hero_label() : 'Hamburg'}</span
 		>
 		<h1
 			class="hero__headline font-display text-[clamp(2.75rem,6.5vw,5.75rem)] leading-[1] font-semibold tracking-[-0.01em] text-on-surface"
