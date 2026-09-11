@@ -129,10 +129,6 @@ html {
 		box-sizing: border-box;
 	}
 
-	html {
-		scroll-behavior: smooth;
-	}
-
 	body {
 		font-family: var(--font-body);
 		font-size: 1rem;
@@ -190,10 +186,6 @@ html {
 
 /* ACCESSIBILITY: Motion Reduction */
 @media (prefers-reduced-motion: reduce) {
-	html {
-		scroll-behavior: auto !important;
-	}
-
 	*,
 	*::before,
 	*::after {
